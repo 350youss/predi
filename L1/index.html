@@ -70,24 +70,16 @@ body::before{
 .bench-hint{font-family:var(--body);font-size:12.5px;color:var(--sub);}
 .bench-count{font-family:var(--body);font-size:11px;color:var(--muted);white-space:nowrap;}
 .bench-slots{min-height:78px;display:flex;flex-wrap:wrap;gap:12px;padding:18px;background:var(--panel);
-  border:1px solid var(--line);transition:box-shadow .2s var(--ease),border-color .2s var(--ease);}
+  border:1px solid var(--line);}
+.bench-empty{font-family:var(--body);font-size:12.5px;color:var(--muted);font-style:italic;padding:6px 2px;}
 
-.club{width:62px;height:62px;background:var(--panel2);border:1px solid var(--line);
+.crest{width:62px;height:62px;background:var(--panel2);border:1px solid var(--line);
   display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;flex-shrink:0;
   user-select:none;-webkit-user-select:none;
   clip-path:polygon(0 6px,6px 0,calc(100% - 6px) 0,100% 6px,100% calc(100% - 6px),calc(100% - 6px) 100%,6px 100%,0 calc(100% - 6px));
-  transition:box-shadow .2s var(--ease),filter .2s var(--ease),opacity .2s var(--ease),transform .2s var(--ease);}
-.club img{width:40px;height:40px;object-fit:contain;pointer-events:none;}
-.club.armed{box-shadow:0 0 0 3px var(--champion);transform:translateY(-3px);animation:armPulse 1.1s ease-in-out infinite;}
-@keyframes armPulse{0%,100%{box-shadow:0 0 0 3px var(--champion);}50%{box-shadow:0 0 0 6px var(--champion-dim);}}
-
-body.spotlight .club{filter:blur(2px) grayscale(.35);opacity:.4;}
-body.spotlight .club.hovered{filter:none;opacity:1;transform:scale(1.14);z-index:6;box-shadow:var(--shadow);}
-
-/* quand un club est armé, on éclaire toutes les cases où le poser */
-body.armed-mode .tier-drop,body.armed-mode .bench-slots{cursor:pointer;box-shadow:inset 0 0 0 1px var(--line-strong);}
-body.armed-mode .tier-drop:hover,body.armed-mode .bench-slots:hover{box-shadow:inset 0 0 0 2px var(--champion);}
-@media (prefers-reduced-motion:reduce){ .club.armed{animation:none;} }
+  transition:box-shadow .2s var(--ease),transform .2s var(--ease);}
+.crest img{width:40px;height:40px;object-fit:contain;pointer-events:none;}
+.crest:hover{box-shadow:0 0 0 2px var(--line-strong);}
 
 #tooltip{position:fixed;pointer-events:none;z-index:80;background:var(--panel3);border:1px solid var(--line-strong);
   color:var(--ink);font-family:var(--body);font-weight:500;font-size:12px;padding:6px 11px;
@@ -96,7 +88,7 @@ body.armed-mode .tier-drop:hover,body.armed-mode .bench-slots:hover{box-shadow:i
 #tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
   border:5px solid transparent;border-top-color:var(--panel3);}
 
-/* ---------------- board (tier list, bandes colorées) ---------------- */
+/* ---------------- board (tier list, bandes colorées, cases fixes) ---------------- */
 .board{margin-top:38px;border:1px solid var(--line);}
 .tier{display:flex;background:var(--panel);}
 .tier + .tier{border-top:1px solid var(--line);}
@@ -104,8 +96,22 @@ body.armed-mode .tier-drop:hover,body.armed-mode .bench-slots:hover{box-shadow:i
   border-left:4px solid var(--tc,var(--mid));background:var(--td,var(--mid-dim));}
 .tier-label .tn{font-family:var(--disp);font-size:26px;color:#fff;line-height:1;}
 .tier-label .tl{margin-top:6px;font-family:var(--body);font-weight:600;font-size:13.5px;color:#fff;line-height:1.25;}
-.tier-drop{flex:1;padding:14px 16px;display:flex;flex-wrap:wrap;align-content:center;gap:10px;min-height:64px;
-  transition:background .18s var(--ease);}
+.tier-drop{flex:1;padding:14px 16px;display:flex;flex-wrap:wrap;align-content:center;gap:10px;min-height:64px;}
+
+/* case vide : bouton "+" ; case pleine : écusson + croix pour retirer */
+.slot{width:62px;height:62px;flex-shrink:0;position:relative;}
+.slot-empty{width:100%;height:100%;background:transparent;border:1.5px dashed var(--line-strong);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);
+  font-family:var(--disp);font-size:24px;line-height:1;transition:border-color .18s var(--ease),color .18s var(--ease),background .18s var(--ease);}
+.slot-empty:hover{border-color:var(--tc,var(--champion));color:var(--tc,var(--champion));background:var(--td,transparent);}
+.slot-filled{width:100%;height:100%;background:var(--panel2);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  clip-path:polygon(0 6px,6px 0,calc(100% - 6px) 0,100% 6px,100% calc(100% - 6px),calc(100% - 6px) 100%,6px 100%,0 calc(100% - 6px));}
+.slot-filled img{width:40px;height:40px;object-fit:contain;pointer-events:none;}
+.slot-remove{position:absolute;top:-7px;right:-7px;width:20px;height:20px;border-radius:50%;
+  background:var(--danger);border:2px solid var(--bg);color:#fff;font-size:12px;line-height:1;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;}
+
 @media (max-width:640px){
   .tier{flex-direction:column;}
   .tier-label{width:100%;border-left:none;border-bottom:3px solid var(--tc,var(--mid));flex-direction:row;
@@ -119,13 +125,36 @@ body.armed-mode .tier-drop:hover,body.armed-mode .bench-slots:hover{box-shadow:i
 
 .credit{margin-top:56px;font-family:var(--body);font-size:10.5px;color:var(--faint);text-align:center;
   letter-spacing:.05em;text-transform:uppercase;}
+.credit .sub{display:block;margin-top:4px;text-transform:none;letter-spacing:0;font-size:11px;color:var(--faint);}
 
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--panel3);
   color:var(--ink);border:1px solid var(--line-strong);padding:13px 22px;font-family:var(--body);font-weight:500;
   font-size:12.5px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);z-index:90;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
-@media (prefers-reduced-motion:reduce){ .club{transition:none;} }
+/* ---------------- sélecteur (ouvert par le "+" ou par un club du banc) ---------------- */
+.picker-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;
+  display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s var(--ease);}
+.picker-overlay.show{opacity:1;pointer-events:auto;}
+@media (min-width:640px){.picker-overlay{align-items:center;}}
+.picker-sheet{background:var(--panel2);border:1px solid var(--line-strong);border-top:3px solid var(--champion);
+  width:100%;max-width:480px;max-height:76vh;display:flex;flex-direction:column;
+  transform:translateY(16px);transition:transform .2s var(--ease);}
+.picker-overlay.show .picker-sheet{transform:translateY(0);}
+.picker-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;
+  border-bottom:1px solid var(--line);}
+.picker-title{font-family:var(--disp);font-size:17px;color:#fff;text-transform:uppercase;}
+.picker-close{background:transparent;border:none;color:var(--sub);font-size:22px;line-height:1;cursor:pointer;padding:4px 8px;}
+.picker-close:hover{color:#fff;}
+.picker-list{overflow-y:auto;padding:8px;}
+.picker-row{display:flex;align-items:center;gap:12px;padding:11px 10px;cursor:pointer;
+  background:transparent;border:none;width:100%;text-align:left;font-family:var(--body);}
+.picker-row:hover{background:var(--panel3);}
+.picker-row img{width:32px;height:32px;object-fit:contain;flex-shrink:0;}
+.picker-sw{width:6px;height:26px;flex-shrink:0;background:var(--pc,var(--mid));}
+.picker-row .prn{font-weight:600;font-size:14px;color:#fff;}
+.picker-row .prs{font-size:11.5px;color:var(--muted);margin-top:1px;}
+.picker-empty{padding:24px 16px;text-align:center;color:var(--muted);font-size:13px;}
 </style>
 </head>
 <body>
@@ -144,8 +173,8 @@ body.armed-mode .tier-drop:hover,body.armed-mode .bench-slots:hover{box-shadow:i
 
   <div class="bench">
     <div class="bench-top">
-      <div class="bench-hint">Touche un club, puis touche sa case.</div>
-      <div class="bench-count" id="pool-count">18 restants</div>
+      <div class="bench-hint">Touche un club pour choisir sa ligne, ou le + d'une case.</div>
+      <div class="bench-count" id="pool-count">0 / 18 placés</div>
     </div>
     <div class="bench-slots" id="pool"></div>
   </div>
@@ -154,11 +183,17 @@ body.armed-mode .tier-drop:hover,body.armed-mode .bench-slots:hover{box-shadow:i
 
   <p class="legend"><b>Barrages</b> (4e et 16e place) : ticket conditionné au résultat du barrage. <b>« Le con ou pas »</b> (7e) : cette place ne part en Coupe d'Europe que si le vainqueur de la Coupe de France est déjà qualifié par le championnat, sinon elle reste en Ligue 1 normale.</p>
 
-  <div class="credit">Fait avec 350 · Predis</div>
+  <div class="credit">Fait avec 350 · Predis<span class="sub">Aucune donnée ne quitte ton navigateur.</span></div>
 </div>
 
 <div id="tooltip"></div>
 <div class="toast" id="toast"></div>
+<div class="picker-overlay" id="picker-overlay">
+  <div class="picker-sheet">
+    <div class="picker-head"><span class="picker-title" id="picker-title"></span><button class="picker-close" id="picker-close">×</button></div>
+    <div class="picker-list" id="picker-list"></div>
+  </div>
+</div>
 
 <script>
 const CLUBS = [
@@ -200,8 +235,26 @@ const poolCount = document.getElementById('pool-count');
 const rowsWrap = document.getElementById('rows');
 const toast = document.getElementById('toast');
 const tooltip = document.getElementById('tooltip');
+const pickerOverlay = document.getElementById('picker-overlay');
+const pickerTitle = document.getElementById('picker-title');
+const pickerList = document.getElementById('picker-list');
 
-/* ---- build board tiers ---- */
+/* état : chaque tier a un tableau de longueur max, rempli de club.id ou null */
+let placements = {};
+function resetState(){
+  placements = {};
+  TIERS.forEach(t => { placements[t.id] = new Array(t.max).fill(null); });
+}
+resetState();
+
+function placedIds(){
+  return new Set(Object.values(placements).flat().filter(Boolean));
+}
+function tierRemaining(tierId){
+  return placements[tierId].filter(v => v === null).length;
+}
+
+/* ---- build board skeleton (une fois) ---- */
 TIERS.forEach(t => {
   const tier = document.createElement('div');
   tier.className = 'tier';
@@ -210,65 +263,126 @@ TIERS.forEach(t => {
       <div class="tn">${t.rl}</div>
       <div class="tl">${t.label}</div>
     </div>
-    <div class="tier-drop" data-tier="${t.id}" data-max="${t.max}" style="--td:${t.dim}"></div>`;
+    <div class="tier-drop" data-tier="${t.id}" style="--tc:${t.c};--td:${t.dim}"></div>`;
   rowsWrap.appendChild(tier);
 });
 
-/* ---- tooltip / spotlight (survol souris uniquement) ---- */
+/* ---- tooltip (survol souris) ---- */
 function showTooltip(el, text){
-  document.body.classList.add('spotlight');
-  el.classList.add('hovered');
   tooltip.textContent = text;
   const r = el.getBoundingClientRect();
   tooltip.style.left = (r.left + r.width/2) + 'px';
   tooltip.style.top = (r.top - 12) + 'px';
   tooltip.classList.add('show');
 }
-function hideTooltip(el){
-  document.body.classList.remove('spotlight');
-  el.classList.remove('hovered');
-  tooltip.classList.remove('show');
+function hideTooltip(){ tooltip.classList.remove('show'); }
+
+/* ---- rendu complet à partir de l'état ---- */
+function render(){
+  const placed = placedIds();
+
+  pool.innerHTML = '';
+  const bench = CLUBS.filter(c => !placed.has(c.id));
+  if (!bench.length){
+    pool.innerHTML = '<div class="bench-empty">Tous les clubs sont placés.</div>';
+  } else {
+    bench.forEach(c => pool.appendChild(makeBenchCrest(c)));
+  }
+  poolCount.textContent = placed.size + ' / ' + CLUBS.length + ' placés';
+
+  TIERS.forEach(t => {
+    const zone = document.querySelector(`.tier-drop[data-tier="${t.id}"]`);
+    zone.innerHTML = '';
+    placements[t.id].forEach((clubId, idx) => {
+      const slot = document.createElement('div');
+      slot.className = 'slot';
+      if (clubId){
+        const club = CLUBS.find(c => c.id === clubId);
+        slot.innerHTML = `<div class="slot-filled"><img src="${club.logo}" alt="${club.name}"></div>
+          <button class="slot-remove" aria-label="Retirer ${club.name}">×</button>`;
+        const filled = slot.querySelector('.slot-filled');
+        filled.addEventListener('mouseenter', () => showTooltip(filled, club.name));
+        filled.addEventListener('mouseleave', hideTooltip);
+        slot.querySelector('.slot-remove').addEventListener('click', e => {
+          e.stopPropagation();
+          placements[t.id][idx] = null;
+          render();
+        });
+      } else {
+        slot.innerHTML = `<div class="slot-empty" role="button" aria-label="Choisir un club pour ${t.label}">+</div>`;
+        slot.querySelector('.slot-empty').addEventListener('click', () => openClubPicker(t, idx));
+      }
+      zone.appendChild(slot);
+    });
+  });
 }
 
-function makeChip(club){
+function makeBenchCrest(club){
   const el = document.createElement('div');
-  el.className = 'club';
-  el.dataset.id = club.id;
+  el.className = 'crest';
   el.innerHTML = `<img src="${club.logo}" alt="${club.name}" loading="lazy">`;
   el.addEventListener('mouseenter', () => showTooltip(el, club.name));
-  el.addEventListener('mouseleave', () => hideTooltip(el));
-  attachTap(el, club);
+  el.addEventListener('mouseleave', hideTooltip);
+  el.addEventListener('click', () => openTierPicker(club));
   return el;
 }
 
-function updatePoolCount(){
-  const n = pool.children.length;
-  poolCount.textContent = n + ' restant' + (n>1?'s':'');
-}
-
-function initPool(){
-  pool.innerHTML = '';
-  CLUBS.forEach(c => pool.appendChild(makeChip(c)));
-  updatePoolCount();
-}
-initPool();
-
-function allZones(){ return [pool, ...document.querySelectorAll('.tier-drop')]; }
-
-function dropInto(zone, id){
-  const chip = document.querySelector(`.club[data-id="${id}"]`);
-  if (!chip) return false;
-  if (zone.classList.contains('tier-drop')){
-    const max = parseInt(zone.dataset.max, 10);
-    if (zone.children.length >= max && zone !== chip.parentElement){
-      showToast('Cette case est déjà pleine (' + max + ' place' + (max>1?'s':'') + ').');
-      return false;
-    }
+/* ---- sélecteur : choisir un CLUB pour une case précise ---- */
+function openClubPicker(tier, slotIdx){
+  const placed = placedIds();
+  const available = CLUBS.filter(c => !placed.has(c.id));
+  if (!available.length){
+    pickerTitle.textContent = tier.label;
+    pickerList.innerHTML = '<div class="picker-empty">Tous les clubs sont déjà placés.</div>';
+  } else {
+    pickerTitle.textContent = 'Choisis pour : ' + tier.label;
+    pickerList.innerHTML = '';
+    available.forEach(club => {
+      const row = document.createElement('button');
+      row.className = 'picker-row';
+      row.innerHTML = `<img src="${club.logo}" alt=""><span class="prn">${club.name}</span>`;
+      row.addEventListener('click', () => {
+        placements[tier.id][slotIdx] = club.id;
+        closePicker();
+        render();
+      });
+      pickerList.appendChild(row);
+    });
   }
-  zone.appendChild(chip);
-  updatePoolCount();
-  return true;
+  openPicker();
 }
+
+/* ---- sélecteur : choisir une LIGNE pour un club du banc ---- */
+function openTierPicker(club){
+  pickerTitle.textContent = club.name;
+  pickerList.innerHTML = '';
+  const withRoom = TIERS.filter(t => tierRemaining(t.id) > 0);
+  if (!withRoom.length){
+    pickerList.innerHTML = '<div class="picker-empty">Toutes les cases sont pleines.</div>';
+  } else {
+    withRoom.forEach(t => {
+      const row = document.createElement('button');
+      row.className = 'picker-row';
+      row.innerHTML = `<span class="picker-sw" style="--pc:${t.c}"></span>
+        <span><span class="prn">${t.rl} · ${t.label}</span>
+        <span class="prs">${tierRemaining(t.id)} place${tierRemaining(t.id)>1?'s':''} libre${tierRemaining(t.id)>1?'s':''}</span></span>`;
+      row.addEventListener('click', () => {
+        const idx = placements[t.id].indexOf(null);
+        placements[t.id][idx] = club.id;
+        closePicker();
+        render();
+      });
+      pickerList.appendChild(row);
+    });
+  }
+  openPicker();
+}
+
+function openPicker(){ pickerOverlay.classList.add('show'); }
+function closePicker(){ pickerOverlay.classList.remove('show'); }
+document.getElementById('picker-close').addEventListener('click', closePicker);
+pickerOverlay.addEventListener('click', e => { if (e.target === pickerOverlay) closePicker(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePicker(); });
 
 function showToast(msg){
   toast.textContent = msg;
@@ -277,55 +391,27 @@ function showToast(msg){
   showToast._t = setTimeout(() => toast.classList.remove('show'), 2600);
 }
 
-/* ---------------------------------------------------------------
-   Tap puis tap : pas de glisser (peu fiable au tactile). On touche un
-   club pour l'armer, tout le tableau se met en évidence, on touche la
-   case voulue pour le poser. Marche identiquement souris/tactile.
----------------------------------------------------------------- */
-function attachTap(el, club){
-  el.addEventListener('click', e => { e.stopPropagation(); armTap(el); });
-}
-function armTap(el){
-  const already = el.classList.contains('armed');
-  document.querySelectorAll('.club.armed').forEach(c => c.classList.remove('armed'));
-  document.body.classList.remove('armed-mode');
-  clearTimeout(armTap._t);
-  if (already) return;
-  el.classList.add('armed');
-  document.body.classList.add('armed-mode');
-  armTap._t = setTimeout(() => { el.classList.remove('armed'); document.body.classList.remove('armed-mode'); }, 6000);
-}
-allZones().forEach(zone => {
-  zone.addEventListener('click', () => {
-    const armed = document.querySelector('.club.armed');
-    if (!armed) return;
-    if (dropInto(zone, armed.dataset.id)){
-      armed.classList.remove('armed');
-      document.body.classList.remove('armed-mode');
-      clearTimeout(armTap._t);
-    }
-  });
-});
-
 document.getElementById('btn-reset').addEventListener('click', () => {
-  document.querySelectorAll('.club.armed').forEach(c => c.classList.remove('armed'));
-  initPool();
+  resetState();
+  render();
   showToast('Classement réinitialisé.');
 });
 
 document.getElementById('btn-random').addEventListener('click', () => {
-  initPool();
+  resetState();
   const shuffled = [...CLUBS].sort(() => Math.random() - 0.5);
-  const order = [];
-  TIERS.forEach(t => { for(let i=0;i<t.max;i++) order.push(t.id); });
-  shuffled.forEach((club, i) => {
-    const zone = document.querySelector(`.tier-drop[data-tier="${order[i]}"]`);
-    const chip = document.querySelector(`.club[data-id="${club.id}"]`);
-    zone.appendChild(chip);
+  let i = 0;
+  TIERS.forEach(t => {
+    for (let s = 0; s < t.max; s++){
+      placements[t.id][s] = shuffled[i].id;
+      i++;
+    }
   });
-  updatePoolCount();
+  render();
   showToast('Tirage au sort généré.');
 });
+
+render();
 
 /* ---------- partage : image canvas + Web Share API ---------- */
 function loadImage(src){
@@ -368,8 +454,7 @@ async function shareOrDownload(blob, filename, text){
 async function shareImage(){
   const btn = document.getElementById('btn-share');
   const original = btn.textContent;
-  const rows = TIERS.map(t => ({tier:t, clubs:[...document.querySelectorAll(`.tier-drop[data-tier="${t.id}"]`)[0].children].map(c => c.dataset.id)}))
-    .filter(r => r.clubs.length);
+  const rows = TIERS.map(t => ({tier:t, clubs: placements[t.id].filter(Boolean)})).filter(r => r.clubs.length);
   if (!rows.length){ showToast('Place au moins un club avant de partager.'); return; }
   btn.disabled = true; btn.textContent = 'Génération...';
   try{
@@ -384,9 +469,14 @@ async function shareImage(){
     const maxPerRow = Math.max(1, ...rows.map(r => r.clubs.length));
     const W = Math.max(560, LABELW + maxPerRow*CELL + PADR);
     const H = HEADH + rows.length*ROWH + FOOTH;
+    /* rendu à 2.5x pour rester net une fois partagé/affiché en grand sur un tél */
+    const DPR = 2.5;
     const canvas = document.createElement('canvas');
-    canvas.width = W; canvas.height = H;
+    canvas.width = Math.round(W*DPR); canvas.height = Math.round(H*DPR);
     const ctx = canvas.getContext('2d');
+    ctx.scale(DPR, DPR);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
 
     ctx.fillStyle = '#0a0b0d'; ctx.fillRect(0,0,W,H);
     ctx.fillStyle = '#fff';
