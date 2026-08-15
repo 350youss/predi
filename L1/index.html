@@ -466,7 +466,7 @@ async function shareImage(){
     /* Bandeau à rayures diagonales + tuiles carrées arrondies pour les
        écussons (plus proche d'une vraie tier list imprimée), largeur
        ajustée au nombre max de clubs par ligne pour éviter le vide. */
-    const LABELW = 210, TILE = 52, CELL = 70, PADR = 34, ROWH = 108, HEADH = 156, FOOTH = 56;
+    const LABELW = 210, TILE = 86, CELL = 100, PADR = 34, ROWH = 132, HEADH = 156, FOOTH = 56;
     const maxPerRow = Math.max(1, ...rows.map(r => r.clubs.length));
     const W = Math.max(620, LABELW + maxPerRow*CELL + PADR);
     const H = HEADH + rows.length*ROWH + FOOTH;
@@ -559,11 +559,11 @@ async function shareImage(){
       ctx.fillStyle = tOn;
       ctx.font = '400 26px Tanker, sans-serif';
       ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-      ctx.fillText(row.tier.rl, 22, y+42);
+      ctx.fillText(row.tier.rl, 22, y+54);
 
       const lines = wrapLabel(row.tier.label, LABELW-44, '600 14px "Space Grotesk", sans-serif');
       ctx.font = '600 14px "Space Grotesk", sans-serif';
-      lines.forEach((line, i) => ctx.fillText(line, 22, y+64+i*18));
+      lines.forEach((line, i) => ctx.fillText(line, 22, y+76+i*18));
 
       let cx = LABELW+22, cy = y+ROWH/2;
       for (const id of row.clubs){
