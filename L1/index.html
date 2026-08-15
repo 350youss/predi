@@ -66,23 +66,28 @@ body::before{
 
 /* ---------------- bench ---------------- */
 .bench{margin-top:32px;position:relative;}
-.bench-count{text-align:right;font-family:var(--body);font-size:11px;color:var(--muted);margin-bottom:8px;}
+.bench-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px;}
+.bench-hint{font-family:var(--body);font-size:12.5px;color:var(--sub);}
+.bench-count{font-family:var(--body);font-size:11px;color:var(--muted);white-space:nowrap;}
 .bench-slots{min-height:78px;display:flex;flex-wrap:wrap;gap:12px;padding:18px;background:var(--panel);
-  border:1px solid var(--line);}
-.bench-slots.dragover{outline:2px dashed var(--line-strong);outline-offset:6px;}
+  border:1px solid var(--line);transition:box-shadow .2s var(--ease),border-color .2s var(--ease);}
 
 .club{width:62px;height:62px;background:var(--panel2);border:1px solid var(--line);
-  display:flex;align-items:center;justify-content:center;cursor:grab;position:relative;flex-shrink:0;
-  touch-action:none;user-select:none;-webkit-user-select:none;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;flex-shrink:0;
+  user-select:none;-webkit-user-select:none;
   clip-path:polygon(0 6px,6px 0,calc(100% - 6px) 0,100% 6px,100% calc(100% - 6px),calc(100% - 6px) 100%,6px 100%,0 calc(100% - 6px));
-  transition:box-shadow .2s var(--ease),filter .2s var(--ease),opacity .2s var(--ease);}
+  transition:box-shadow .2s var(--ease),filter .2s var(--ease),opacity .2s var(--ease),transform .2s var(--ease);}
 .club img{width:40px;height:40px;object-fit:contain;pointer-events:none;}
-.club.armed{box-shadow:0 0 0 2px var(--champion);}
-.club.dragging{opacity:.25;}
-.club.ghost{position:fixed;z-index:100;pointer-events:none;box-shadow:var(--shadow);transform:scale(1.1) rotate(-3deg);}
+.club.armed{box-shadow:0 0 0 3px var(--champion);transform:translateY(-3px);animation:armPulse 1.1s ease-in-out infinite;}
+@keyframes armPulse{0%,100%{box-shadow:0 0 0 3px var(--champion);}50%{box-shadow:0 0 0 6px var(--champion-dim);}}
 
 body.spotlight .club{filter:blur(2px) grayscale(.35);opacity:.4;}
 body.spotlight .club.hovered{filter:none;opacity:1;transform:scale(1.14);z-index:6;box-shadow:var(--shadow);}
+
+/* quand un club est armé, on éclaire toutes les cases où le poser */
+body.armed-mode .tier-drop,body.armed-mode .bench-slots{cursor:pointer;box-shadow:inset 0 0 0 1px var(--line-strong);}
+body.armed-mode .tier-drop:hover,body.armed-mode .bench-slots:hover{box-shadow:inset 0 0 0 2px var(--champion);}
+@media (prefers-reduced-motion:reduce){ .club.armed{animation:none;} }
 
 #tooltip{position:fixed;pointer-events:none;z-index:80;background:var(--panel3);border:1px solid var(--line-strong);
   color:var(--ink);font-family:var(--body);font-weight:500;font-size:12px;padding:6px 11px;
@@ -101,7 +106,6 @@ body.spotlight .club.hovered{filter:none;opacity:1;transform:scale(1.14);z-index
 .tier-label .tl{margin-top:6px;font-family:var(--body);font-weight:600;font-size:13.5px;color:#fff;line-height:1.25;}
 .tier-drop{flex:1;padding:14px 16px;display:flex;flex-wrap:wrap;align-content:center;gap:10px;min-height:64px;
   transition:background .18s var(--ease);}
-.tier-drop.dragover{background:var(--td,rgba(255,255,255,.05));}
 @media (max-width:640px){
   .tier{flex-direction:column;}
   .tier-label{width:100%;border-left:none;border-bottom:3px solid var(--tc,var(--mid));flex-direction:row;
@@ -139,7 +143,10 @@ body.spotlight .club.hovered{filter:none;opacity:1;transform:scale(1.14);z-index
   </div>
 
   <div class="bench">
-    <div class="bench-count" id="pool-count">18 restants</div>
+    <div class="bench-top">
+      <div class="bench-hint">Touche un club, puis touche sa case.</div>
+      <div class="bench-count" id="pool-count">18 restants</div>
+    </div>
     <div class="bench-slots" id="pool"></div>
   </div>
 
@@ -228,9 +235,9 @@ function makeChip(club){
   el.className = 'club';
   el.dataset.id = club.id;
   el.innerHTML = `<img src="${club.logo}" alt="${club.name}" loading="lazy">`;
-  el.addEventListener('mouseenter', () => { if (!dragState.active) showTooltip(el, club.name); });
+  el.addEventListener('mouseenter', () => showTooltip(el, club.name));
   el.addEventListener('mouseleave', () => hideTooltip(el));
-  attachPointerDrag(el, club);
+  attachTap(el, club);
   return el;
 }
 
@@ -271,114 +278,32 @@ function showToast(msg){
 }
 
 /* ---------------------------------------------------------------
-   Drag & drop maison (Pointer Events) : marche pareil souris/tactile,
-   auto-scroll quand on approche du haut/bas de l'écran (les cases au
-   delà de la 4e ligne obligent sinon à sortir de la fenêtre visible),
-   et un simple tap reste possible pour armer/poser sans glisser.
+   Tap puis tap : pas de glisser (peu fiable au tactile). On touche un
+   club pour l'armer, tout le tableau se met en évidence, on touche la
+   case voulue pour le poser. Marche identiquement souris/tactile.
 ---------------------------------------------------------------- */
-const dragState = {active:false, id:null, chip:null, ghost:null, startX:0, startY:0, moved:false, scrollRAF:null, scrollDir:0};
-
-function attachPointerDrag(el, club){
-  el.addEventListener('pointerdown', e => {
-    if (e.button !== undefined && e.button !== 0) return;
-    dragState.id = club.id;
-    dragState.chip = el;
-    dragState.startX = e.clientX;
-    dragState.startY = e.clientY;
-    dragState.moved = false;
-    el.setPointerCapture(e.pointerId);
-  });
-  el.addEventListener('pointermove', e => {
-    if (dragState.chip !== el) return;
-    const dx = e.clientX - dragState.startX, dy = e.clientY - dragState.startY;
-    if (!dragState.moved && Math.hypot(dx,dy) > 7){
-      startDrag(el, e);
-    }
-    if (dragState.moved) moveDrag(e);
-  });
-  el.addEventListener('pointerup', e => {
-    if (dragState.chip !== el) return;
-    if (dragState.moved) endDrag(e);
-    else armTap(el);
-    resetDragChip();
-  });
-  el.addEventListener('pointercancel', () => {
-    if (dragState.chip === el){ cancelDrag(); resetDragChip(); }
-  });
+function attachTap(el, club){
+  el.addEventListener('click', e => { e.stopPropagation(); armTap(el); });
 }
-function resetDragChip(){ dragState.chip = null; }
-
-function startDrag(el, e){
-  dragState.active = true;
-  dragState.moved = true;
-  document.body.classList.remove('spotlight');
-  hideTooltip(el);
-  document.querySelectorAll('.club.armed').forEach(c => c.classList.remove('armed'));
-  el.classList.add('dragging');
-  const r = el.getBoundingClientRect();
-  const ghost = el.cloneNode(true);
-  ghost.classList.add('ghost');
-  ghost.style.width = r.width+'px'; ghost.style.height = r.height+'px';
-  ghost.style.left = (e.clientX - r.width/2)+'px'; ghost.style.top = (e.clientY - r.height/2)+'px';
-  document.body.appendChild(ghost);
-  dragState.ghost = ghost;
-}
-function moveDrag(e){
-  const g = dragState.ghost;
-  if (!g) return;
-  const r = g.getBoundingClientRect();
-  g.style.left = (e.clientX - r.width/2)+'px';
-  g.style.top = (e.clientY - r.height/2)+'px';
-
-  g.style.display = 'none';
-  const under = document.elementFromPoint(e.clientX, e.clientY);
-  g.style.display = '';
-  document.querySelectorAll('.dragover').forEach(z => z.classList.remove('dragover'));
-  const zone = under && under.closest ? under.closest('.tier-drop, #pool') : null;
-  if (zone) zone.classList.add('dragover');
-
-  const edge = 70, vh = window.innerHeight;
-  if (e.clientY < edge) dragState.scrollDir = -1;
-  else if (e.clientY > vh - edge) dragState.scrollDir = 1;
-  else dragState.scrollDir = 0;
-  if (dragState.scrollDir && !dragState.scrollRAF) runAutoScroll();
-  if (!dragState.scrollDir && dragState.scrollRAF){ cancelAnimationFrame(dragState.scrollRAF); dragState.scrollRAF = null; }
-}
-function runAutoScroll(){
-  dragState.scrollRAF = requestAnimationFrame(() => {
-    if (dragState.scrollDir) window.scrollBy(0, dragState.scrollDir * 14);
-    if (dragState.active && dragState.scrollDir) runAutoScroll();
-    else dragState.scrollRAF = null;
-  });
-}
-function endDrag(e){
-  const zone = document.querySelector('.dragover');
-  document.querySelectorAll('.dragover').forEach(z => z.classList.remove('dragover'));
-  if (zone) dropInto(zone, dragState.id);
-  cleanupDrag();
-}
-function cancelDrag(){
-  document.querySelectorAll('.dragover').forEach(z => z.classList.remove('dragover'));
-  cleanupDrag();
-}
-function cleanupDrag(){
-  if (dragState.chip) dragState.chip.classList.remove('dragging');
-  if (dragState.ghost) dragState.ghost.remove();
-  if (dragState.scrollRAF){ cancelAnimationFrame(dragState.scrollRAF); dragState.scrollRAF = null; }
-  dragState.active = false; dragState.ghost = null; dragState.id = null; dragState.scrollDir = 0;
-}
-
 function armTap(el){
-  if (el.classList.contains('armed')){ el.classList.remove('armed'); return; }
+  const already = el.classList.contains('armed');
   document.querySelectorAll('.club.armed').forEach(c => c.classList.remove('armed'));
+  document.body.classList.remove('armed-mode');
+  clearTimeout(armTap._t);
+  if (already) return;
   el.classList.add('armed');
-  setTimeout(() => el.classList.remove('armed'), 4500);
+  document.body.classList.add('armed-mode');
+  armTap._t = setTimeout(() => { el.classList.remove('armed'); document.body.classList.remove('armed-mode'); }, 6000);
 }
 allZones().forEach(zone => {
   zone.addEventListener('click', () => {
     const armed = document.querySelector('.club.armed');
     if (!armed) return;
-    if (dropInto(zone, armed.dataset.id)) armed.classList.remove('armed');
+    if (dropInto(zone, armed.dataset.id)){
+      armed.classList.remove('armed');
+      document.body.classList.remove('armed-mode');
+      clearTimeout(armTap._t);
+    }
   });
 });
 
@@ -451,7 +376,13 @@ async function shareImage(){
     if (document.fonts.status !== 'loaded'){
       await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r,150))]);
     }
-    const W = 1080, LABELW = 250, ROWH = 116, HEADH = 150, FOOTH = 64;
+    /* Format dense et compact, inspiré d'une vraie tier list : bloc de
+       couleur PLEIN (pas de teinte), écussons serrés juste après, largeur
+       du visuel ajustée au nombre max de clubs par ligne pour ne pas
+       laisser un grand vide à droite des lignes peu remplies. */
+    const LABELW = 196, CELL = 60, PADR = 30, ROWH = 92, HEADH = 118, FOOTH = 52;
+    const maxPerRow = Math.max(1, ...rows.map(r => r.clubs.length));
+    const W = Math.max(560, LABELW + maxPerRow*CELL + PADR);
     const H = HEADH + rows.length*ROWH + FOOTH;
     const canvas = document.createElement('canvas');
     canvas.width = W; canvas.height = H;
@@ -459,12 +390,12 @@ async function shareImage(){
 
     ctx.fillStyle = '#0a0b0d'; ctx.fillRect(0,0,W,H);
     ctx.fillStyle = '#fff';
-    ctx.font = '400 46px Tanker, sans-serif';
+    ctx.font = '400 38px Tanker, sans-serif';
     ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-    ctx.fillText('PREDIS', 32, 86);
+    ctx.fillText('PREDIS', 26, 62);
     ctx.fillStyle = '#98999e';
-    ctx.font = '500 14px "Space Grotesk", sans-serif';
-    ctx.fillText('LIGUE 1 · SAISON 2026/27', 32, 112);
+    ctx.font = '500 12.5px "Space Grotesk", sans-serif';
+    ctx.fillText('LIGUE 1 · SAISON 2026/27', 26, 84);
 
     const colorFor = id => {
       if (id==='t1') return '#e2a53f';
@@ -474,18 +405,10 @@ async function shareImage(){
       if (id==='t6') return '#b083d6';
       if (id==='t9') return '#c98a2e';
       if (id==='t10') return '#e2496a';
-      return '#7d808a';
+      return '#454850';
     };
-    const dimFor = id => {
-      if (id==='t1') return 'rgba(226,165,63,.14)';
-      if (id==='t2'||id==='t3') return 'rgba(77,127,224,.14)';
-      if (id==='t4') return 'rgba(221,127,60,.14)';
-      if (id==='t5') return 'rgba(63,174,124,.14)';
-      if (id==='t6') return 'rgba(176,131,214,.14)';
-      if (id==='t9') return 'rgba(201,138,46,.14)';
-      if (id==='t10') return 'rgba(226,73,106,.16)';
-      return 'rgba(125,128,138,.12)';
-    };
+    /* texte sombre sur les blocs clairs (ambre/orange/vert), blanc sur les foncés */
+    const textOnFor = id => (id==='t1'||id==='t4'||id==='t5') ? '#181205' : '#fff';
 
     /* on précharge tous les écussons AVANT de dessiner (fiabilité) */
     const neededIds = [...new Set(rows.flatMap(r => r.clubs))];
@@ -512,33 +435,32 @@ async function shareImage(){
 
     let y = HEADH;
     for (const row of rows){
-      const c = colorFor(row.tier.id), dim = dimFor(row.tier.id);
+      const c = colorFor(row.tier.id), tOn = textOnFor(row.tier.id);
 
       ctx.fillStyle = '#131417'; ctx.fillRect(0, y, W, ROWH);
-      ctx.fillStyle = dim; ctx.fillRect(0, y, LABELW, ROWH);
-      ctx.fillStyle = c; ctx.fillRect(0, y, 5, ROWH);
-      ctx.strokeStyle = 'rgba(255,255,255,.09)'; ctx.lineWidth = 1;
+      ctx.fillStyle = c; ctx.fillRect(0, y, LABELW, ROWH);
+      ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(0, y+ROWH); ctx.lineTo(W, y+ROWH); ctx.stroke();
 
-      ctx.fillStyle = '#fff';
-      ctx.font = '400 28px Tanker, sans-serif';
+      ctx.fillStyle = tOn;
+      ctx.font = '400 24px Tanker, sans-serif';
       ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-      ctx.fillText(row.tier.rl, 28, y+42);
+      ctx.fillText(row.tier.rl, 18, y+34);
 
-      const lines = wrapLabel(row.tier.label, LABELW-52, '600 15px "Space Grotesk", sans-serif');
-      ctx.font = '600 15px "Space Grotesk", sans-serif';
-      lines.forEach((line, i) => ctx.fillText(line, 28, y+66+i*19));
+      const lines = wrapLabel(row.tier.label, LABELW-36, '600 13.5px "Space Grotesk", sans-serif');
+      ctx.font = '600 13.5px "Space Grotesk", sans-serif';
+      lines.forEach((line, i) => ctx.fillText(line, 18, y+54+i*17));
 
-      let cx = LABELW+28, cy = y+ROWH/2;
+      let cx = LABELW+20, cy = y+ROWH/2;
       for (const id of row.clubs){
         const img = crestMap[id];
         if (img){
-          const s = 44, ar = img.width/img.height;
+          const s = 46, ar = img.width/img.height;
           let dw = s, dh = s;
           if (ar > 1) dh = s/ar; else dw = s*ar;
           ctx.drawImage(img, cx, cy-dh/2, dw, dh);
         }
-        cx += 58;
+        cx += CELL;
       }
       y += ROWH;
     }
