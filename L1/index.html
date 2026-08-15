@@ -453,31 +453,43 @@ async function shareOrDownload(blob, filename, text){
   setTimeout(() => URL.revokeObjectURL(url), 4000);
 }
 
+/* Groupes du visuel de partage uniquement : on fusionne barrage LDC avec
+   la Ligue des Champions, et barrage maintien avec la relégation, pour
+   gagner 2 lignes. Un pointillé sépare les deux sous-groupes dans la
+   ligne fusionnée. Le tableau interactif du site garde ses 10 cases
+   séparées, ce regroupement ne concerne que l'image générée. */
+const SHARE_GROUPS = [
+  {rank:'1',     label:'Champion',            parts:[{tiers:['t1']}]},
+  {rank:'2-4',   label:'Ligue des Champions', parts:[{tiers:['t2']}, {tiers:['t3'], tag:'Barrage', dashed:true}]},
+  {rank:'5',     label:'Europa League',       parts:[{tiers:['t4']}]},
+  {rank:'6',     label:'Conference League',   parts:[{tiers:['t5']}]},
+  {rank:'7',     label:'Le con ou pas',       parts:[{tiers:['t6']}]},
+  {rank:'8-11',  label:'Ventre mou haut',     parts:[{tiers:['t7']}]},
+  {rank:'12-15', label:'Ventre mou bas',      parts:[{tiers:['t8']}]},
+  {rank:'16-18', label:'Maintien',            parts:[{tiers:['t9']}, {tiers:['t10'], tag:'Descente', dashed:true}]},
+];
+
 async function shareImage(){
   const btn = document.getElementById('btn-share');
   const original = btn.textContent;
-  const rows = TIERS.map(t => ({tier:t, clubs: placements[t.id].filter(Boolean)})).filter(r => r.clubs.length);
+  const rows = SHARE_GROUPS.map(g => ({
+    group: g,
+    parts: g.parts.map(p => ({...p, clubs: p.tiers.flatMap(tid => placements[tid].filter(Boolean))})),
+  })).filter(r => r.parts.some(p => p.clubs.length));
   if (!rows.length){ showToast('Place au moins un club avant de partager.'); return; }
   btn.disabled = true; btn.textContent = 'Génération...';
   try{
     if (document.fonts.status !== 'loaded'){
       await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r,150))]);
     }
-    /* Bandeau à rayures diagonales + tuiles carrées arrondies pour les
-       écussons (plus proche d'une vraie tier list imprimée), largeur
-       ajustée au nombre max de clubs par ligne pour éviter le vide. */
-    const LABELW = 210, TILE = 86, CELL = 100, PADR = 34, ROWH = 132, HEADH = 156, FOOTH = 56;
-    const maxPerRow = Math.max(1, ...rows.map(r => r.clubs.length));
-    const W = Math.max(620, LABELW + maxPerRow*CELL + PADR);
-    const H = HEADH + rows.length*ROWH + FOOTH;
-    /* rendu à 2.5x pour rester net une fois partagé/affiché en grand sur un tél */
-    const DPR = 2.5;
-    const canvas = document.createElement('canvas');
-    canvas.width = Math.round(W*DPR); canvas.height = Math.round(H*DPR);
-    const ctx = canvas.getContext('2d');
-    ctx.scale(DPR, DPR);
-    ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
+    /* Format plus carré (proche 4:5) qu'un visuel 9:16, bandeau à rayures
+       diagonales, tuiles carrées arrondies. Le couloir des écussons a une
+       largeur fixe : si une case a plus de clubs qu'il n'y tient sur une
+       ligne, ça revient à la ligne dans la même case (la hauteur de la
+       case s'ajuste) plutôt que d'agrandir le visuel à l'infini. */
+    const LABELW = 190, TILE = 64, CELL = 80, SEP = 28, LANE = 620, PADR = 20;
+    const HEADH = 112, FOOTH = 44, ROWPAD = 16, LINEH = 100;
+    const W = LABELW + LANE + PADR;
 
     function roundRect(x,y,w,h,r){
       ctx.beginPath();
@@ -489,6 +501,45 @@ async function shareImage(){
       ctx.closePath();
     }
 
+    /* précalcule le nombre de lignes d'écussons nécessaires par case
+       (fusionne les parts en items: crest ou séparateur pointillé) */
+    function buildItems(parts){
+      const items = [];
+      parts.forEach((p, i) => {
+        if (i > 0) items.push({type:'sep', tag:p.tag});
+        p.clubs.forEach(id => items.push({type:'crest', id}));
+      });
+      return items;
+    }
+    function wrapItems(items, laneWidth){
+      const lines = [[]];
+      let curW = 0;
+      items.forEach(it => {
+        const w = it.type === 'sep' ? SEP : CELL;
+        if (curW + w > laneWidth && curW > 0){ lines.push([]); curW = 0; }
+        lines[lines.length-1].push(it);
+        curW += w;
+      });
+      return lines;
+    }
+
+    const laid = rows.map(row => {
+      const items = buildItems(row.parts);
+      const lines = wrapItems(items, LANE - 20);
+      const rowH = ROWPAD*2 + lines.length*LINEH;
+      return {...row, lines, rowH};
+    });
+    const H = HEADH + laid.reduce((s,r) => s+r.rowH, 0) + FOOTH;
+
+    /* rendu à 2.5x pour rester net une fois partagé/affiché en grand sur un tél */
+    const DPR = 2.5;
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(W*DPR); canvas.height = Math.round(H*DPR);
+    const ctx = canvas.getContext('2d');
+    ctx.scale(DPR, DPR);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+
     ctx.fillStyle = '#0a0b0d'; ctx.fillRect(0,0,W,H);
 
     /* bandeau : dégradé de marque + hachures diagonales */
@@ -497,19 +548,19 @@ async function shareImage(){
     ctx.fillStyle = grad; ctx.fillRect(0,0,W,HEADH);
     ctx.save();
     ctx.beginPath(); ctx.rect(0,0,W,HEADH); ctx.clip();
-    ctx.strokeStyle = 'rgba(255,255,255,.09)'; ctx.lineWidth = 26;
-    for (let x = -HEADH; x < W+HEADH; x += 46){
+    ctx.strokeStyle = 'rgba(255,255,255,.09)'; ctx.lineWidth = 24;
+    for (let x = -HEADH; x < W+HEADH; x += 42){
       ctx.beginPath(); ctx.moveTo(x,HEADH); ctx.lineTo(x+HEADH,0); ctx.stroke();
     }
     ctx.restore();
 
     ctx.fillStyle = '#fff';
-    ctx.font = '400 44px Tanker, sans-serif';
+    ctx.font = '400 38px Tanker, sans-serif';
     ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-    ctx.fillText('PREDIS', 26, 92);
+    ctx.fillText('PREDIS', 24, 78);
     ctx.fillStyle = 'rgba(255,255,255,.85)';
-    ctx.font = '600 14px "Space Grotesk", sans-serif';
-    ctx.fillText('LIGUE 1 · SAISON 2026/27', 26, 122);
+    ctx.font = '600 13px "Space Grotesk", sans-serif';
+    ctx.fillText('LIGUE 1 · SAISON 2026/27', 24, 104);
 
     const colorFor = id => {
       if (id==='t1') return '#e2a53f';
@@ -525,7 +576,7 @@ async function shareImage(){
     const textOnFor = id => (id==='t1'||id==='t4'||id==='t5') ? '#181205' : '#fff';
 
     /* on précharge tous les écussons AVANT de dessiner (fiabilité) */
-    const neededIds = [...new Set(rows.flatMap(r => r.clubs))];
+    const neededIds = [...new Set(rows.flatMap(r => r.parts.flatMap(p => p.clubs)))];
     const crestMap = {};
     await Promise.all(neededIds.map(async id => {
       const club = CLUBS.find(c => c.id === id);
@@ -548,43 +599,66 @@ async function shareImage(){
     }
 
     let y = HEADH;
-    for (const row of rows){
-      const c = colorFor(row.tier.id), tOn = textOnFor(row.tier.id);
+    for (const row of laid){
+      const firstTier = row.parts[0].tiers[0];
+      const c = colorFor(firstTier), tOn = textOnFor(firstTier);
 
-      ctx.fillStyle = '#131417'; ctx.fillRect(0, y, W, ROWH);
-      ctx.fillStyle = c; ctx.fillRect(0, y, LABELW, ROWH);
+      ctx.fillStyle = '#131417'; ctx.fillRect(0, y, W, row.rowH);
+      ctx.fillStyle = c; ctx.fillRect(0, y, LABELW, row.rowH);
       ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(0, y+ROWH); ctx.lineTo(W, y+ROWH); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, y+row.rowH); ctx.lineTo(W, y+row.rowH); ctx.stroke();
 
       ctx.fillStyle = tOn;
-      ctx.font = '400 26px Tanker, sans-serif';
+      ctx.font = '400 23px Tanker, sans-serif';
       ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-      ctx.fillText(row.tier.rl, 22, y+54);
+      ctx.fillText(row.group.rank, 20, y+40);
 
-      const lines = wrapLabel(row.tier.label, LABELW-44, '600 14px "Space Grotesk", sans-serif');
-      ctx.font = '600 14px "Space Grotesk", sans-serif';
-      lines.forEach((line, i) => ctx.fillText(line, 22, y+76+i*18));
+      const lblLines = wrapLabel(row.group.label, LABELW-40, '600 13px "Space Grotesk", sans-serif');
+      ctx.font = '600 13px "Space Grotesk", sans-serif';
+      lblLines.forEach((line, i) => ctx.fillText(line, 20, y+60+i*17));
 
-      let cx = LABELW+22, cy = y+ROWH/2;
-      for (const id of row.clubs){
-        const img = crestMap[id];
-        roundRect(cx, cy-TILE/2, TILE, TILE, 12);
-        ctx.fillStyle = '#1c1e23'; ctx.fill();
-        ctx.strokeStyle = 'rgba(255,255,255,.1)'; ctx.lineWidth = 1; ctx.stroke();
-        if (img){
-          const pad = 8, s = TILE-pad*2, ar = img.width/img.height;
-          let dw = s, dh = s;
-          if (ar > 1) dh = s/ar; else dw = s*ar;
-          ctx.drawImage(img, cx+(TILE-dw)/2, cy-dh/2, dw, dh);
-        }
-        cx += CELL;
-      }
-      y += ROWH;
+      row.lines.forEach((lineItems, li) => {
+        /* centre le contenu de la ligne dans le couloir : évite un grand
+           vide à droite quand une case n'a qu'un ou deux clubs */
+        const contentW = lineItems.reduce((s,it) => s+(it.type==='sep'?SEP:CELL), 0) - (CELL-TILE);
+        let cx = LABELW + Math.max(20, (LANE-contentW)/2), cy = y+ROWPAD+LINEH*li+LINEH/2;
+        lineItems.forEach(it => {
+          if (it.type === 'sep'){
+            ctx.save();
+            ctx.strokeStyle = 'rgba(255,255,255,.28)';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5,5]);
+            ctx.beginPath(); ctx.moveTo(cx+SEP/2, cy-TILE/2-6); ctx.lineTo(cx+SEP/2, cy+TILE/2+6); ctx.stroke();
+            ctx.restore();
+            if (it.tag){
+              ctx.fillStyle = 'rgba(255,255,255,.55)';
+              ctx.font = '600 9.5px "Space Grotesk", sans-serif';
+              ctx.textAlign = 'center';
+              ctx.fillText(it.tag.toUpperCase(), cx+SEP/2, cy+TILE/2+20);
+              ctx.textAlign = 'left';
+            }
+            cx += SEP;
+            return;
+          }
+          const img = crestMap[it.id];
+          roundRect(cx, cy-TILE/2, TILE, TILE, 11);
+          ctx.fillStyle = '#1c1e23'; ctx.fill();
+          ctx.strokeStyle = 'rgba(255,255,255,.1)'; ctx.lineWidth = 1; ctx.stroke();
+          if (img){
+            const pad = 7, s = TILE-pad*2, ar = img.width/img.height;
+            let dw = s, dh = s;
+            if (ar > 1) dh = s/ar; else dw = s*ar;
+            ctx.drawImage(img, cx+(TILE-dw)/2, cy-dh/2, dw, dh);
+          }
+          cx += CELL;
+        });
+      });
+      y += row.rowH;
     }
 
     ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
-    ctx.fillStyle = '#5c5d63'; ctx.font = '600 13px "Space Grotesk", sans-serif';
-    ctx.fillText('350 · PREDIS LIGUE 1', W/2, H-24);
+    ctx.fillStyle = '#5c5d63'; ctx.font = '600 12px "Space Grotesk", sans-serif';
+    ctx.fillText('350 · PREDIS LIGUE 1', W/2, H-20);
 
     const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
     await shareOrDownload(blob, 'predis-ligue1-2026-27.png', 'Mon pronostic Ligue 1 2026/27');
