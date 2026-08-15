@@ -72,6 +72,8 @@ body::before{
 .bench-slots{min-height:78px;display:flex;flex-wrap:wrap;gap:12px;padding:18px;background:var(--panel);
   border:1px solid var(--line);}
 .bench-empty{font-family:var(--body);font-size:12.5px;color:var(--muted);font-style:italic;padding:6px 2px;}
+/* sur mobile, la grille du banc encombre pour rien : on place uniquement via le + des cases */
+@media (max-width:640px){ .bench-slots{display:none;} .bench-top{margin-bottom:0;} }
 
 .crest{width:62px;height:62px;background:var(--panel2);border:1px solid var(--line);
   display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;flex-shrink:0;
@@ -173,7 +175,7 @@ body::before{
 
   <div class="bench">
     <div class="bench-top">
-      <div class="bench-hint">Touche un club pour choisir sa ligne, ou le + d'une case.</div>
+      <div class="bench-hint">Touche le + d'une case pour choisir un club.</div>
       <div class="bench-count" id="pool-count">0 / 18 placés</div>
     </div>
     <div class="bench-slots" id="pool"></div>
@@ -461,13 +463,12 @@ async function shareImage(){
     if (document.fonts.status !== 'loaded'){
       await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r,150))]);
     }
-    /* Format dense et compact, inspiré d'une vraie tier list : bloc de
-       couleur PLEIN (pas de teinte), écussons serrés juste après, largeur
-       du visuel ajustée au nombre max de clubs par ligne pour ne pas
-       laisser un grand vide à droite des lignes peu remplies. */
-    const LABELW = 196, CELL = 60, PADR = 30, ROWH = 92, HEADH = 118, FOOTH = 52;
+    /* Bandeau à rayures diagonales + tuiles carrées arrondies pour les
+       écussons (plus proche d'une vraie tier list imprimée), largeur
+       ajustée au nombre max de clubs par ligne pour éviter le vide. */
+    const LABELW = 210, TILE = 52, CELL = 70, PADR = 34, ROWH = 108, HEADH = 156, FOOTH = 56;
     const maxPerRow = Math.max(1, ...rows.map(r => r.clubs.length));
-    const W = Math.max(560, LABELW + maxPerRow*CELL + PADR);
+    const W = Math.max(620, LABELW + maxPerRow*CELL + PADR);
     const H = HEADH + rows.length*ROWH + FOOTH;
     /* rendu à 2.5x pour rester net une fois partagé/affiché en grand sur un tél */
     const DPR = 2.5;
@@ -478,14 +479,37 @@ async function shareImage(){
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
 
+    function roundRect(x,y,w,h,r){
+      ctx.beginPath();
+      ctx.moveTo(x+r,y);
+      ctx.arcTo(x+w,y,x+w,y+h,r);
+      ctx.arcTo(x+w,y+h,x,y+h,r);
+      ctx.arcTo(x,y+h,x,y,r);
+      ctx.arcTo(x,y,x+w,y,r);
+      ctx.closePath();
+    }
+
     ctx.fillStyle = '#0a0b0d'; ctx.fillRect(0,0,W,H);
+
+    /* bandeau : dégradé de marque + hachures diagonales */
+    const grad = ctx.createLinearGradient(0,0,W,HEADH);
+    grad.addColorStop(0,'#c9852f'); grad.addColorStop(.55,'#a5462f'); grad.addColorStop(1,'#7a2a3d');
+    ctx.fillStyle = grad; ctx.fillRect(0,0,W,HEADH);
+    ctx.save();
+    ctx.beginPath(); ctx.rect(0,0,W,HEADH); ctx.clip();
+    ctx.strokeStyle = 'rgba(255,255,255,.09)'; ctx.lineWidth = 26;
+    for (let x = -HEADH; x < W+HEADH; x += 46){
+      ctx.beginPath(); ctx.moveTo(x,HEADH); ctx.lineTo(x+HEADH,0); ctx.stroke();
+    }
+    ctx.restore();
+
     ctx.fillStyle = '#fff';
-    ctx.font = '400 38px Tanker, sans-serif';
+    ctx.font = '400 44px Tanker, sans-serif';
     ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-    ctx.fillText('PREDIS', 26, 62);
-    ctx.fillStyle = '#98999e';
-    ctx.font = '500 12.5px "Space Grotesk", sans-serif';
-    ctx.fillText('LIGUE 1 · SAISON 2026/27', 26, 84);
+    ctx.fillText('PREDIS', 26, 92);
+    ctx.fillStyle = 'rgba(255,255,255,.85)';
+    ctx.font = '600 14px "Space Grotesk", sans-serif';
+    ctx.fillText('LIGUE 1 · SAISON 2026/27', 26, 122);
 
     const colorFor = id => {
       if (id==='t1') return '#e2a53f';
@@ -533,22 +557,25 @@ async function shareImage(){
       ctx.beginPath(); ctx.moveTo(0, y+ROWH); ctx.lineTo(W, y+ROWH); ctx.stroke();
 
       ctx.fillStyle = tOn;
-      ctx.font = '400 24px Tanker, sans-serif';
+      ctx.font = '400 26px Tanker, sans-serif';
       ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-      ctx.fillText(row.tier.rl, 18, y+34);
+      ctx.fillText(row.tier.rl, 22, y+42);
 
-      const lines = wrapLabel(row.tier.label, LABELW-36, '600 13.5px "Space Grotesk", sans-serif');
-      ctx.font = '600 13.5px "Space Grotesk", sans-serif';
-      lines.forEach((line, i) => ctx.fillText(line, 18, y+54+i*17));
+      const lines = wrapLabel(row.tier.label, LABELW-44, '600 14px "Space Grotesk", sans-serif');
+      ctx.font = '600 14px "Space Grotesk", sans-serif';
+      lines.forEach((line, i) => ctx.fillText(line, 22, y+64+i*18));
 
-      let cx = LABELW+20, cy = y+ROWH/2;
+      let cx = LABELW+22, cy = y+ROWH/2;
       for (const id of row.clubs){
         const img = crestMap[id];
+        roundRect(cx, cy-TILE/2, TILE, TILE, 12);
+        ctx.fillStyle = '#1c1e23'; ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,.1)'; ctx.lineWidth = 1; ctx.stroke();
         if (img){
-          const s = 46, ar = img.width/img.height;
+          const pad = 8, s = TILE-pad*2, ar = img.width/img.height;
           let dw = s, dh = s;
           if (ar > 1) dh = s/ar; else dw = s*ar;
-          ctx.drawImage(img, cx, cy-dh/2, dw, dh);
+          ctx.drawImage(img, cx+(TILE-dw)/2, cy-dh/2, dw, dh);
         }
         cx += CELL;
       }
