@@ -4,177 +4,213 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predi Ligue 1 2026/27 · 350</title>
-<meta name="description" content="Le tableau d'affichage pour prédire la Ligue 1 2026/27 : place les 18 clubs sur les 18 lignes du classement final.">
+<meta name="description" content="Le programme de match pour prédire la Ligue 1 2026/27 : place les 18 clubs sur leur ligne, du sacre à la descente.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Anton&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=tanker@400&display=swap" rel="stylesheet">
 <style>
+/*
+  Direction : "programme de match" — feuille de match / fanzine papier, pas un dashboard.
+  Fond papier unique, encre quasi-noire, un seul accent (rouge tampon). Différenciation
+  des lignes du classement par du texte tamponné (comme un contrôle de billet), pas par
+  un arc-en-ciel de couleurs. Thème unique et assumé (émule un objet imprimé), pas de
+  variante sombre : voir section 8.A / 4.11 de la charte, exception "print-emulating editorial".
+*/
 :root{
-  --void:#07080a; --panel:#101214; --panel-alt:#15181b; --panel-hi:#1b1e22;
-  --turf:#0f2c1c;
-  --flap:#f1efe6; --ink:#f1f1ee; --sub:#9a9da3; --muted:#5c6066; --faint:#34373c;
-  --line:rgba(255,255,255,.08); --line-hi:rgba(255,255,255,.16);
-  --amber:#e2a53f; --amber-dim:rgba(226,165,63,.16);
-  --ucl:#3d72d6; --ucl-dim:rgba(61,114,214,.16);
-  --uel:#dd7f3c; --uel-dim:rgba(221,127,60,.16);
-  --uecl:#3fae7c; --uecl-dim:rgba(63,174,124,.16);
-  --wild:#b083d6; --wild-dim:rgba(176,131,214,.16);
-  --steel1:#4a4e55; --steel2:#383b41;
-  --warn:#c98a2e; --warn-dim:rgba(201,138,46,.16);
-  --danger:#d8425a; --danger-dim:rgba(216,66,90,.18);
-  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --paper:#eeeadf; --paper2:#e4ddc9; --paper3:#dcd4bd;
+  --ink:#18140f; --ink-soft:#4a4335; --muted:#8d8570; --faint:#b7ae97;
+  --rule:rgba(24,20,15,.16); --rule-strong:rgba(24,20,15,.4);
+  --red:#b91c2e; --red-ink:#8f1522; --red-dim:rgba(185,28,46,.1);
+  --serif:'Spectral',Georgia,serif;
   --disp:'Tanker',sans-serif;
-  --num:'Anton',sans-serif;
-  --ease:cubic-bezier(.16,1,.3,1);
-  --shadow:0 24px 60px -24px rgba(0,0,0,.65);
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.19,1,.22,1);
+  --shadow:0 18px 40px -22px rgba(24,20,15,.35);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--panel-alt) var(--void);}
-body{background:var(--void);color:var(--ink);font-family:'Inter',sans-serif;overflow-x:hidden;
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);overflow-x:hidden;
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
-::-webkit-scrollbar{width:10px;height:10px;}
-::-webkit-scrollbar-track{background:var(--void);}
-::-webkit-scrollbar-thumb{background:var(--panel-alt);border-radius:6px;border:2px solid var(--void);}
 body::before{
-  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.045;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-::selection{background:var(--amber-dim);color:#fff;}
+::selection{background:var(--red);color:var(--paper);}
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-track{background:var(--paper);}
+::-webkit-scrollbar-thumb{background:var(--faint);border-radius:6px;}
 
-/* ---- floodlight glow ---- */
-.floodlights{position:fixed;top:-260px;left:0;right:0;height:640px;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(480px 380px at 14% 0%, rgba(226,165,63,.10), transparent 68%),
-    radial-gradient(560px 420px at 82% 0%, rgba(61,114,214,.10), transparent 68%);}
+.wrap{position:relative;max-width:1180px;margin:0 auto;padding:0 32px 120px;}
+@media (max-width:640px){.wrap{padding:0 18px 90px;}}
 
-.wrap{position:relative;z-index:10;max-width:1180px;margin:0 auto;padding:0 32px 110px;}
-@media (max-width:600px){.wrap{padding:0 14px 90px;}}
+/* ---------------- masthead ---------------- */
+.masthead{border-bottom:3px solid var(--ink);padding:20px 0 12px;display:flex;align-items:baseline;
+  justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.masthead .brand{font-family:var(--disp);font-size:15px;letter-spacing:.04em;text-transform:uppercase;}
+.masthead .brand em{font-style:normal;color:var(--red);}
+.masthead .date{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;}
 
-/* ---- hero ---- */
-.hero{position:relative;padding:58px 0 6px;}
-.hero .eyebrow{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:.14em;text-transform:uppercase;
-  display:flex;align-items:center;gap:9px;margin-bottom:16px;}
-.hero .eyebrow::before{content:'';width:6px;height:6px;background:var(--amber);box-shadow:0 0 0 4px var(--amber-dim);}
-.hero h1{font-family:var(--disp);font-weight:400;font-size:clamp(36px,6.4vw,72px);line-height:.9;
-  letter-spacing:-.01em;color:#fff;text-transform:uppercase;text-wrap:balance;max-width:900px;}
-.hero h1 em{font-style:normal;color:var(--amber);}
-.hero .sub{margin-top:18px;color:var(--sub);font-size:15px;max-width:600px;line-height:1.65;}
+/* ---------------- hero ---------------- */
+.hero{position:relative;padding:54px 0 40px;display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:start;
+  border-bottom:1px solid var(--rule);}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding:36px 0 30px;}}
+
+.hero-ghost{position:absolute;top:-30px;right:8%;font-family:var(--disp);font-size:min(46vw,420px);
+  line-height:.75;color:transparent;-webkit-text-stroke:1.5px var(--rule-strong);
+  pointer-events:none;user-select:none;z-index:0;}
+@media (max-width:860px){.hero-ghost{right:-6%;top:-10px;font-size:58vw;}}
+
+.hero h1{position:relative;z-index:1;font-family:var(--disp);font-weight:400;font-size:clamp(38px,6.6vw,78px);
+  line-height:.92;letter-spacing:-.005em;color:var(--ink);text-transform:uppercase;text-wrap:balance;max-width:15ch;}
+.hero h1 .cut{color:var(--red);}
+.hero .sub{position:relative;z-index:1;margin-top:20px;font-family:var(--serif);font-size:17px;color:var(--ink-soft);
+  max-width:46ch;line-height:1.55;}
 .hero .sub b{color:var(--ink);font-weight:600;}
 
-.toolbar{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1;}
-.btn{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;
-  background:var(--panel);border:1px solid var(--line);color:var(--ink);padding:12px 20px;
-  cursor:pointer;transition:border-color .25s var(--ease),transform .25s var(--ease),background .25s var(--ease);
-  display:inline-flex;align-items:center;gap:9px;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 100%,10px 100%);}
-.btn:hover{border-color:var(--line-hi);transform:translateY(-1px);background:var(--panel-hi);}
-.btn.primary{background:var(--amber);border-color:var(--amber);color:#241605;font-weight:700;}
-.btn.primary:hover{background:#eeb457;}
-.btn:active{transform:translateY(0);}
-.btn:disabled{opacity:.55;cursor:default;transform:none;}
+.stub{position:relative;z-index:1;justify-self:end;background:var(--paper2);border:1px solid var(--rule-strong);
+  padding:18px 20px;transform:rotate(2.5deg);box-shadow:var(--shadow);width:min(240px,100%);}
+.stub::after{content:'';position:absolute;left:-8px;top:50%;width:16px;height:16px;border-radius:50%;
+  background:var(--paper);border:1px solid var(--rule-strong);transform:translateY(-50%);}
+.stub::before{content:'';position:absolute;right:-8px;top:50%;width:16px;height:16px;border-radius:50%;
+  background:var(--paper);border:1px solid var(--rule-strong);transform:translateY(-50%);}
+.stub .st1{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;}
+.stub .st2{font-family:var(--disp);font-size:26px;margin-top:6px;text-transform:uppercase;line-height:1;}
+.stub .st3{margin-top:10px;padding-top:10px;border-top:1px dashed var(--rule-strong);
+  font-family:var(--mono);font-size:9.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;}
+@media (max-width:860px){.stub{justify-self:start;transform:rotate(-1.5deg);margin-top:24px;}}
 
-/* ---- bench (pool des clubs) ---- */
-.bench{margin-top:38px;position:relative;z-index:1;}
-.bench-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:14px;
-  font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--sub);}
-.bench-head .n{color:var(--muted);}
-.bench-rail{background:var(--panel);border:1px solid var(--line);padding:20px 20px 26px;position:relative;}
-.bench-rail::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:repeating-linear-gradient(90deg,var(--amber) 0 14px,transparent 14px 26px);opacity:.6;}
-.bench-slots{min-height:70px;display:flex;flex-wrap:wrap;gap:14px;}
-.bench-slots.dragover{outline:2px dashed var(--line-hi);outline-offset:8px;}
+/* ---------------- control strip ---------------- */
+.controls{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px;position:relative;z-index:1;}
+.stampbtn{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;
+  background:transparent;border:1.5px solid var(--ink);color:var(--ink);padding:12px 20px;
+  cursor:pointer;transition:transform .18s var(--ease),background .18s var(--ease),color .18s var(--ease);
+  position:relative;}
+.stampbtn:hover{background:var(--ink);color:var(--paper);}
+.stampbtn:active{transform:rotate(-1.5deg) scale(.97);}
+.stampbtn.primary{border-color:var(--red);color:var(--red);}
+.stampbtn.primary:hover{background:var(--red);color:var(--paper);}
+.stampbtn:disabled{opacity:.4;cursor:default;}
 
-/* ---- club crest chip ---- */
-.club{width:58px;height:58px;border-radius:50%;background:var(--flap);border:1px solid var(--line);
+/* ---------------- bench (ticket stubs) ---------------- */
+.bench{margin-top:52px;position:relative;z-index:1;}
+.bench-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:16px;}
+.bench-head h2{font-family:var(--disp);font-size:20px;text-transform:uppercase;letter-spacing:.01em;}
+.bench-head .n{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
+.bench-slots{min-height:76px;display:flex;flex-wrap:wrap;gap:12px;padding:18px;background:var(--paper2);
+  border:1px solid var(--rule);}
+.bench-slots.dragover{outline:2px dashed var(--rule-strong);outline-offset:6px;}
+
+.club{width:66px;height:66px;background:var(--paper);border:1px solid var(--rule-strong);
   display:flex;align-items:center;justify-content:center;cursor:grab;position:relative;flex-shrink:0;
-  box-shadow:0 8px 20px -10px rgba(0,0,0,.6);
-  transition:transform .28s var(--ease),box-shadow .28s var(--ease),filter .28s var(--ease),opacity .28s var(--ease);}
-.club img{width:38px;height:38px;object-fit:contain;pointer-events:none;}
+  clip-path:polygon(0 6px,6px 0,calc(100% - 6px) 0,100% 6px,100% calc(100% - 6px),calc(100% - 6px) 100%,6px 100%,0 calc(100% - 6px));
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),filter .25s var(--ease),opacity .25s var(--ease);}
+.club img{width:44px;height:44px;object-fit:contain;pointer-events:none;}
 .club.dragging{opacity:.3;}
-.club.armed{box-shadow:0 0 0 3px var(--amber),0 10px 24px -10px rgba(0,0,0,.7);}
+.club.armed{box-shadow:0 0 0 2px var(--red);}
 
-body.spotlight .club{filter:blur(2.5px);opacity:.32;}
-body.spotlight .club.hovered{filter:none;opacity:1;transform:scale(1.16);z-index:6;box-shadow:0 14px 30px -10px rgba(0,0,0,.8),0 0 0 3px rgba(255,255,255,.5);}
+body.spotlight .club{filter:blur(2px) grayscale(.4);opacity:.4;}
+body.spotlight .club.hovered{filter:none;opacity:1;transform:scale(1.14) rotate(-2deg);z-index:6;box-shadow:var(--shadow);}
 
-#tooltip{position:fixed;pointer-events:none;z-index:80;background:var(--panel-hi);border:1px solid var(--line-hi);
-  color:var(--ink);font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;padding:7px 11px;
-  white-space:nowrap;opacity:0;transform:translate(-50%,-8px);transition:opacity .16s var(--ease);
-  box-shadow:var(--shadow);}
+#tooltip{position:fixed;pointer-events:none;z-index:80;background:var(--ink);border:1px solid var(--ink);
+  color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.03em;padding:6px 11px;
+  white-space:nowrap;opacity:0;transform:translate(-50%,-8px);transition:opacity .16s var(--ease);text-transform:uppercase;}
 #tooltip.show{opacity:1;}
 #tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
-  border:6px solid transparent;border-top-color:var(--panel-hi);}
+  border:5px solid transparent;border-top-color:var(--ink);}
 
-/* ---- board ---- */
-.board{margin-top:46px;position:relative;z-index:1;border:1px solid var(--line);}
-.row{position:relative;display:flex;background:var(--panel);border-bottom:1px solid var(--line);min-height:96px;}
-.row:last-child{border-bottom:none;}
-.row:nth-child(even){background:var(--panel-alt);}
-.row.hazard{background-image:repeating-linear-gradient(135deg,var(--danger-dim) 0 18px,transparent 18px 36px);}
-.row.hazard-warn{background-image:repeating-linear-gradient(135deg,var(--warn-dim) 0 18px,transparent 18px 36px);}
-.row.barrage-blue .rank{background-image:repeating-linear-gradient(135deg,rgba(61,114,214,.28) 0 10px,rgba(61,114,214,.14) 10px 20px);}
+/* ---------------- board (programme de match) ---------------- */
+.board{margin-top:52px;position:relative;z-index:1;}
+.board-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px;}
+.board-head h2{font-family:var(--disp);font-size:20px;text-transform:uppercase;}
+.board-head .n{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
 
-.rank{width:118px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  border-right:1px solid var(--line);background:var(--row-color,var(--steel1));position:relative;text-align:center;padding:8px 4px;}
-.rank .rn{font-family:var(--num);font-size:clamp(26px,3vw,34px);color:#fff;line-height:.85;letter-spacing:.01em;}
-.rank .rn small{font-size:14px;vertical-align:top;opacity:.75;}
-.rank .rl{margin-top:4px;font-family:var(--mono);font-size:8.5px;color:rgba(255,255,255,.85);text-transform:uppercase;
-  letter-spacing:.05em;line-height:1.3;max-width:104px;}
+.row{position:relative;border-top:1px solid var(--rule);padding:20px 0;display:flex;gap:22px;
+  opacity:0;transform:translateY(14px);transition:opacity .55s var(--ease),transform .55s var(--ease);}
+.row.in{opacity:1;transform:none;}
+.row:last-child{border-bottom:1px solid var(--rule);}
 
-.row-body{flex:1;padding:14px 18px;display:flex;flex-direction:column;justify-content:center;gap:8px;min-width:0;}
-.row-tag{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
-.row-tag .tname{font-family:var(--disp);font-size:15px;color:#fff;text-transform:uppercase;letter-spacing:.01em;}
-.row-tag .thint{font-family:var(--mono);font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
-.row-drop{min-height:58px;display:flex;flex-wrap:wrap;align-content:flex-start;gap:10px;}
-.row-drop.dragover{background:rgba(255,255,255,.04);}
+.rn{font-family:var(--disp);font-size:clamp(30px,3.6vw,44px);line-height:.85;color:var(--ink);
+  width:118px;flex-shrink:0;text-transform:uppercase;}
+.rn.champ{color:var(--red);}
+.rn small{display:block;font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.05em;
+  text-transform:uppercase;margin-top:6px;font-weight:700;}
+
+.row-mid{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px;}
+.row-label{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.row-label .rl{font-family:var(--serif);font-weight:600;font-size:16px;color:var(--ink);}
+.row-label .rh{font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--muted);}
+.row-drop{min-height:60px;display:flex;flex-wrap:wrap;align-content:flex-start;gap:10px;}
+.row-drop.dragover{background:var(--red-dim);}
+
+.stamp{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);
+  font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--red);border:1.5px solid var(--red);
+  padding:5px 11px;transform:rotate(-3deg);white-space:nowrap;}
+.stamp.strong{font-size:11px;border-width:2px;padding:6px 13px;background:var(--red-dim);}
+.stamp.star svg{width:11px;height:11px;fill:var(--red);}
 @media (max-width:640px){
-  .row{flex-direction:column;min-height:0;}
-  .rank{width:100%;flex-direction:row;justify-content:flex-start;gap:10px;padding:9px 14px;border-right:none;border-bottom:1px solid rgba(0,0,0,.25);}
-  .rank .rl{max-width:none;margin-top:0;text-align:left;}
-  .row-body{padding:12px 14px 16px;}
+  .row{gap:14px;padding:16px 0;}
+  .rn{width:64px;font-size:26px;}
+  .row-label{flex-direction:column;align-items:flex-start;gap:4px;}
 }
 
-/* ---- legend ---- */
-.legend{margin-top:26px;display:flex;flex-wrap:wrap;gap:14px 20px;position:relative;z-index:1;}
-.legend .li{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;color:var(--sub);
-  text-transform:uppercase;letter-spacing:.04em;}
-.legend .sw{width:10px;height:10px;flex-shrink:0;background:var(--c,var(--steel1));}
+/* ---------------- legend ---------------- */
+.legend{margin-top:30px;padding-top:20px;border-top:1px solid var(--rule);font-family:var(--serif);
+  font-size:13px;color:var(--ink-soft);line-height:1.7;max-width:66ch;position:relative;z-index:1;}
+.legend b{color:var(--ink);font-weight:600;}
 
-.footer-note{margin-top:36px;font-size:11.5px;color:var(--muted);line-height:1.65;max-width:64ch;position:relative;z-index:1;}
-.credit{margin-top:60px;font-family:var(--mono);font-size:10.5px;color:var(--faint);text-align:center;position:relative;z-index:1;
-  letter-spacing:.06em;text-transform:uppercase;}
+.credit{margin-top:60px;font-family:var(--mono);font-size:10px;color:var(--faint);text-align:center;
+  letter-spacing:.08em;text-transform:uppercase;position:relative;z-index:1;}
 
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--panel-hi);
-  border:1px solid var(--line-hi);padding:13px 22px;font-family:var(--mono);font-size:11.5px;
-  color:var(--ink);opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);z-index:90;}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--ink);
+  color:var(--paper);padding:13px 22px;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;
+  letter-spacing:.03em;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);z-index:90;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+@media (prefers-reduced-motion:reduce){
+  .row{opacity:1;transform:none;transition:none;}
+  .club{transition:none;}
+}
 </style>
 </head>
 <body>
-<div class="floodlights"></div>
 <div class="wrap">
 
-  <div class="hero">
-    <div class="eyebrow">Predi · Ligue 1 2026/27</div>
-    <h1>Le tableau<br>d'<em>affichage</em></h1>
-    <p class="sub">18 clubs, 18 lignes. Place chaque écusson sur sa position finale — de la <b>1ère place</b> à la <b>relégation</b>. Sur mobile : touche un club puis touche la ligne.</p>
+  <div class="masthead">
+    <div class="brand">350 · <em>Predi</em></div>
+    <div class="date">Ligue 1 · Saison 2026/27</div>
   </div>
 
-  <div class="toolbar">
-    <button class="btn primary" id="btn-share">Partager mon tableau</button>
-    <button class="btn" id="btn-random">Tirage aléatoire</button>
-    <button class="btn" id="btn-reset">Réinitialiser</button>
+  <div class="hero">
+    <div class="hero-ghost">1</div>
+    <div>
+      <h1>Dix-huit clubs.<br>Un seul <span class="cut">classement</span>.</h1>
+      <p class="sub">Place chaque écusson sur sa ligne, du sacre à la descente. <b>Glisse un club</b>, ou touche-le puis touche sa ligne.</p>
+    </div>
+    <div class="stub">
+      <div class="st1">Feuille de match</div>
+      <div class="st2">Predi L1</div>
+      <div class="st3">18 lignes · 18 clubs</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="stampbtn primary" id="btn-share">Partager mon classement</button>
+    <button class="stampbtn" id="btn-random">Tirage au sort</button>
+    <button class="stampbtn" id="btn-reset">Réinitialiser</button>
   </div>
 
   <div class="bench">
-    <div class="bench-head"><span>Le banc — clubs à placer</span><span class="n" id="pool-count">18 restants</span></div>
-    <div class="bench-rail"><div class="bench-slots" id="pool"></div></div>
+    <div class="bench-head"><h2>Le banc</h2><span class="n" id="pool-count">18 restants</span></div>
+    <div class="bench-slots" id="pool"></div>
   </div>
 
-  <div class="board" id="board"></div>
+  <div class="board">
+    <div class="board-head"><h2>Le programme</h2><span class="n">1re à 18e</span></div>
+    <div id="rows"></div>
+  </div>
 
-  <div class="legend" id="legend"></div>
-
-  <p class="footer-note">Barrages LDC (4e) et maintien (16e) : ticket conditionné au résultat des matchs de barrage. « Le con ou pas » (7e) : cette place ne part en Coupe d'Europe que si le vainqueur de la Coupe de France est déjà qualifié par le championnat — sinon elle reste en Ligue 1 normale.</p>
+  <p class="legend"><b>Barrages</b> (4e et 16e place) : ticket conditionné au résultat du barrage. <b>« Le con ou pas »</b> (7e) : cette place ne part en Coupe d'Europe que si le vainqueur de la Coupe de France est déjà qualifié par le championnat, sinon elle reste en Ligue 1 normale.</p>
 
   <div class="credit">Fait avec 350 · Predi</div>
 </div>
@@ -183,6 +219,8 @@ body.spotlight .club.hovered{filter:none;opacity:1;transform:scale(1.16);z-index
 <div class="toast" id="toast"></div>
 
 <script>
+const STAR = '<svg viewBox="0 0 20 20"><path d="M10 0l2.5 6.9L20 8l-5.5 4.8L16 20l-6-4-6 4 1.5-7.2L0 8l7.5-1.1z"/></svg>';
+
 const CLUBS = [
   {id:'psg', name:'Paris Saint-Germain', logo:'logos/PSG.png'},
   {id:'rcl', name:'RC Lens', logo:'logos/RCL.png'},
@@ -200,26 +238,26 @@ const CLUBS = [
   {id:'hac', name:'Le Havre AC', logo:'logos/HAC.svg'},
   {id:'aja', name:'AJ Auxerre', logo:'logos/AJA.svg'},
   {id:'ogcn', name:'OGC Nice', logo:'logos/OGCN.png'},
-  {id:'estac', name:'ESTAC Troyes', logo:'logos/ESTAC.jpg'},
+  {id:'estac', name:'ESTAC Troyes', logo:'logos/ESTAC.png'},
   {id:'lm', name:'Le Mans FC', logo:'logos/LM.svg'},
 ];
 
 const TIERS = [
-  {id:'t1',  rank:'1',     label:'Champion',            hint:'Titre de champion',            max:1, color:'var(--amber)'},
-  {id:'t2',  rank:'2–3',   label:'Ligue des Champions',  hint:'Qualification directe',        max:2, color:'var(--ucl)'},
-  {id:'t3',  rank:'4',     label:'Barrages LDC',         hint:'Tour de barrage C1',           max:1, color:'var(--ucl)', barrage:true},
-  {id:'t4',  rank:'5',     label:'Europa League',        hint:'Qualification directe',        max:1, color:'var(--uel)'},
-  {id:'t5',  rank:'6',     label:'Conference League',    hint:'Qualification directe',        max:1, color:'var(--uecl)'},
-  {id:'t6',  rank:'7',     label:'Le con ou pas',        hint:'Selon vainqueur Coupe de France', max:1, color:'var(--wild)'},
-  {id:'t7',  rank:'8–11',  label:'Ventre mou haut',      hint:'Milieu de tableau',            max:4, color:'var(--steel1)'},
-  {id:'t8',  rank:'12–15', label:'Ventre mou bas',       hint:'Milieu de tableau',            max:4, color:'var(--steel2)'},
-  {id:'t9',  rank:'16',    label:'Barrages maintien',    hint:'Tour de barrage maintien',     max:1, color:'var(--warn)', hazardWarn:true},
-  {id:'t10', rank:'17–18', label:'Relégation',           hint:'Descente en Ligue 2',          max:2, color:'var(--danger)', hazard:true},
+  {id:'t1',  rank:'1',     rl:'1',    label:'Champion',            hint:'titre 2026/27',    max:1, star:true},
+  {id:'t2',  rank:'2-3',   rl:'2-3',  label:'Ligue des Champions', hint:'qualification directe', max:2},
+  {id:'t3',  rank:'4',     rl:'4',    label:'Barrages LDC',        hint:'tour de barrage', max:1, stamp:'LDC · barrage'},
+  {id:'t4',  rank:'5',     rl:'5',    label:'Europa League',       hint:'qualification directe', max:1, stamp:'Europa'},
+  {id:'t5',  rank:'6',     rl:'6',    label:'Conference League',   hint:'qualification directe', max:1, stamp:'Conference'},
+  {id:'t6',  rank:'7',     rl:'7',    label:'Le con ou pas',       hint:'vainqueur Coupe de France', max:1, stamp:'CDF ?'},
+  {id:'t7',  rank:'8-11',  rl:'8-11', label:'Ventre mou haut',     hint:'milieu de tableau', max:4},
+  {id:'t8',  rank:'12-15', rl:'12-15',label:'Ventre mou bas',      hint:'milieu de tableau', max:4},
+  {id:'t9',  rank:'16',    rl:'16',   label:'Barrages maintien',   hint:'tour de barrage', max:1, stamp:'Maintien · barrage'},
+  {id:'t10', rank:'17-18', rl:'17-18',label:'Relégation',          hint:'descente en Ligue 2', max:2, stamp:'Descente', strong:true},
 ];
 
 const pool = document.getElementById('pool');
 const poolCount = document.getElementById('pool-count');
-const board = document.getElementById('board');
+const rowsWrap = document.getElementById('rows');
 const toast = document.getElementById('toast');
 const tooltip = document.getElementById('tooltip');
 let draggedId = null;
@@ -227,32 +265,25 @@ let draggedId = null;
 /* ---- build board rows ---- */
 TIERS.forEach(t => {
   const row = document.createElement('div');
-  row.className = 'row' + (t.hazard ? ' hazard' : '') + (t.hazardWarn ? ' hazard-warn' : '') + (t.barrage ? ' barrage-blue' : '');
+  row.className = 'row';
+  let stampHtml = '';
+  if (t.star) stampHtml = `<span class="stamp star">${STAR}Champion</span>`;
+  else if (t.stamp) stampHtml = `<span class="stamp${t.strong?' strong':''}">${t.stamp}</span>`;
   row.innerHTML = `
-    <div class="rank" style="--row-color:${t.color}">
-      <div class="rn">${t.rank}</div>
-      <div class="rl">${t.max} place${t.max>1?'s':''}</div>
-    </div>
-    <div class="row-body">
-      <div class="row-tag"><span class="tname">${t.label}</span><span class="thint">${t.hint}</span></div>
+    <div class="rn${t.star?' champ':''}">${t.rl}<small>${t.max} place${t.max>1?'s':''}</small></div>
+    <div class="row-mid">
+      <div class="row-label"><span class="rl">${t.label}</span><span class="rh">${t.hint}</span></div>
+      ${stampHtml}
       <div class="row-drop" data-tier="${t.id}" data-max="${t.max}"></div>
     </div>`;
-  board.appendChild(row);
+  rowsWrap.appendChild(row);
 });
 
-/* ---- legend ---- */
-const legend = document.getElementById('legend');
-const legendItems = [
-  ['var(--amber)','Champion'],['var(--ucl)','Ligue des Champions'],['var(--uel)','Europa League'],
-  ['var(--uecl)','Conference League'],['var(--wild)','Coupe de France'],['var(--steel1)','Ventre mou'],
-  ['var(--warn)','Barrage maintien'],['var(--danger)','Relégation'],
-];
-legendItems.forEach(([c,l]) => {
-  const el = document.createElement('div');
-  el.className = 'li';
-  el.innerHTML = `<span class="sw" style="--c:${c}"></span>${l}`;
-  legend.appendChild(el);
-});
+/* ---- scroll reveal (storytelling : la feuille se remplit ligne par ligne) ---- */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, {threshold:.15});
+document.querySelectorAll('.row').forEach(r => io.observe(r));
 
 /* ---- tooltip / spotlight ---- */
 function showTooltip(el, text){
@@ -348,7 +379,7 @@ function showToast(msg){
 document.getElementById('btn-reset').addEventListener('click', () => {
   document.querySelectorAll('.club.armed').forEach(c => c.classList.remove('armed'));
   initPool();
-  showToast('Tableau réinitialisé.');
+  showToast('Feuille de match réinitialisée.');
 });
 
 document.getElementById('btn-random').addEventListener('click', () => {
@@ -362,7 +393,7 @@ document.getElementById('btn-random').addEventListener('click', () => {
     zone.appendChild(chip);
   });
   updatePoolCount();
-  showToast('Tirage aléatoire généré.');
+  showToast('Tirage au sort généré.');
 });
 
 /* ---------- partage : image canvas + Web Share API ---------- */
@@ -375,24 +406,15 @@ function loadImage(src){
     img.src = src;
   });
 }
-function roundRect(ctx,x,y,w,h,r){
-  ctx.beginPath();
-  ctx.moveTo(x+r,y);
-  ctx.arcTo(x+w,y,x+w,y+h,r);
-  ctx.arcTo(x+w,y+h,x,y+h,r);
-  ctx.arcTo(x,y+h,x,y,r);
-  ctx.arcTo(x,y,x+w,y,r);
-  ctx.closePath();
-}
 let fontsWarmed = false;
 function warmFonts(){
   if (fontsWarmed) return;
   fontsWarmed = true;
   Promise.all([
     document.fonts.load('400 46px Tanker'),
-    document.fonts.load('400 30px Anton'),
-    document.fonts.load('700 20px "JetBrains Mono"'),
-    document.fonts.load('800 22px Inter'),
+    document.fonts.load('600 22px Spectral'),
+    document.fonts.load('italic 400 16px Spectral'),
+    document.fonts.load('700 14px "JetBrains Mono"'),
   ]).catch(() => {});
 }
 warmFonts();
@@ -417,35 +439,33 @@ async function shareOrDownload(blob, filename, text){
 async function shareImage(){
   const btn = document.getElementById('btn-share');
   const original = btn.textContent;
-  const filled = TIERS.filter(t => document.querySelector(`.row-drop[data-tier="${t.id}"]`).children.length > 0);
-  if (!filled.length){ showToast('Place au moins un club avant de partager.'); return; }
-  btn.disabled = true; btn.textContent = 'Génération…';
+  const rows = TIERS.map(t => ({tier:t, clubs:[...document.querySelectorAll(`.row-drop[data-tier="${t.id}"]`)[0].children].map(c => c.dataset.id)}))
+    .filter(r => r.clubs.length);
+  if (!rows.length){ showToast('Place au moins un club avant de partager.'); return; }
+  btn.disabled = true; btn.textContent = 'Génération...';
   try{
     if (document.fonts.status !== 'loaded'){
       await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r,150))]);
     }
-    const W = 1080, ROWH = 118, HEADH = 190, FOOTH = 70;
-    const rows = TIERS.map(t => ({tier:t, clubs:[...document.querySelectorAll(`.row-drop[data-tier="${t.id}"]`)[0].children].map(c => c.dataset.id)}))
-      .filter(r => r.clubs.length);
+    const W = 1080, ROWH = 108, HEADH = 220, FOOTH = 70;
     const H = HEADH + rows.length*ROWH + FOOTH;
     const canvas = document.createElement('canvas');
     canvas.width = W; canvas.height = H;
     const ctx = canvas.getContext('2d');
 
-    ctx.fillStyle = '#07080a'; ctx.fillRect(0,0,W,H);
-    const grad = ctx.createLinearGradient(0,0,W,0);
-    grad.addColorStop(0,'#e2a53f'); grad.addColorStop(.45,'#3d72d6'); grad.addColorStop(.75,'#d8425a'); grad.addColorStop(1,'#e2a53f');
-    ctx.fillStyle = grad; ctx.fillRect(0,0,W,8);
-
-    ctx.fillStyle = '#e2a53f';
-    ctx.font = '700 13px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#eeeadf'; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle = '#18140f';
+    ctx.font = '400 52px Tanker, sans-serif';
     ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-    ctx.fillText('PREDI · LIGUE 1 2026/27', 56, 62);
-    ctx.fillStyle = '#fff';
-    ctx.font = '400 46px Tanker, sans-serif';
-    ctx.fillText("LE TABLEAU D'AFFICHAGE", 56, 118);
-    ctx.strokeStyle = 'rgba(255,255,255,.14)'; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(56, HEADH-24); ctx.lineTo(W-56, HEADH-24); ctx.stroke();
+    ctx.fillText('LE PROGRAMME', 56, 96);
+    ctx.fillStyle = '#b91c2e';
+    ctx.font = '400 52px Tanker, sans-serif';
+    ctx.fillText('DE MATCH', 56, 154);
+    ctx.fillStyle = '#8d8570';
+    ctx.font = '700 13px "JetBrains Mono", monospace';
+    ctx.fillText('PREDI · LIGUE 1 · SAISON 2026/27', 56, 184);
+    ctx.strokeStyle = 'rgba(24,20,15,.35)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(0, HEADH-4); ctx.lineTo(W, HEADH-4); ctx.stroke();
 
     const crestCache = {};
     async function getCrest(id){
@@ -457,52 +477,41 @@ async function shareImage(){
 
     let y = HEADH;
     for (const row of rows){
-      const isEven = (rows.indexOf(row) % 2 === 1);
-      ctx.fillStyle = isEven ? '#15181b' : '#101214';
-      ctx.fillRect(0, y, W, ROWH);
-      ctx.fillStyle = colorFor(row.tier);
-      ctx.fillRect(0, y, 8, ROWH);
+      ctx.strokeStyle = 'rgba(24,20,15,.16)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(56, y); ctx.lineTo(W-56, y); ctx.stroke();
 
-      ctx.fillStyle = '#fff';
-      ctx.font = '400 28px Anton, sans-serif';
+      ctx.fillStyle = row.tier.id === 't1' ? '#b91c2e' : '#18140f';
+      ctx.font = '400 34px Tanker, sans-serif';
       ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-      ctx.fillText(row.tier.rank, 44, y+ROWH/2-8);
-      ctx.fillStyle = 'rgba(255,255,255,.55)';
-      ctx.font = '700 11px "JetBrains Mono", monospace';
-      ctx.fillText(row.tier.label.toUpperCase(), 44, y+ROWH/2+18);
+      ctx.fillText(row.tier.rl, 56, y+ROWH/2-16);
 
-      let cx = 210;
+      ctx.fillStyle = '#18140f';
+      ctx.font = '600 20px Spectral, serif';
+      ctx.fillText(row.tier.label, 150, y+ROWH/2-22);
+      ctx.fillStyle = '#8d8570';
+      ctx.font = 'italic 400 14px Spectral, serif';
+      ctx.fillText(row.tier.hint, 150, y+ROWH/2-2);
+
+      let cx = 150, cy = y+ROWH/2+26;
       for (const id of row.clubs){
-        const club = CLUBS.find(c => c.id === id);
         const img = await getCrest(id);
-        const cy = y + ROWH/2, r = 30;
-        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2);
-        ctx.fillStyle = '#f1efe6'; ctx.fill();
         if (img){
-          ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, r-4, 0, Math.PI*2); ctx.clip();
-          ctx.drawImage(img, cx-r+4, cy-r+4, (r-4)*2, (r-4)*2);
+          const s = 46, ar = img.width/img.height;
+          let dw = s, dh = s;
+          if (ar > 1) dh = s/ar; else dw = s*ar;
+          ctx.save();
+          ctx.shadowColor = 'rgba(24,20,15,.25)'; ctx.shadowBlur = 6; ctx.shadowOffsetY = 2;
+          ctx.drawImage(img, cx, cy-dh/2, dw, dh);
           ctx.restore();
         }
-        cx += r*2 + 46;
-        if (cx > W - 100 && row.clubs.indexOf(id) < row.clubs.length-1){ cx = 210; y += 64; canvas.height += 0; }
+        cx += 60;
       }
       y += ROWH;
     }
 
     ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
-    ctx.fillStyle = '#5c6066'; ctx.font = '700 16px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#8d8570'; ctx.font = '700 15px "JetBrains Mono", monospace';
     ctx.fillText('350 · PREDI LIGUE 1', W/2, H-28);
-
-    function colorFor(t){
-      if (t.id==='t1') return '#e2a53f';
-      if (t.id==='t2'||t.id==='t3') return '#3d72d6';
-      if (t.id==='t4') return '#dd7f3c';
-      if (t.id==='t5') return '#3fae7c';
-      if (t.id==='t6') return '#b083d6';
-      if (t.id==='t9') return '#c98a2e';
-      if (t.id==='t10') return '#d8425a';
-      return '#4a4e55';
-    }
 
     const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
     await shareOrDownload(blob, 'predi-ligue1-2026-27.png', 'Mon pronostic Ligue 1 2026/27');
