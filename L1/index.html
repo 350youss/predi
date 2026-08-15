@@ -7,164 +7,172 @@
 <meta name="description" content="Le programme de match pour prédire la Ligue 1 2026/27 : place les 18 clubs sur leur ligne, du sacre à la descente.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=tanker@400&display=swap" rel="stylesheet">
 <style>
 /*
-  Direction : "programme de match" — feuille de match / fanzine papier, pas un dashboard.
-  Fond papier unique, encre quasi-noire, un seul accent (rouge tampon). Différenciation
-  des lignes du classement par du texte tamponné (comme un contrôle de billet), pas par
-  un arc-en-ciel de couleurs. Thème unique et assumé (émule un objet imprimé), pas de
-  variante sombre : voir section 8.A / 4.11 de la charte, exception "print-emulating editorial".
+  Palette couleur d'origine conservée (ambre/bleu/orange/vert par zone).
+  Organisation retravaillée pour sortir du gabarit "lignes en boîtes avec
+  barre de couleur" : nameplate de journal centré, ticket de match asymétrique
+  en hero, classement en liste éditoriale (numéro géant + règle fine),
+  tampons de zone colorés au lieu de panneaux pleins.
 */
 :root{
-  --paper:#eeeadf; --paper2:#e4ddc9; --paper3:#dcd4bd;
-  --ink:#18140f; --ink-soft:#4a4335; --muted:#8d8570; --faint:#b7ae97;
-  --rule:rgba(24,20,15,.16); --rule-strong:rgba(24,20,15,.4);
-  --red:#b91c2e; --red-ink:#8f1522; --red-dim:rgba(185,28,46,.1);
-  --serif:'Besley',Georgia,serif;
+  --bg:#0a0b0d; --panel:#131417; --panel2:#191a1e; --panel3:#1f2025;
+  --ink:#f2f2f0; --sub:#98999e; --muted:#5c5d63; --faint:#38393e;
+  --line:rgba(255,255,255,.09); --line-strong:rgba(255,255,255,.2);
+
+  --champion:#e2a53f; --champion-dim:rgba(226,165,63,.12);
+  --ucl:#4d7fe0; --ucl-dim:rgba(77,127,224,.12);
+  --uel:#dd7f3c; --uel-dim:rgba(221,127,60,.12);
+  --uecl:#3fae7c; --uecl-dim:rgba(63,174,124,.12);
+  --wild:#b083d6; --wild-dim:rgba(176,131,214,.12);
+  --warn:#c98a2e; --warn-dim:rgba(201,138,46,.12);
+  --danger:#e2496a; --danger-dim:rgba(226,73,106,.14);
+  --mid:#83868d;
+
+  --body:'Space Grotesk',sans-serif;
   --disp:'Tanker',sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
   --ease:cubic-bezier(.19,1,.22,1);
-  --shadow:0 18px 40px -22px rgba(24,20,15,.35);
+  --shadow:0 20px 50px -24px rgba(0,0,0,.6);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--paper);color:var(--ink);font-family:var(--serif);overflow-x:hidden;
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--panel3) var(--bg);}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);overflow-x:hidden;
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
 body::before{
-  content:'';position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;mix-blend-mode:multiply;
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.04;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-::selection{background:var(--red);color:var(--paper);}
+::selection{background:var(--champion-dim);color:#fff;}
 ::-webkit-scrollbar{width:10px;}
-::-webkit-scrollbar-track{background:var(--paper);}
-::-webkit-scrollbar-thumb{background:var(--faint);border-radius:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--panel3);border-radius:6px;}
 
 .wrap{position:relative;max-width:1180px;margin:0 auto;padding:0 32px 120px;}
 @media (max-width:640px){.wrap{padding:0 18px 90px;}}
 
-/* ---------------- masthead (nameplate de journal, centré) ---------------- */
-.masthead{border-bottom:3px solid var(--ink);padding:22px 0 14px;text-align:center;}
-.masthead .brand{font-family:var(--disp);font-size:clamp(26px,4vw,38px);letter-spacing:.01em;text-transform:uppercase;line-height:1;}
-.masthead .brand em{font-style:normal;color:var(--red);}
-.masthead .date{margin-top:8px;font-family:var(--mono);font-size:10px;color:var(--ink-soft);
+/* ---------------- nameplate (centré, façon journal) ---------------- */
+.masthead{border-bottom:1px solid var(--line-strong);padding:22px 0 14px;text-align:center;}
+.masthead .brand{font-family:var(--disp);font-size:clamp(24px,3.6vw,34px);letter-spacing:.01em;text-transform:uppercase;line-height:1;}
+.masthead .brand em{font-style:normal;color:var(--champion);}
+.masthead .date{margin-top:8px;font-family:var(--mono);font-size:10px;color:var(--sub);
   text-transform:uppercase;letter-spacing:.1em;}
 
-/* ---------------- hero ---------------- */
-.hero{position:relative;padding:54px 0 40px;display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:start;
-  border-bottom:1px solid var(--rule);}
+/* ---------------- hero (ticket de match asymétrique) ---------------- */
+.hero{position:relative;padding:52px 0 40px;display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:start;
+  border-bottom:1px solid var(--line);}
 @media (max-width:860px){.hero{grid-template-columns:1fr;padding:36px 0 30px;}}
 
-.hero-ghost{position:absolute;top:-30px;right:8%;font-family:var(--disp);font-size:min(46vw,420px);
-  line-height:.75;color:transparent;-webkit-text-stroke:1.5px var(--rule-strong);
+.hero-ghost{position:absolute;top:-34px;right:6%;font-family:var(--disp);font-size:min(44vw,400px);
+  line-height:.75;color:transparent;-webkit-text-stroke:1.5px var(--line-strong);
   pointer-events:none;user-select:none;z-index:0;}
-@media (max-width:860px){.hero-ghost{right:-6%;top:-10px;font-size:58vw;}}
+@media (max-width:860px){.hero-ghost{right:-6%;top:-8px;font-size:56vw;}}
 
-.hero h1{position:relative;z-index:1;font-family:var(--disp);font-weight:400;font-size:clamp(38px,6.6vw,78px);
-  line-height:.92;letter-spacing:-.005em;color:var(--ink);text-transform:uppercase;text-wrap:balance;max-width:15ch;}
-.hero h1 .cut{color:var(--red);}
-.hero .sub{position:relative;z-index:1;margin-top:20px;font-family:var(--serif);font-size:17px;color:var(--ink-soft);
-  max-width:46ch;line-height:1.55;}
+.hero h1{position:relative;z-index:1;font-family:var(--disp);font-weight:400;font-size:clamp(36px,6.2vw,74px);
+  line-height:.92;letter-spacing:-.005em;color:#fff;text-transform:uppercase;text-wrap:balance;max-width:15ch;}
+.hero h1 .cut{color:var(--champion);}
+.hero .sub{position:relative;z-index:1;margin-top:20px;font-family:var(--body);font-weight:400;font-size:16.5px;color:var(--sub);
+  max-width:46ch;line-height:1.6;}
 .hero .sub b{color:var(--ink);font-weight:600;}
 
-.stub{position:relative;z-index:1;justify-self:end;background:var(--paper2);border:1px solid var(--rule-strong);
+.stub{position:relative;z-index:1;justify-self:end;background:var(--panel);border:1px solid var(--line-strong);
   padding:18px 20px;transform:rotate(2.5deg);box-shadow:var(--shadow);width:min(240px,100%);}
 .stub::after{content:'';position:absolute;left:-8px;top:50%;width:16px;height:16px;border-radius:50%;
-  background:var(--paper);border:1px solid var(--rule-strong);transform:translateY(-50%);}
+  background:var(--bg);border:1px solid var(--line-strong);transform:translateY(-50%);}
 .stub::before{content:'';position:absolute;right:-8px;top:50%;width:16px;height:16px;border-radius:50%;
-  background:var(--paper);border:1px solid var(--rule-strong);transform:translateY(-50%);}
+  background:var(--bg);border:1px solid var(--line-strong);transform:translateY(-50%);}
 .stub .st1{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;}
-.stub .st2{font-family:var(--disp);font-size:26px;margin-top:6px;text-transform:uppercase;line-height:1;}
-.stub .st3{margin-top:10px;padding-top:10px;border-top:1px dashed var(--rule-strong);
+.stub .st2{font-family:var(--disp);font-size:26px;margin-top:6px;text-transform:uppercase;line-height:1;color:#fff;}
+.stub .st3{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line-strong);
   font-family:var(--mono);font-size:9.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;}
 @media (max-width:860px){.stub{justify-self:start;transform:rotate(-1.5deg);margin-top:24px;}}
 
 /* ---------------- control strip ---------------- */
 .controls{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px;position:relative;z-index:1;}
 .stampbtn{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;
-  background:transparent;border:1.5px solid var(--ink);color:var(--ink);padding:12px 20px;
-  cursor:pointer;transition:transform .18s var(--ease),background .18s var(--ease),color .18s var(--ease);
-  position:relative;}
-.stampbtn:hover{background:var(--ink);color:var(--paper);}
-.stampbtn:active{transform:rotate(-1.5deg) scale(.97);}
-.stampbtn.primary{border-color:var(--red);color:var(--red);}
-.stampbtn.primary:hover{background:var(--red);color:var(--paper);}
+  background:transparent;border:1.5px solid var(--line-strong);color:var(--ink);padding:12px 20px;
+  cursor:pointer;transition:transform .18s var(--ease),background .18s var(--ease),border-color .18s var(--ease);}
+.stampbtn:hover{background:var(--panel2);border-color:var(--sub);}
+.stampbtn:active{transform:scale(.97);}
+.stampbtn.primary{border-color:var(--champion);color:var(--champion);}
+.stampbtn.primary:hover{background:var(--champion-dim);}
 .stampbtn:disabled{opacity:.4;cursor:default;}
 
-/* ---------------- bench (ticket stubs) ---------------- */
+/* ---------------- bench ---------------- */
 .bench{margin-top:52px;position:relative;z-index:1;}
 .bench-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:16px;}
-.bench-head h2{font-family:var(--disp);font-size:20px;text-transform:uppercase;letter-spacing:.01em;}
+.bench-head h2{font-family:var(--disp);font-size:19px;text-transform:uppercase;letter-spacing:.01em;color:#fff;}
 .bench-head .n{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
-.bench-slots{min-height:76px;display:flex;flex-wrap:wrap;gap:12px;padding:18px;background:var(--paper2);
-  border:1px solid var(--rule);}
-.bench-slots.dragover{outline:2px dashed var(--rule-strong);outline-offset:6px;}
+.bench-slots{min-height:76px;display:flex;flex-wrap:wrap;gap:12px;padding:18px;background:var(--panel);
+  border:1px solid var(--line);}
+.bench-slots.dragover{outline:2px dashed var(--line-strong);outline-offset:6px;}
 
-.club{width:66px;height:66px;background:var(--paper);border:1px solid var(--rule-strong);
+.club{width:64px;height:64px;background:var(--panel2);border:1px solid var(--line);
   display:flex;align-items:center;justify-content:center;cursor:grab;position:relative;flex-shrink:0;
   clip-path:polygon(0 6px,6px 0,calc(100% - 6px) 0,100% 6px,100% calc(100% - 6px),calc(100% - 6px) 100%,6px 100%,0 calc(100% - 6px));
   transition:transform .25s var(--ease),box-shadow .25s var(--ease),filter .25s var(--ease),opacity .25s var(--ease);}
-.club img{width:44px;height:44px;object-fit:contain;pointer-events:none;}
+.club img{width:42px;height:42px;object-fit:contain;pointer-events:none;}
 .club.dragging{opacity:.3;}
-.club.armed{box-shadow:0 0 0 2px var(--red);}
+.club.armed{box-shadow:0 0 0 2px var(--champion);}
 
-body.spotlight .club{filter:blur(2px) grayscale(.4);opacity:.4;}
-body.spotlight .club.hovered{filter:none;opacity:1;transform:scale(1.14) rotate(-2deg);z-index:6;box-shadow:var(--shadow);}
+body.spotlight .club{filter:blur(2px) grayscale(.35);opacity:.4;}
+body.spotlight .club.hovered{filter:none;opacity:1;transform:scale(1.16) rotate(-2deg);z-index:6;box-shadow:var(--shadow);}
 
-#tooltip{position:fixed;pointer-events:none;z-index:80;background:var(--ink);border:1px solid var(--ink);
-  color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.03em;padding:6px 11px;
+#tooltip{position:fixed;pointer-events:none;z-index:80;background:var(--panel3);border:1px solid var(--line-strong);
+  color:var(--ink);font-family:var(--mono);font-size:11px;letter-spacing:.03em;padding:6px 11px;
   white-space:nowrap;opacity:0;transform:translate(-50%,-8px);transition:opacity .16s var(--ease);text-transform:uppercase;}
 #tooltip.show{opacity:1;}
 #tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
-  border:5px solid transparent;border-top-color:var(--ink);}
+  border:5px solid transparent;border-top-color:var(--panel3);}
 
-/* ---------------- board (programme de match) ---------------- */
+/* ---------------- board (liste éditoriale, pas de cartes) ---------------- */
 .board{margin-top:52px;position:relative;z-index:1;}
 .board-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px;}
-.board-head h2{font-family:var(--disp);font-size:20px;text-transform:uppercase;}
+.board-head h2{font-family:var(--disp);font-size:19px;text-transform:uppercase;color:#fff;}
 .board-head .n{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
 
-.row{position:relative;border-top:1px solid var(--rule);padding:20px 0;display:flex;gap:22px;
+.row{position:relative;border-top:1px solid var(--line);padding:20px 0;display:flex;gap:22px;
   opacity:0;transform:translateY(14px);transition:opacity .55s var(--ease),transform .55s var(--ease);}
 .row.in{opacity:1;transform:none;}
-.row:last-child{border-bottom:1px solid var(--rule);}
+.row:last-child{border-bottom:1px solid var(--line);}
 
-.rn{font-family:var(--disp);font-size:clamp(30px,3.6vw,44px);line-height:.85;color:var(--ink);
-  width:118px;flex-shrink:0;text-transform:uppercase;}
-.rn.champ{color:var(--red);}
+.rn{font-family:var(--disp);font-size:clamp(28px,3.4vw,42px);line-height:.85;color:var(--row-c,var(--ink));
+  width:112px;flex-shrink:0;text-transform:uppercase;}
 .rn small{display:block;font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.05em;
   text-transform:uppercase;margin-top:6px;font-weight:700;}
 
 .row-mid{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px;}
 .row-label{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
-.row-label .rl{font-family:var(--serif);font-weight:600;font-size:16px;color:var(--ink);}
-.row-label .rh{font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--muted);}
-.row-drop{min-height:60px;display:flex;flex-wrap:wrap;align-content:flex-start;gap:10px;}
-.row-drop.dragover{background:var(--red-dim);}
+.row-label .rl{font-family:var(--body);font-weight:600;font-size:16px;color:#fff;}
+.row-label .rh{font-family:var(--body);font-weight:400;font-size:12.5px;color:var(--muted);}
+.row-drop{min-height:58px;display:flex;flex-wrap:wrap;align-content:flex-start;gap:10px;}
+.row-drop.dragover{background:var(--row-dim,rgba(255,255,255,.04));}
 
 .stamp{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);
-  font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--red);border:1.5px solid var(--red);
-  padding:5px 11px;transform:rotate(-3deg);white-space:nowrap;}
-.stamp.strong{font-size:11px;border-width:2px;padding:6px 13px;background:var(--red-dim);}
-.stamp.star svg{width:11px;height:11px;fill:var(--red);}
+  font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--row-c,var(--champion));
+  border:1.5px solid var(--row-c,var(--champion));padding:5px 11px;transform:rotate(-2.5deg);white-space:nowrap;}
+.stamp.strong{font-size:11px;border-width:2px;padding:6px 13px;background:var(--row-dim,var(--danger-dim));}
+.stamp.star svg{width:11px;height:11px;fill:var(--row-c,var(--champion));}
 @media (max-width:640px){
   .row{gap:14px;padding:16px 0;}
-  .rn{width:64px;font-size:26px;}
+  .rn{width:60px;font-size:24px;}
   .row-label{flex-direction:column;align-items:flex-start;gap:4px;}
 }
 
 /* ---------------- legend ---------------- */
-.legend{margin-top:30px;padding-top:20px;border-top:1px solid var(--rule);font-family:var(--serif);
-  font-size:13px;color:var(--ink-soft);line-height:1.7;max-width:66ch;position:relative;z-index:1;}
+.legend{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--body);
+  font-size:13px;color:var(--sub);line-height:1.7;max-width:66ch;position:relative;z-index:1;}
 .legend b{color:var(--ink);font-weight:600;}
 
 .credit{margin-top:60px;font-family:var(--mono);font-size:10px;color:var(--faint);text-align:center;
   letter-spacing:.08em;text-transform:uppercase;position:relative;z-index:1;}
 
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--ink);
-  color:var(--paper);padding:13px 22px;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;
-  letter-spacing:.03em;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);z-index:90;}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--panel3);
+  color:var(--ink);border:1px solid var(--line-strong);padding:13px 22px;font-family:var(--mono);font-size:11.5px;
+  text-transform:uppercase;letter-spacing:.03em;opacity:0;pointer-events:none;
+  transition:opacity .3s var(--ease),transform .3s var(--ease);z-index:90;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
 @media (prefers-reduced-motion:reduce){
@@ -243,16 +251,16 @@ const CLUBS = [
 ];
 
 const TIERS = [
-  {id:'t1',  rank:'1',     rl:'1',    label:'Champion',            hint:'titre 2026/27',    max:1, star:true},
-  {id:'t2',  rank:'2-3',   rl:'2-3',  label:'Ligue des Champions', hint:'qualification directe', max:2},
-  {id:'t3',  rank:'4',     rl:'4',    label:'Barrages LDC',        hint:'tour de barrage', max:1, stamp:'LDC · barrage'},
-  {id:'t4',  rank:'5',     rl:'5',    label:'Europa League',       hint:'qualification directe', max:1, stamp:'Europa'},
-  {id:'t5',  rank:'6',     rl:'6',    label:'Conference League',   hint:'qualification directe', max:1, stamp:'Conference'},
-  {id:'t6',  rank:'7',     rl:'7',    label:'Le con ou pas',       hint:'vainqueur Coupe de France', max:1, stamp:'CDF ?'},
-  {id:'t7',  rank:'8-11',  rl:'8-11', label:'Ventre mou haut',     hint:'milieu de tableau', max:4},
-  {id:'t8',  rank:'12-15', rl:'12-15',label:'Ventre mou bas',      hint:'milieu de tableau', max:4},
-  {id:'t9',  rank:'16',    rl:'16',   label:'Barrages maintien',   hint:'tour de barrage', max:1, stamp:'Maintien · barrage'},
-  {id:'t10', rank:'17-18', rl:'17-18',label:'Relégation',          hint:'descente en Ligue 2', max:2, stamp:'Descente', strong:true},
+  {id:'t1',  rank:'1',     rl:'1',    label:'Champion',            hint:'titre 2026/27',    max:1, star:true, c:'var(--champion)', dim:'var(--champion-dim)'},
+  {id:'t2',  rank:'2-3',   rl:'2-3',  label:'Ligue des Champions', hint:'qualification directe', max:2, c:'var(--ucl)', dim:'var(--ucl-dim)'},
+  {id:'t3',  rank:'4',     rl:'4',    label:'Barrages LDC',        hint:'tour de barrage', max:1, stamp:'LDC · barrage', c:'var(--ucl)', dim:'var(--ucl-dim)'},
+  {id:'t4',  rank:'5',     rl:'5',    label:'Europa League',       hint:'qualification directe', max:1, stamp:'Europa', c:'var(--uel)', dim:'var(--uel-dim)'},
+  {id:'t5',  rank:'6',     rl:'6',    label:'Conference League',   hint:'qualification directe', max:1, stamp:'Conference', c:'var(--uecl)', dim:'var(--uecl-dim)'},
+  {id:'t6',  rank:'7',     rl:'7',    label:'Le con ou pas',       hint:'vainqueur Coupe de France', max:1, stamp:'CDF ?', c:'var(--wild)', dim:'var(--wild-dim)'},
+  {id:'t7',  rank:'8-11',  rl:'8-11', label:'Ventre mou haut',     hint:'milieu de tableau', max:4, c:'var(--mid)'},
+  {id:'t8',  rank:'12-15', rl:'12-15',label:'Ventre mou bas',      hint:'milieu de tableau', max:4, c:'var(--mid)'},
+  {id:'t9',  rank:'16',    rl:'16',   label:'Barrages maintien',   hint:'tour de barrage', max:1, stamp:'Maintien · barrage', c:'var(--warn)', dim:'var(--warn-dim)'},
+  {id:'t10', rank:'17-18', rl:'17-18',label:'Relégation',          hint:'descente en Ligue 2', max:2, stamp:'Descente', strong:true, c:'var(--danger)', dim:'var(--danger-dim)'},
 ];
 
 const pool = document.getElementById('pool');
@@ -266,11 +274,13 @@ let draggedId = null;
 TIERS.forEach(t => {
   const row = document.createElement('div');
   row.className = 'row';
+  row.style.setProperty('--row-c', t.c);
+  if (t.dim) row.style.setProperty('--row-dim', t.dim);
   let stampHtml = '';
   if (t.star) stampHtml = `<span class="stamp star">${STAR}Champion</span>`;
   else if (t.stamp) stampHtml = `<span class="stamp${t.strong?' strong':''}">${t.stamp}</span>`;
   row.innerHTML = `
-    <div class="rn${t.star?' champ':''}">${t.rl}<small>${t.max} place${t.max>1?'s':''}</small></div>
+    <div class="rn">${t.rl}<small>${t.max} place${t.max>1?'s':''}</small></div>
     <div class="row-mid">
       <div class="row-label"><span class="rl">${t.label}</span><span class="rh">${t.hint}</span></div>
       ${stampHtml}
@@ -412,8 +422,8 @@ function warmFonts(){
   fontsWarmed = true;
   Promise.all([
     document.fonts.load('400 46px Tanker'),
-    document.fonts.load('600 22px Besley'),
-    document.fonts.load('italic 400 16px Besley'),
+    document.fonts.load('600 22px "Space Grotesk"'),
+    document.fonts.load('400 16px "Space Grotesk"'),
     document.fonts.load('700 14px "JetBrains Mono"'),
   ]).catch(() => {});
 }
@@ -447,25 +457,36 @@ async function shareImage(){
     if (document.fonts.status !== 'loaded'){
       await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r,150))]);
     }
-    const W = 1080, ROWH = 108, HEADH = 220, FOOTH = 70;
+    const W = 1080, ROWH = 108, HEADH = 210, FOOTH = 70;
     const H = HEADH + rows.length*ROWH + FOOTH;
     const canvas = document.createElement('canvas');
     canvas.width = W; canvas.height = H;
     const ctx = canvas.getContext('2d');
 
-    ctx.fillStyle = '#eeeadf'; ctx.fillRect(0,0,W,H);
-    ctx.fillStyle = '#18140f';
-    ctx.font = '400 52px Tanker, sans-serif';
+    ctx.fillStyle = '#0a0b0d'; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle = '#fff';
+    ctx.font = '400 50px Tanker, sans-serif';
     ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-    ctx.fillText('LE PROGRAMME', 56, 96);
-    ctx.fillStyle = '#b91c2e';
-    ctx.font = '400 52px Tanker, sans-serif';
-    ctx.fillText('DE MATCH', 56, 154);
-    ctx.fillStyle = '#8d8570';
+    ctx.fillText('LE PROGRAMME', 56, 92);
+    ctx.fillStyle = '#e2a53f';
+    ctx.font = '400 50px Tanker, sans-serif';
+    ctx.fillText('DE MATCH', 56, 148);
+    ctx.fillStyle = '#98999e';
     ctx.font = '700 13px "JetBrains Mono", monospace';
-    ctx.fillText('PREDI · LIGUE 1 · SAISON 2026/27', 56, 184);
-    ctx.strokeStyle = 'rgba(24,20,15,.35)'; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(0, HEADH-4); ctx.lineTo(W, HEADH-4); ctx.stroke();
+    ctx.fillText('PREDI · LIGUE 1 · SAISON 2026/27', 56, 176);
+    ctx.strokeStyle = 'rgba(255,255,255,.2)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(0, HEADH-6); ctx.lineTo(W, HEADH-6); ctx.stroke();
+
+    const colorFor = id => {
+      if (id==='t1') return '#e2a53f';
+      if (id==='t2'||id==='t3') return '#4d7fe0';
+      if (id==='t4') return '#dd7f3c';
+      if (id==='t5') return '#3fae7c';
+      if (id==='t6') return '#b083d6';
+      if (id==='t9') return '#c98a2e';
+      if (id==='t10') return '#e2496a';
+      return '#f2f2f0';
+    };
 
     const crestCache = {};
     async function getCrest(id){
@@ -477,19 +498,19 @@ async function shareImage(){
 
     let y = HEADH;
     for (const row of rows){
-      ctx.strokeStyle = 'rgba(24,20,15,.16)'; ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(255,255,255,.09)'; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(56, y); ctx.lineTo(W-56, y); ctx.stroke();
 
-      ctx.fillStyle = row.tier.id === 't1' ? '#b91c2e' : '#18140f';
-      ctx.font = '400 34px Tanker, sans-serif';
+      ctx.fillStyle = colorFor(row.tier.id);
+      ctx.font = '400 32px Tanker, sans-serif';
       ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
       ctx.fillText(row.tier.rl, 56, y+ROWH/2-16);
 
-      ctx.fillStyle = '#18140f';
-      ctx.font = '600 20px Besley, serif';
+      ctx.fillStyle = '#fff';
+      ctx.font = '600 20px "Space Grotesk", sans-serif';
       ctx.fillText(row.tier.label, 150, y+ROWH/2-22);
-      ctx.fillStyle = '#8d8570';
-      ctx.font = 'italic 400 14px Besley, serif';
+      ctx.fillStyle = '#98999e';
+      ctx.font = '400 14px "Space Grotesk", sans-serif';
       ctx.fillText(row.tier.hint, 150, y+ROWH/2-2);
 
       let cx = 150, cy = y+ROWH/2+26;
@@ -499,10 +520,7 @@ async function shareImage(){
           const s = 46, ar = img.width/img.height;
           let dw = s, dh = s;
           if (ar > 1) dh = s/ar; else dw = s*ar;
-          ctx.save();
-          ctx.shadowColor = 'rgba(24,20,15,.25)'; ctx.shadowBlur = 6; ctx.shadowOffsetY = 2;
           ctx.drawImage(img, cx, cy-dh/2, dw, dh);
-          ctx.restore();
         }
         cx += 60;
       }
@@ -510,7 +528,7 @@ async function shareImage(){
     }
 
     ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
-    ctx.fillStyle = '#8d8570'; ctx.font = '700 15px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#5c5d63'; ctx.font = '700 15px "JetBrains Mono", monospace';
     ctx.fillText('350 · PREDI LIGUE 1', W/2, H-28);
 
     const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
