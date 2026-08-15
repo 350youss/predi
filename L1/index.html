@@ -487,8 +487,8 @@ async function shareImage(){
        largeur fixe : si une case a plus de clubs qu'il n'y tient sur une
        ligne, ça revient à la ligne dans la même case (la hauteur de la
        case s'ajuste) plutôt que d'agrandir le visuel à l'infini. */
-    const LABELW = 190, TILE = 64, CELL = 80, SEP = 28, LANE = 620, PADR = 20;
-    const HEADH = 112, FOOTH = 44, ROWPAD = 16, LINEH = 100;
+    const LABELW = 210, TILE = 80, GAP = 16, SEPW = 34, LANE = 620, PADR = 20;
+    const HEADH = 84, FOOTH = 40, ROWPAD = 10, LINEH = TILE+16;
     const W = LABELW + LANE + PADR;
 
     function roundRect(x,y,w,h,r){
@@ -514,8 +514,8 @@ async function shareImage(){
     function wrapItems(items, laneWidth){
       const lines = [[]];
       let curW = 0;
-      items.forEach(it => {
-        const w = it.type === 'sep' ? SEP : CELL;
+      items.forEach((it, i) => {
+        const w = (it.type === 'sep' ? SEPW : TILE) + (i>0 ? GAP : 0);
         if (curW + w > laneWidth && curW > 0){ lines.push([]); curW = 0; }
         lines[lines.length-1].push(it);
         curW += w;
@@ -542,25 +542,25 @@ async function shareImage(){
 
     ctx.fillStyle = '#0a0b0d'; ctx.fillRect(0,0,W,H);
 
-    /* bandeau : dégradé de marque + hachures diagonales */
-    const grad = ctx.createLinearGradient(0,0,W,HEADH);
-    grad.addColorStop(0,'#c9852f'); grad.addColorStop(.55,'#a5462f'); grad.addColorStop(1,'#7a2a3d');
-    ctx.fillStyle = grad; ctx.fillRect(0,0,W,HEADH);
-    ctx.save();
-    ctx.beginPath(); ctx.rect(0,0,W,HEADH); ctx.clip();
-    ctx.strokeStyle = 'rgba(255,255,255,.09)'; ctx.lineWidth = 24;
-    for (let x = -HEADH; x < W+HEADH; x += 42){
-      ctx.beginPath(); ctx.moveTo(x,HEADH); ctx.lineTo(x+HEADH,0); ctx.stroke();
-    }
-    ctx.restore();
+    /* bandeau : plat, sobre, une seule barre d'accent en haut */
+    ctx.fillStyle = '#131417'; ctx.fillRect(0,0,W,HEADH);
+    ctx.fillStyle = '#e2a53f'; ctx.fillRect(0,0,W,4);
+    ctx.strokeStyle = 'rgba(255,255,255,.1)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(0,HEADH); ctx.lineTo(W,HEADH); ctx.stroke();
 
     ctx.fillStyle = '#fff';
-    ctx.font = '400 38px Tanker, sans-serif';
+    ctx.font = '400 34px Tanker, sans-serif';
     ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-    ctx.fillText('PREDIS', 24, 78);
-    ctx.fillStyle = 'rgba(255,255,255,.85)';
-    ctx.font = '600 13px "Space Grotesk", sans-serif';
-    ctx.fillText('LIGUE 1 · SAISON 2026/27', 24, 104);
+    ctx.fillText('PREDIS', 24, 46);
+    ctx.fillStyle = '#98999e';
+    ctx.font = '600 12px "Space Grotesk", sans-serif';
+    ctx.fillText('LIGUE 1 · SAISON 2026/27', 24, 66);
+
+    ctx.textAlign = 'right';
+    ctx.fillStyle = '#5c5d63';
+    ctx.font = '600 12px "Space Grotesk", sans-serif';
+    ctx.fillText('BY 350', W-24, 46);
+    ctx.textAlign = 'left';
 
     const colorFor = id => {
       if (id==='t1') return '#e2a53f';
@@ -602,63 +602,63 @@ async function shareImage(){
     for (const row of laid){
       const firstTier = row.parts[0].tiers[0];
       const c = colorFor(firstTier), tOn = textOnFor(firstTier);
+      const rowCenterY = y + row.rowH/2;
 
       ctx.fillStyle = '#131417'; ctx.fillRect(0, y, W, row.rowH);
       ctx.fillStyle = c; ctx.fillRect(0, y, LABELW, row.rowH);
       ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(0, y+row.rowH); ctx.lineTo(W, y+row.rowH); ctx.stroke();
 
+      /* bloc rang + nom centré verticalement dans la case, la colonne
+         de gauche prend toute la hauteur disponible */
+      const rankFont = '400 30px Tanker, sans-serif';
+      const lblFont = '600 16px "Space Grotesk", sans-serif';
+      const lblLines = wrapLabel(row.group.label, LABELW-40, lblFont);
+      const blockH = 34 + lblLines.length*20;
+      let ly = rowCenterY - blockH/2 + 26;
       ctx.fillStyle = tOn;
-      ctx.font = '400 23px Tanker, sans-serif';
+      ctx.font = rankFont;
       ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-      ctx.fillText(row.group.rank, 20, y+40);
-
-      const lblLines = wrapLabel(row.group.label, LABELW-40, '600 13px "Space Grotesk", sans-serif');
-      ctx.font = '600 13px "Space Grotesk", sans-serif';
-      lblLines.forEach((line, i) => ctx.fillText(line, 20, y+60+i*17));
+      ctx.fillText(row.group.rank, 20, ly);
+      ly += 30;
+      ctx.font = lblFont;
+      lblLines.forEach(line => { ctx.fillText(line, 20, ly); ly += 20; });
 
       row.lines.forEach((lineItems, li) => {
-        /* centre le contenu de la ligne dans le couloir : évite un grand
-           vide à droite quand une case n'a qu'un ou deux clubs */
-        const contentW = lineItems.reduce((s,it) => s+(it.type==='sep'?SEP:CELL), 0) - (CELL-TILE);
-        let cx = LABELW + Math.max(20, (LANE-contentW)/2), cy = y+ROWPAD+LINEH*li+LINEH/2;
-        lineItems.forEach(it => {
+        /* on calcule les positions exactes de chaque élément d'abord,
+           pour que le pointillé tombe pile au centre de l'espace entre
+           les deux tuiles qui l'entourent (pas de grille uniforme) */
+        const widths = lineItems.map(it => it.type==='sep' ? SEPW : TILE);
+        const contentW = widths.reduce((s,w,i) => s+w+(i>0?GAP:0), 0);
+        const startX = LABELW + Math.max(20, (LANE-contentW)/2);
+        const cy = y + ROWPAD + LINEH*li + LINEH/2;
+        let cx = startX;
+        lineItems.forEach((it, i) => {
+          if (i>0) cx += GAP;
           if (it.type === 'sep'){
-            ctx.save();
-            ctx.strokeStyle = 'rgba(255,255,255,.28)';
+            ctx.strokeStyle = 'rgba(255,255,255,.25)';
             ctx.lineWidth = 2;
             ctx.setLineDash([5,5]);
-            ctx.beginPath(); ctx.moveTo(cx+SEP/2, cy-TILE/2-6); ctx.lineTo(cx+SEP/2, cy+TILE/2+6); ctx.stroke();
-            ctx.restore();
-            if (it.tag){
-              ctx.fillStyle = 'rgba(255,255,255,.55)';
-              ctx.font = '600 9.5px "Space Grotesk", sans-serif';
-              ctx.textAlign = 'center';
-              ctx.fillText(it.tag.toUpperCase(), cx+SEP/2, cy+TILE/2+20);
-              ctx.textAlign = 'left';
-            }
-            cx += SEP;
+            ctx.beginPath(); ctx.moveTo(cx+SEPW/2, cy-TILE/2); ctx.lineTo(cx+SEPW/2, cy+TILE/2); ctx.stroke();
+            ctx.setLineDash([]);
+            cx += SEPW;
             return;
           }
           const img = crestMap[it.id];
-          roundRect(cx, cy-TILE/2, TILE, TILE, 11);
+          roundRect(cx, cy-TILE/2, TILE, TILE, 13);
           ctx.fillStyle = '#1c1e23'; ctx.fill();
           ctx.strokeStyle = 'rgba(255,255,255,.1)'; ctx.lineWidth = 1; ctx.stroke();
           if (img){
-            const pad = 7, s = TILE-pad*2, ar = img.width/img.height;
+            const pad = 8, s = TILE-pad*2, ar = img.width/img.height;
             let dw = s, dh = s;
             if (ar > 1) dh = s/ar; else dw = s*ar;
             ctx.drawImage(img, cx+(TILE-dw)/2, cy-dh/2, dw, dh);
           }
-          cx += CELL;
+          cx += TILE;
         });
       });
       y += row.rowH;
     }
-
-    ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
-    ctx.fillStyle = '#5c5d63'; ctx.font = '600 12px "Space Grotesk", sans-serif';
-    ctx.fillText('350 · PREDIS LIGUE 1', W/2, H-20);
 
     const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
     await shareOrDownload(blob, 'predis-ligue1-2026-27.png', 'Mon pronostic Ligue 1 2026/27');
