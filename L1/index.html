@@ -406,7 +406,6 @@ document.getElementById('btn-random').addEventListener('click', () => {
 function loadImage(src){
   return new Promise((resolve,reject) => {
     const img = new Image();
-    img.crossOrigin = 'anonymous';
     img.onload = () => resolve(img);
     img.onerror = reject;
     img.src = src;
@@ -452,7 +451,7 @@ async function shareImage(){
     if (document.fonts.status !== 'loaded'){
       await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r,150))]);
     }
-    const W = 1080, ROWH = 132, HEADH = 170, FOOTH = 70;
+    const W = 1080, LABELW = 250, ROWH = 116, HEADH = 150, FOOTH = 64;
     const H = HEADH + rows.length*ROWH + FOOTH;
     const canvas = document.createElement('canvas');
     canvas.width = W; canvas.height = H;
@@ -460,14 +459,12 @@ async function shareImage(){
 
     ctx.fillStyle = '#0a0b0d'; ctx.fillRect(0,0,W,H);
     ctx.fillStyle = '#fff';
-    ctx.font = '400 54px Tanker, sans-serif';
+    ctx.font = '400 46px Tanker, sans-serif';
     ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-    ctx.fillText('PREDIS', 56, 100);
+    ctx.fillText('PREDIS', 32, 86);
     ctx.fillStyle = '#98999e';
-    ctx.font = '500 15px "Space Grotesk", sans-serif';
-    ctx.fillText('LIGUE 1 · SAISON 2026/27', 56, 132);
-    ctx.strokeStyle = 'rgba(255,255,255,.2)'; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(0, HEADH-6); ctx.lineTo(W, HEADH-6); ctx.stroke();
+    ctx.font = '500 14px "Space Grotesk", sans-serif';
+    ctx.fillText('LIGUE 1 · SAISON 2026/27', 32, 112);
 
     const colorFor = id => {
       if (id==='t1') return '#e2a53f';
@@ -479,48 +476,76 @@ async function shareImage(){
       if (id==='t10') return '#e2496a';
       return '#7d808a';
     };
+    const dimFor = id => {
+      if (id==='t1') return 'rgba(226,165,63,.14)';
+      if (id==='t2'||id==='t3') return 'rgba(77,127,224,.14)';
+      if (id==='t4') return 'rgba(221,127,60,.14)';
+      if (id==='t5') return 'rgba(63,174,124,.14)';
+      if (id==='t6') return 'rgba(176,131,214,.14)';
+      if (id==='t9') return 'rgba(201,138,46,.14)';
+      if (id==='t10') return 'rgba(226,73,106,.16)';
+      return 'rgba(125,128,138,.12)';
+    };
 
-    const crestCache = {};
-    async function getCrest(id){
-      if (crestCache[id] !== undefined) return crestCache[id];
+    /* on précharge tous les écussons AVANT de dessiner (fiabilité) */
+    const neededIds = [...new Set(rows.flatMap(r => r.clubs))];
+    const crestMap = {};
+    await Promise.all(neededIds.map(async id => {
       const club = CLUBS.find(c => c.id === id);
-      try{ crestCache[id] = await loadImage(club.logo); }catch(e){ crestCache[id] = null; }
-      return crestCache[id];
+      try{ crestMap[id] = await loadImage(club.logo); }
+      catch(e){ crestMap[id] = null; }
+    }));
+
+    function wrapLabel(text, maxWidth, font){
+      ctx.font = font;
+      const words = text.split(' ');
+      const lines = [];
+      let cur = '';
+      words.forEach(w => {
+        const test = cur ? cur+' '+w : w;
+        if (ctx.measureText(test).width > maxWidth && cur){ lines.push(cur); cur = w; }
+        else cur = test;
+      });
+      if (cur) lines.push(cur);
+      return lines;
     }
 
     let y = HEADH;
     for (const row of rows){
-      const c = colorFor(row.tier.id);
-      ctx.fillStyle = c; ctx.fillRect(0, y, 6, ROWH);
-      ctx.strokeStyle = 'rgba(255,255,255,.09)'; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(56, y+ROWH); ctx.lineTo(W-56, y+ROWH); ctx.stroke();
+      const c = colorFor(row.tier.id), dim = dimFor(row.tier.id);
 
-      ctx.fillStyle = c;
-      ctx.font = '400 30px Tanker, sans-serif';
-      ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-      ctx.fillText(row.tier.rl, 40, y+34);
+      ctx.fillStyle = '#131417'; ctx.fillRect(0, y, W, ROWH);
+      ctx.fillStyle = dim; ctx.fillRect(0, y, LABELW, ROWH);
+      ctx.fillStyle = c; ctx.fillRect(0, y, 5, ROWH);
+      ctx.strokeStyle = 'rgba(255,255,255,.09)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(0, y+ROWH); ctx.lineTo(W, y+ROWH); ctx.stroke();
 
       ctx.fillStyle = '#fff';
-      ctx.font = '600 19px "Space Grotesk", sans-serif';
-      ctx.fillText(row.tier.label, 40, y+62);
+      ctx.font = '400 28px Tanker, sans-serif';
+      ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+      ctx.fillText(row.tier.rl, 28, y+42);
 
-      let cx = 40, cy = y+96;
+      const lines = wrapLabel(row.tier.label, LABELW-52, '600 15px "Space Grotesk", sans-serif');
+      ctx.font = '600 15px "Space Grotesk", sans-serif';
+      lines.forEach((line, i) => ctx.fillText(line, 28, y+66+i*19));
+
+      let cx = LABELW+28, cy = y+ROWH/2;
       for (const id of row.clubs){
-        const img = await getCrest(id);
+        const img = crestMap[id];
         if (img){
-          const s = 40, ar = img.width/img.height;
+          const s = 44, ar = img.width/img.height;
           let dw = s, dh = s;
           if (ar > 1) dh = s/ar; else dw = s*ar;
           ctx.drawImage(img, cx, cy-dh/2, dw, dh);
         }
-        cx += 54;
+        cx += 58;
       }
       y += ROWH;
     }
 
     ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
-    ctx.fillStyle = '#5c5d63'; ctx.font = '600 14px "Space Grotesk", sans-serif';
-    ctx.fillText('350 · PREDIS LIGUE 1', W/2, H-28);
+    ctx.fillStyle = '#5c5d63'; ctx.font = '600 13px "Space Grotesk", sans-serif';
+    ctx.fillText('350 · PREDIS LIGUE 1', W/2, H-24);
 
     const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
     await shareOrDownload(blob, 'predis-ligue1-2026-27.png', 'Mon pronostic Ligue 1 2026/27');
