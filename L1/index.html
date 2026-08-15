@@ -466,7 +466,7 @@ const SHARE_GROUPS = [
   {rank:'7',     label:'Le con ou pas',       parts:[{tiers:['t6']}]},
   {rank:'8-11',  label:'Ventre mou haut',     parts:[{tiers:['t7']}]},
   {rank:'12-15', label:'Ventre mou bas',      parts:[{tiers:['t8']}]},
-  {rank:'16-18', label:'Maintien',            parts:[{tiers:['t9']}, {tiers:['t10'], tag:'Descente', dashed:true}]},
+  {rank:'16-18', label:'Descente',            parts:[{tiers:['t9']}, {tiers:['t10'], tag:'Descente', dashed:true}]},
 ];
 
 async function shareImage(){
@@ -557,9 +557,9 @@ async function shareImage(){
     ctx.fillText('LIGUE 1 · SAISON 2026/27', 24, 66);
 
     ctx.textAlign = 'right';
-    ctx.fillStyle = '#5c5d63';
-    ctx.font = '600 12px "Space Grotesk", sans-serif';
-    ctx.fillText('BY 350', W-24, 46);
+    ctx.fillStyle = '#98999e';
+    ctx.font = '700 20px "Space Grotesk", sans-serif';
+    ctx.fillText('BY 350', W-24, 50);
     ctx.textAlign = 'left';
 
     const colorFor = id => {
@@ -609,20 +609,22 @@ async function shareImage(){
       ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(0, y+row.rowH); ctx.lineTo(W, y+row.rowH); ctx.stroke();
 
-      /* bloc rang + nom centré verticalement dans la case, la colonne
-         de gauche prend toute la hauteur disponible */
-      const rankFont = '400 30px Tanker, sans-serif';
-      const lblFont = '600 16px "Space Grotesk", sans-serif';
-      const lblLines = wrapLabel(row.group.label, LABELW-40, lblFont);
-      const blockH = 34 + lblLines.length*20;
-      let ly = rowCenterY - blockH/2 + 26;
+      /* bloc nom (gros titre) + rang en dessous, centré verticalement
+         dans la case ; la colonne de gauche prend toute la hauteur
+         disponible */
+      const lblFont = '400 26px Tanker, sans-serif';
+      const rankFont = '600 14px "Space Grotesk", sans-serif';
+      const lblLines = wrapLabel(row.group.label.toUpperCase(), LABELW-40, lblFont);
+      const blockH = lblLines.length*26 + 22;
+      let ly = rowCenterY - blockH/2 + 22;
       ctx.fillStyle = tOn;
-      ctx.font = rankFont;
-      ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-      ctx.fillText(row.group.rank, 20, ly);
-      ly += 30;
       ctx.font = lblFont;
-      lblLines.forEach(line => { ctx.fillText(line, 20, ly); ly += 20; });
+      ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+      lblLines.forEach(line => { ctx.fillText(line, 20, ly); ly += 26; });
+      ctx.font = rankFont;
+      ctx.globalAlpha = .8;
+      ctx.fillText(row.group.rank, 20, ly+2);
+      ctx.globalAlpha = 1;
 
       row.lines.forEach((lineItems, li) => {
         /* on calcule les positions exactes de chaque élément d'abord,
