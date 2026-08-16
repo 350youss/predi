@@ -68,18 +68,17 @@ body::before{
   text-decoration:none;padding:9px 18px;border-radius:999px;transition:background .18s var(--ease),color .18s var(--ease);}
 .tab.active{background:var(--champion);color:#241605;}
 .tab:not(.active):hover{color:#fff;}
-/* Volontairement une autre famille que les onglets (pilule, Space
-   Grotesk) : Tanker capitales + coin coupé, pour qu'on ne confonde
-   jamais les deux groupes de boutons, y compris sur mobile où ils
-   sont l'un sous l'autre. */
+/* Même famille typo que les onglets (Space Grotesk, cohérent avec le
+   reste de l'UI) mais un autre traitement : rectangle net + majuscules
+   espacées, contre la pilule sentence-case des onglets. Différent sans
+   jurer avec le reste (pas de coin coupé qui tranchait trop). */
 .quick-actions{display:flex;flex-wrap:wrap;gap:8px;}
-.qbtn{font-family:var(--disp);font-weight:400;font-size:13px;letter-spacing:.02em;text-transform:uppercase;
-  color:var(--ink);background:transparent;border:1.5px solid var(--line-strong);border-radius:0;
-  clip-path:polygon(0 0,calc(100% - 9px) 0,100% 100%,9px 100%);
-  padding:9px 16px 7px;cursor:pointer;
+.qbtn{font-family:var(--body);font-weight:700;font-size:11px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--sub);background:var(--panel);border:1px solid var(--line);border-radius:7px;
+  padding:10px 15px;cursor:pointer;
   display:inline-flex;align-items:center;gap:6px;transition:border-color .18s var(--ease),color .18s var(--ease),background .18s var(--ease),opacity .18s var(--ease);}
 .qbtn svg{width:12px;height:12px;flex-shrink:0;}
-.qbtn:hover{border-color:var(--sub);background:var(--panel2);}
+.qbtn:hover{border-color:var(--line-strong);color:#fff;}
 .qbtn:active{transform:scale(.97);}
 .qbtn.primary{background:var(--champion);border-color:var(--champion);color:#241605;}
 .qbtn.primary:hover{background:#eeb457;border-color:#eeb457;color:#241605;}
@@ -124,7 +123,7 @@ body::before{
 .tier + .tier{border-top:1px solid var(--line);}
 .tier-label{width:190px;flex-shrink:0;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;
   border-left:4px solid var(--tc,var(--mid));background:var(--td,var(--mid-dim));position:relative;overflow:hidden;}
-.tier-label .bgimg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.16;pointer-events:none;}
+.tier-label .bgimg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.1;pointer-events:none;}
 .tier-label .tl{position:relative;font-family:var(--disp);font-size:22px;color:#fff;line-height:1.05;text-transform:uppercase;}
 .tier-label .tn{position:relative;margin-top:6px;font-family:var(--body);font-weight:700;font-size:11.5px;
   color:rgba(255,255,255,.7);letter-spacing:.03em;font-variant-numeric:tabular-nums;}
