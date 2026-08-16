@@ -1,0 +1,37 @@
+name: Update Predis Indiv players database
+
+on:
+  schedule:
+    - cron: '0 4 * * *'   # tous les jours à 4h UTC (6h heure de Paris en été)
+  workflow_dispatch: {}   # déclenchement manuel depuis l'onglet Actions
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Installe les dépendances
+        run: pip install requests beautifulsoup4 lxml
+
+      - name: Scrape les effectifs Ligue 1
+        run: python scripts/scrape_players.py
+
+      - name: Commit et push si les données ont changé
+        run: |
+          git config user.name "predi-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if git diff --quiet -- L1/data/players.json; then
+            echo "Aucun changement d'effectif détecté."
+          else
+            git add L1/data/players.json
+            git commit -m "Mise à jour auto des effectifs L1 ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+            git push
+          fi

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Predictions Ligue 1 2026/27</title>
-<meta name="description" content="Pronostics individuels Ligue 1 : Ballon d'or, meilleur buteur, révélation de la saison.">
+<meta name="description" content="Pronostics individuels Ligue 1 : meilleur buteur, meilleur passeur, MVP, révélation, déception, top et flop de la saison, choisis parmi les vrais joueurs des 18 clubs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
@@ -14,62 +14,588 @@
   --bg:#0a0b0d; --panel:#131417; --panel2:#191a1e; --panel3:#1f2025;
   --ink:#f2f2f0; --sub:#98999e; --muted:#5c5d63; --faint:#38393e;
   --line:rgba(255,255,255,.09); --line-strong:rgba(255,255,255,.2);
+
   --champion:#e2a53f; --champion-dim:rgba(226,165,63,.14);
+  --ucl:#4d7fe0; --ucl-dim:rgba(77,127,224,.14);
+  --uel:#dd7f3c; --uel-dim:rgba(221,127,60,.14);
+  --uecl:#3fae7c; --uecl-dim:rgba(63,174,124,.14);
+  --wild:#b083d6; --wild-dim:rgba(176,131,214,.14);
+  --warn:#c98a2e; --warn-dim:rgba(201,138,46,.14);
+  --danger:#e2496a; --danger-dim:rgba(226,73,106,.16);
+  --mid:#7d808a; --mid-dim:rgba(125,128,138,.12);
+
   --body:'Space Grotesk',sans-serif;
   --disp:'Tanker',sans-serif;
   --ease:cubic-bezier(.19,1,.22,1);
+  --shadow:0 20px 50px -24px rgba(0,0,0,.6);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--panel3) var(--bg);}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);overflow-x:hidden;
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.04;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+::selection{background:var(--champion-dim);color:#fff;}
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--panel3);border-radius:6px;}
+
 .wrap{position:relative;max-width:1180px;margin:0 auto;padding:0 32px 110px;}
 @media (max-width:640px){.wrap{padding:0 16px 90px;}}
 
+/* ---------------- masthead ---------------- */
 .masthead{padding:24px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;}
 .masthead .brand{font-family:var(--disp);font-size:20px;letter-spacing:.01em;text-transform:uppercase;line-height:1;color:#fff;}
 .masthead .season{font-family:var(--body);font-weight:600;font-size:11.5px;color:var(--sub);
   text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line-strong);
   border-radius:999px;padding:7px 14px;white-space:nowrap;}
 
-.toolbar{border-top:1px solid var(--line);margin-top:8px;padding-top:28px;}
+/* ---------------- hero ---------------- */
+.hero{border-top:1px solid var(--line);padding:36px 0 8px;}
+.hero h1{font-family:var(--disp);font-weight:400;font-size:clamp(34px,5.4vw,58px);
+  line-height:.98;letter-spacing:-.005em;color:#fff;text-transform:uppercase;text-wrap:balance;max-width:16ch;}
+.hero h1 em{font-style:italic;font-family:var(--body);font-weight:600;text-transform:none;color:var(--champion);}
+.hero .sub{margin-top:16px;font-family:var(--body);font-size:16px;color:var(--sub);max-width:48ch;line-height:1.55;}
+
+/* ---------------- toolbar : tabs + actions rapides ---------------- */
+.toolbar{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;row-gap:20px;column-gap:14px;justify-content:space-between;}
 .tabs{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px;gap:2px;}
 .tab{font-family:var(--body);font-weight:700;font-size:12.5px;letter-spacing:.01em;color:var(--sub);
   text-decoration:none;padding:9px 18px;border-radius:999px;transition:background .18s var(--ease),color .18s var(--ease);}
 .tab.active{background:var(--champion);color:#241605;}
 .tab:not(.active):hover{color:#fff;}
+.quick-actions{display:flex;flex-wrap:wrap;gap:8px;}
+.qbtn{font-family:var(--body);font-weight:700;font-size:10px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--sub);background:var(--panel);border:1px solid var(--line);border-radius:6px;
+  padding:7px 11px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:5px;transition:border-color .18s var(--ease),color .18s var(--ease),background .18s var(--ease),opacity .18s var(--ease);}
+.qbtn svg{width:10px;height:10px;flex-shrink:0;}
+.qbtn:hover{border-color:var(--line-strong);color:#fff;}
+.qbtn:active{transform:scale(.97);}
+.qbtn.primary{background:var(--champion);border-color:var(--champion);color:#241605;}
+.qbtn.primary:hover{background:#eeb457;border-color:#eeb457;color:#241605;}
+.qbtn:disabled{opacity:.4;cursor:default;}
 
-.stub{margin-top:60px;padding:60px 24px;text-align:center;border:1px dashed var(--line-strong);}
-.stub .kicker{font-family:var(--body);font-weight:700;font-size:11px;color:var(--champion);
-  text-transform:uppercase;letter-spacing:.08em;}
-.stub h1{margin-top:14px;font-family:var(--disp);font-weight:400;font-size:clamp(28px,4.4vw,42px);
-  color:#fff;text-transform:uppercase;line-height:1;}
-.stub p{margin-top:14px;font-family:var(--body);font-size:15px;color:var(--sub);max-width:46ch;margin-left:auto;margin-right:auto;line-height:1.55;}
-.stub a{display:inline-block;margin-top:24px;font-family:var(--body);font-weight:700;font-size:13px;
-  color:#241605;background:var(--champion);border-radius:999px;padding:12px 24px;text-decoration:none;}
-.stub a:hover{background:#eeb457;}
+/* ---------------- board : une case = une catégorie, un seul pick ---------------- */
+.board{margin-top:38px;border:1px solid var(--line);}
+.cat{display:flex;background:var(--panel);}
+.cat + .cat{border-top:1px solid var(--line);}
+.cat-label{width:210px;flex-shrink:0;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;
+  border-left:4px solid var(--tc,var(--mid));background:var(--td,var(--mid-dim));}
+.cat-label .tl{font-family:var(--disp);font-size:20px;color:#fff;line-height:1.05;text-transform:uppercase;}
+.cat-label .tn{margin-top:6px;font-family:var(--body);font-size:11.5px;color:rgba(255,255,255,.7);line-height:1.3;}
+.cat-body{flex:1;padding:14px 16px;display:flex;align-items:center;min-height:64px;}
+
+.pickslot{width:100%;}
+.pick-empty{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1.5px dashed var(--line-strong);
+  border-radius:8px;padding:10px 16px;cursor:pointer;color:var(--muted);font-family:var(--body);font-weight:600;font-size:13px;
+  transition:border-color .18s var(--ease),color .18s var(--ease),background .18s var(--ease);}
+.pick-empty:hover{border-color:var(--tc,var(--champion));color:var(--tc,var(--champion));background:var(--td,transparent);}
+.pick-empty .plus{font-family:var(--disp);font-size:18px;line-height:1;}
+.pick-filled{display:inline-flex;align-items:center;gap:12px;background:var(--panel2);border:1px solid var(--line);
+  border-radius:8px;padding:8px 14px;position:relative;}
+.pick-filled .crest{width:34px;height:34px;object-fit:contain;flex-shrink:0;}
+.pick-filled .coach-ic,.pick-filled .club-ic{width:34px;height:34px;border-radius:50%;background:var(--panel3);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--disp);font-size:14px;color:var(--sub);}
+.pick-filled .pf-name{font-family:var(--body);font-weight:700;font-size:13.5px;color:#fff;}
+.pick-filled .pf-meta{font-family:var(--body);font-size:11px;color:var(--muted);margin-top:1px;}
+.pick-remove{margin-left:6px;width:22px;height:22px;border-radius:50%;background:var(--danger);border:none;color:#fff;
+  font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
+
+@media (max-width:640px){
+  .cat{flex-direction:column;}
+  .cat-label{width:100%;border-left:none;border-bottom:3px solid var(--tc,var(--mid));padding:12px 14px;}
+  .cat-body{padding:12px 14px;}
+}
+
+.legend{margin-top:26px;font-family:var(--body);font-size:13px;color:var(--sub);line-height:1.7;max-width:66ch;}
+.legend b{color:var(--ink);font-weight:600;}
+
+.credit{margin-top:56px;font-family:var(--body);font-size:10.5px;color:var(--faint);text-align:center;
+  letter-spacing:.05em;text-transform:uppercase;}
+.credit .sub{display:block;margin-top:4px;text-transform:none;letter-spacing:0;font-size:11px;color:var(--faint);}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--panel3);
+  color:var(--ink);border:1px solid var(--line-strong);padding:13px 22px;font-family:var(--body);font-weight:500;
+  font-size:12.5px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);z-index:90;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ---------------- sélecteur ---------------- */
+.picker-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;
+  display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s var(--ease);}
+.picker-overlay.show{opacity:1;pointer-events:auto;}
+@media (min-width:640px){.picker-overlay{align-items:center;}}
+.picker-sheet{background:var(--panel2);border:1px solid var(--line-strong);border-top:3px solid var(--champion);
+  width:100%;max-width:480px;max-height:82vh;display:flex;flex-direction:column;
+  transform:translateY(16px);transition:transform .2s var(--ease);}
+.picker-overlay.show .picker-sheet{transform:translateY(0);}
+.picker-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px 12px;
+  border-bottom:1px solid var(--line);}
+.picker-title{font-family:var(--disp);font-size:17px;color:#fff;text-transform:uppercase;}
+.picker-close{background:transparent;border:none;color:var(--sub);font-size:22px;line-height:1;cursor:pointer;padding:4px 8px;}
+.picker-close:hover{color:#fff;}
+.picker-search-wrap{padding:12px 16px 0;}
+.picker-search{width:100%;background:var(--panel);border:1px solid var(--line-strong);border-radius:8px;
+  padding:10px 14px;font-family:var(--body);font-size:14px;color:#fff;}
+.picker-search::placeholder{color:var(--muted);}
+.picker-search:focus{outline:none;border-color:var(--champion);}
+.picker-kinds{display:flex;gap:6px;padding:10px 16px 0;}
+.picker-kind{font-family:var(--body);font-weight:700;font-size:11px;letter-spacing:.03em;text-transform:uppercase;
+  background:var(--panel);border:1px solid var(--line);border-radius:999px;color:var(--sub);
+  padding:7px 13px;cursor:pointer;}
+.picker-kind.active{background:var(--champion);border-color:var(--champion);color:#241605;}
+.picker-list{overflow-y:auto;padding:8px 8px 12px;flex:1;}
+.picker-row{display:flex;align-items:center;gap:12px;padding:10px 10px;cursor:pointer;
+  background:transparent;border:none;width:100%;text-align:left;font-family:var(--body);border-radius:6px;}
+.picker-row:hover{background:var(--panel3);}
+.picker-row img{width:30px;height:30px;object-fit:contain;flex-shrink:0;}
+.picker-row .pic{width:30px;height:30px;border-radius:50%;background:var(--panel3);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:13px;color:var(--sub);}
+.picker-row .prn{font-weight:600;font-size:14px;color:#fff;}
+.picker-row .prs{font-size:11px;color:var(--muted);margin-top:1px;}
+.picker-empty{padding:24px 16px;text-align:center;color:var(--muted);font-size:13px;}
 </style>
 </head>
 <body>
 <div class="wrap">
+
   <div class="masthead">
     <div class="brand">Predictions Ligue 1</div>
     <div class="season">Saison 2026/27</div>
   </div>
 
+  <div class="hero">
+    <h1>À toi de<br>désigner<br><em>les acteurs.</em></h1>
+    <p class="sub" id="hero-sub">Buteur, passeur, MVP, révélation, déception, top et flop : pronostique parmi les vrais joueurs (et coachs) des 18 clubs de L1.</p>
+  </div>
+
   <div class="toolbar">
     <div class="tabs">
-      <a href="pronostics-l1.html" class="tab">Tier list</a>
+      <a href="index.html" class="tab">Tier list</a>
       <a href="predis-indiv.html" class="tab active">Predis Indiv</a>
+    </div>
+    <div class="quick-actions">
+      <button class="qbtn primary" id="btn-share">Partager</button>
+      <button class="qbtn" id="btn-random"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="8" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="8" cy="16" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1.2" fill="currentColor" stroke="none"/></svg>Hasard</button>
+      <button class="qbtn" id="btn-reset">Reset</button>
     </div>
   </div>
 
-  <div class="stub">
-    <div class="kicker">Bientôt disponible</div>
-    <h1>Pronostics individuels</h1>
-    <p>Ballon d'or L1, meilleur buteur, révélation de la saison : la page arrive bientôt.</p>
-    <a href="pronostics-l1.html">Retour à la tier list</a>
+  <div class="board" id="board"></div>
+
+  <p class="legend" id="db-status"><b>Base de données</b> : chargement de l'effectif des 18 clubs…</p>
+
+  <div class="credit">Fait avec 350 · Predis<span class="sub">Aucune donnée ne quitte ton navigateur.</span></div>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="picker-overlay" id="picker-overlay">
+  <div class="picker-sheet">
+    <div class="picker-head"><span class="picker-title" id="picker-title"></span><button class="picker-close" id="picker-close">×</button></div>
+    <div class="picker-kinds" id="picker-kinds"></div>
+    <div class="picker-search-wrap"><input class="picker-search" id="picker-search" type="text" placeholder="Rechercher…" autocomplete="off"></div>
+    <div class="picker-list" id="picker-list"></div>
   </div>
 </div>
+
+<script>
+const CLUB_META = [
+  {id:'psg', name:'Paris Saint-Germain', logo:'logos/PSG.png'},
+  {id:'rcl', name:'RC Lens', logo:'logos/RCL.png'},
+  {id:'losc', name:'LOSC Lille', logo:'logos/LOSC.svg'},
+  {id:'ol', name:'Olympique Lyonnais', logo:'logos/OL.png'},
+  {id:'om', name:'Olympique de Marseille', logo:'logos/OM.png'},
+  {id:'srfc', name:'Stade Rennais', logo:'logos/SRFC.svg'},
+  {id:'asm', name:'AS Monaco', logo:'logos/ASM.png'},
+  {id:'rcsa', name:'RC Strasbourg', logo:'logos/RCSA.png'},
+  {id:'fcl', name:'FC Lorient', logo:'logos/FCL.svg'},
+  {id:'tfc', name:'Toulouse FC', logo:'logos/TFC.png'},
+  {id:'pfc', name:'Paris FC', logo:'logos/PFC.svg'},
+  {id:'sb29', name:'Stade Brestois 29', logo:'logos/SB29.png'},
+  {id:'sco', name:'Angers SCO', logo:'logos/SCO.png'},
+  {id:'hac', name:'Le Havre AC', logo:'logos/HAC.svg'},
+  {id:'aja', name:'AJ Auxerre', logo:'logos/AJA.svg'},
+  {id:'ogcn', name:'OGC Nice', logo:'logos/OGCN.png'},
+  {id:'estac', name:'ESTAC Troyes', logo:'logos/ESTAC.png'},
+  {id:'lm', name:'Le Mans FC', logo:'logos/LM.svg'},
+];
+const CLUB_BY_ID = Object.fromEntries(CLUB_META.map(c => [c.id, c]));
+
+const CATEGORIES = [
+  {id:'buteur',     label:'Meilleur buteur',    hint:'Le plus prolifique de la saison', kind:'player', scope:'pro', c:'var(--ucl)',   dim:'var(--ucl-dim)'},
+  {id:'passeur',    label:'Meilleur passeur',   hint:'Le plus grand serviteur',         kind:'player', scope:'pro', c:'var(--uel)',   dim:'var(--uel-dim)'},
+  {id:'mvp',        label:'MVP de la saison',   hint:'Le facteur X de son équipe',      kind:'player', scope:'pro', c:'var(--champion)', dim:'var(--champion-dim)'},
+  {id:'revelation', label:'Révélation',         hint:'Pro, réserve ou jeunes : peu importe d’où il sort', kind:'player', scope:'all', c:'var(--uecl)',  dim:'var(--uecl-dim)'},
+  {id:'deception',  label:'Déception',          hint:'Celui qu’on n’attendait pas là',  kind:'player', scope:'pro', c:'var(--wild)',  dim:'var(--wild-dim)'},
+  {id:'top',        label:'Top de la saison',   hint:'Équipe, joueur ou entraîneur',    kind:'mixed', c:'var(--warn)',  dim:'var(--warn-dim)'},
+  {id:'flop',       label:'Flop de la saison',  hint:'Équipe, joueur ou entraîneur',    kind:'mixed', c:'var(--danger)', dim:'var(--danger-dim)'},
+];
+
+const board = document.getElementById('board');
+const toast = document.getElementById('toast');
+const dbStatus = document.getElementById('db-status');
+const pickerOverlay = document.getElementById('picker-overlay');
+const pickerTitle = document.getElementById('picker-title');
+const pickerKindsEl = document.getElementById('picker-kinds');
+const pickerSearch = document.getElementById('picker-search');
+const pickerList = document.getElementById('picker-list');
+
+let DB = null;          // {season, updated, clubs:[{id,name,coach,players:[...]}]}
+let PLAYERS_PRO = [];   // joueurs pro uniquement, tous clubs
+let PLAYERS_ALL = [];   // pro + B + U19 + U17, tous clubs
+let COACHES = [];       // {name, clubId}
+let picks = {};         // catId -> {kind:'player'|'club'|'coach', name, clubId, pos, squad}
+
+/* ---- chargement de la base de joueurs ---- */
+async function loadDB(){
+  try{
+    const res = await fetch('data/players.json', {cache:'no-store'});
+    DB = await res.json();
+  }catch(e){
+    dbStatus.innerHTML = '<b>Base de données</b> : impossible de la charger pour le moment. Réessaie un peu plus tard.';
+    return;
+  }
+  PLAYERS_PRO = [];
+  PLAYERS_ALL = [];
+  COACHES = [];
+  DB.clubs.forEach(c => {
+    (c.players||[]).forEach(p => {
+      const entry = {name:p.name, pos:p.pos, posGroup:p.posGroup, squad:p.squad, clubId:c.id};
+      PLAYERS_ALL.push(entry);
+      if (p.squad === 'PRO') PLAYERS_PRO.push(entry);
+    });
+    if (c.coach) COACHES.push({name:c.coach, clubId:c.id});
+  });
+  const updated = DB.updated ? new Date(DB.updated) : null;
+  const updatedStr = updated ? updated.toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'}) : '?';
+  dbStatus.innerHTML = `<b>Base de données</b> : ${PLAYERS_PRO.length} joueurs pro (+ ${PLAYERS_ALL.length-PLAYERS_PRO.length} en réserve/jeunes) sur les 18 clubs de L1, mise à jour automatiquement le ${updatedStr}.`;
+}
+
+/* ---- rendu du tableau ---- */
+function render(){
+  board.innerHTML = '';
+  CATEGORIES.forEach(cat => {
+    const row = document.createElement('div');
+    row.className = 'cat';
+    const pick = picks[cat.id];
+    row.innerHTML = `
+      <div class="cat-label" style="--tc:${cat.c};--td:${cat.dim}">
+        <div class="tl">${cat.label}</div>
+        <div class="tn">${cat.hint}</div>
+      </div>
+      <div class="cat-body"><div class="pickslot" data-cat="${cat.id}"></div></div>`;
+    board.appendChild(row);
+    renderSlot(row.querySelector('.pickslot'), cat, pick);
+  });
+}
+
+function renderSlot(slotEl, cat, pick){
+  if (!pick){
+    slotEl.innerHTML = `<button class="pick-empty"><span class="plus">+</span>Choisir</button>`;
+    slotEl.querySelector('.pick-empty').addEventListener('click', () => openPicker(cat));
+    return;
+  }
+  let media = '';
+  let meta = '';
+  if (pick.kind === 'player'){
+    const club = CLUB_BY_ID[pick.clubId];
+    media = `<img class="crest" src="${club.logo}" alt="${club.name}">`;
+    meta = pick.squad && pick.squad !== 'PRO' ? `${club.name} · ${pick.squad}` : club.name;
+  } else if (pick.kind === 'club'){
+    const club = CLUB_BY_ID[pick.clubId];
+    media = `<img class="crest" src="${club.logo}" alt="${club.name}">`;
+    meta = 'Équipe';
+  } else {
+    const club = CLUB_BY_ID[pick.clubId];
+    media = club ? `<img class="crest" src="${club.logo}" alt="${club.name}">` : `<div class="coach-ic">C</div>`;
+    meta = (club ? club.name + ' · ' : '') + 'Entraîneur';
+  }
+  slotEl.innerHTML = `<div class="pick-filled">${media}
+      <span><span class="pf-name">${pick.name}</span><span class="pf-meta">${meta}</span></span>
+      <button class="pick-remove" aria-label="Retirer">×</button>
+    </div>`;
+  slotEl.querySelector('.pick-remove').addEventListener('click', e => {
+    e.stopPropagation();
+    delete picks[cat.id];
+    render();
+  });
+  slotEl.querySelector('.pick-filled').addEventListener('click', () => openPicker(cat));
+}
+
+/* ---- sélecteur ---- */
+let activeCat = null;
+let activeKind = 'player';
+
+function openPicker(cat){
+  activeCat = cat;
+  activeKind = cat.kind === 'mixed' ? 'club' : 'player';
+  pickerTitle.textContent = cat.label;
+  pickerSearch.value = '';
+  renderKindChips();
+  renderPickerList('');
+  pickerOverlay.classList.add('show');
+  setTimeout(() => pickerSearch.focus(), 50);
+}
+function renderKindChips(){
+  if (activeCat.kind !== 'mixed'){
+    pickerKindsEl.innerHTML = '';
+    return;
+  }
+  const kinds = [['club','Équipe'], ['player','Joueur'], ['coach','Entraîneur']];
+  pickerKindsEl.innerHTML = kinds.map(([k,l]) =>
+    `<button class="picker-kind${k===activeKind?' active':''}" data-kind="${k}">${l}</button>`).join('');
+  pickerKindsEl.querySelectorAll('.picker-kind').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeKind = btn.dataset.kind;
+      renderKindChips();
+      renderPickerList(pickerSearch.value);
+    });
+  });
+}
+function renderPickerList(query){
+  const q = query.trim().toLowerCase();
+  let items = [];
+  if (activeKind === 'club'){
+    items = CLUB_META.map(c => ({kind:'club', name:c.name, clubId:c.id}));
+  } else if (activeKind === 'coach'){
+    items = COACHES.map(co => ({kind:'coach', name:co.name, clubId:co.clubId}));
+  } else {
+    const pool = (activeCat.kind === 'mixed' || activeCat.scope === 'all') ? PLAYERS_ALL : PLAYERS_PRO;
+    items = pool.map(p => ({kind:'player', name:p.name, clubId:p.clubId, pos:p.pos, squad:p.squad}));
+  }
+  if (q){
+    items = items.filter(it => it.name.toLowerCase().includes(q) ||
+      (CLUB_BY_ID[it.clubId] && CLUB_BY_ID[it.clubId].name.toLowerCase().includes(q)));
+  }
+  items = items.slice(0, 120);
+
+  if (!items.length){
+    pickerList.innerHTML = '<div class="picker-empty">Aucun résultat.</div>';
+    return;
+  }
+  pickerList.innerHTML = '';
+  items.forEach(it => {
+    const club = CLUB_BY_ID[it.clubId];
+    const row = document.createElement('button');
+    row.className = 'picker-row';
+    let media, sub;
+    if (it.kind === 'player'){
+      media = `<img src="${club.logo}" alt="">`;
+      sub = it.squad && it.squad !== 'PRO' ? `${club.name} · ${it.pos} · ${it.squad}` : `${club.name} · ${it.pos}`;
+    } else if (it.kind === 'club'){
+      media = `<img src="${club.logo}" alt="">`;
+      sub = 'Équipe';
+    } else {
+      media = club ? `<img src="${club.logo}" alt="">` : `<div class="pic">C</div>`;
+      sub = (club ? club.name : 'Entraîneur');
+    }
+    row.innerHTML = `${media}<span><span class="prn">${it.name}</span><span class="prs">${sub}</span></span>`;
+    row.addEventListener('click', () => {
+      picks[activeCat.id] = it;
+      closePicker();
+      render();
+    });
+    pickerList.appendChild(row);
+  });
+}
+pickerSearch.addEventListener('input', () => renderPickerList(pickerSearch.value));
+
+function closePicker(){ pickerOverlay.classList.remove('show'); }
+document.getElementById('picker-close').addEventListener('click', closePicker);
+pickerOverlay.addEventListener('click', e => { if (e.target === pickerOverlay) closePicker(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePicker(); });
+
+function showToast(msg){
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => toast.classList.remove('show'), 2600);
+}
+
+document.getElementById('btn-reset').addEventListener('click', () => {
+  picks = {};
+  render();
+  showToast('Pronostics réinitialisés.');
+});
+
+document.getElementById('btn-random').addEventListener('click', () => {
+  if (!DB){ showToast('La base de joueurs charge encore, réessaie dans un instant.'); return; }
+  picks = {};
+  CATEGORIES.forEach(cat => {
+    if (cat.kind === 'mixed'){
+      const roll = Math.random();
+      if (roll < .15){
+        const c = CLUB_META[Math.floor(Math.random()*CLUB_META.length)];
+        picks[cat.id] = {kind:'club', name:c.name, clubId:c.id};
+      } else if (roll < .25 && COACHES.length){
+        const co = COACHES[Math.floor(Math.random()*COACHES.length)];
+        picks[cat.id] = {kind:'coach', name:co.name, clubId:co.clubId};
+      } else {
+        const p = PLAYERS_ALL[Math.floor(Math.random()*PLAYERS_ALL.length)];
+        picks[cat.id] = {kind:'player', name:p.name, clubId:p.clubId, pos:p.pos, squad:p.squad};
+      }
+    } else {
+      const pool = cat.scope === 'all' ? PLAYERS_ALL : PLAYERS_PRO;
+      const p = pool[Math.floor(Math.random()*pool.length)];
+      picks[cat.id] = {kind:'player', name:p.name, clubId:p.clubId, pos:p.pos, squad:p.squad};
+    }
+  });
+  render();
+  showToast('Tirage au sort généré.');
+});
+
+/* ---------- partage : image canvas + Web Share API ---------- */
+function loadImage(src){
+  return new Promise((resolve,reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+let fontsWarmed = false;
+function warmFonts(){
+  if (fontsWarmed) return;
+  fontsWarmed = true;
+  Promise.all([
+    document.fonts.load('400 46px Tanker'),
+    document.fonts.load('600 22px "Space Grotesk"'),
+    document.fonts.load('400 16px "Space Grotesk"'),
+  ]).catch(() => {});
+}
+warmFonts();
+
+async function shareOrDownload(blob, filename, text){
+  const file = new File([blob], filename, {type:'image/png'});
+  if (navigator.canShare && navigator.canShare({files:[file]})){
+    try{
+      await navigator.share({files:[file], title:text, text});
+      return;
+    }catch(err){
+      if (err && err.name === 'AbortError') return;
+    }
+  }
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+}
+
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);
+  ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+}
+
+async function shareImage(){
+  const btn = document.getElementById('btn-share');
+  const original = btn.textContent;
+  const rows = CATEGORIES.map(cat => ({cat, pick: picks[cat.id]})).filter(r => r.pick);
+  if (!rows.length){ showToast('Choisis au moins un pronostic avant de partager.'); return; }
+  btn.disabled = true; btn.textContent = 'Génération...';
+  try{
+    if (document.fonts.status !== 'loaded'){
+      await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r,150))]);
+    }
+    const LABELW = 240, W = 720, ROWH = 96, HEADH = 84, FOOTH = 40;
+    const H = HEADH + rows.length*ROWH + FOOTH;
+    const DPR = 2.5;
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(W*DPR); canvas.height = Math.round(H*DPR);
+    const ctx = canvas.getContext('2d');
+    ctx.scale(DPR, DPR);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+
+    ctx.fillStyle = '#0a0b0d'; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle = '#131417'; ctx.fillRect(0,0,W,HEADH);
+    ctx.fillStyle = '#e2a53f'; ctx.fillRect(0,0,W,4);
+    ctx.strokeStyle = 'rgba(255,255,255,.1)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(0,HEADH); ctx.lineTo(W,HEADH); ctx.stroke();
+
+    ctx.fillStyle = '#fff';
+    ctx.font = '400 34px Tanker, sans-serif';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    ctx.fillText('PREDIS INDIV', 24, 46);
+    ctx.fillStyle = '#98999e';
+    ctx.font = '600 12px "Space Grotesk", sans-serif';
+    ctx.fillText('LIGUE 1 · SAISON 2026/27', 24, 66);
+    ctx.textAlign = 'right';
+    ctx.fillStyle = '#98999e';
+    ctx.font = '700 20px "Space Grotesk", sans-serif';
+    ctx.fillText('BY 350', W-24, 50);
+    ctx.textAlign = 'left';
+
+    const neededLogos = [...new Set(rows.map(r => r.pick.clubId).filter(Boolean))];
+    const crestMap = {};
+    await Promise.all(neededLogos.map(async cid => {
+      try{ crestMap[cid] = await loadImage(CLUB_BY_ID[cid].logo); }
+      catch(e){ crestMap[cid] = null; }
+    }));
+
+    const colorHex = {buteur:'#4d7fe0', passeur:'#dd7f3c', mvp:'#e2a53f', revelation:'#3fae7c',
+      deception:'#b083d6', top:'#c98a2e', flop:'#e2496a'};
+    const textOnHex = {mvp:'#181205', top:'#181205'};
+
+    let y = HEADH;
+    for (const row of rows){
+      const c = colorHex[row.cat.id] || '#7d808a';
+      const tOn = textOnHex[row.cat.id] || '#fff';
+      ctx.fillStyle = '#131417'; ctx.fillRect(0, y, W, ROWH);
+      ctx.fillStyle = c; ctx.fillRect(0, y, LABELW, ROWH);
+      ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(0, y+ROWH); ctx.lineTo(W, y+ROWH); ctx.stroke();
+
+      ctx.fillStyle = tOn;
+      ctx.font = '400 22px Tanker, sans-serif';
+      ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+      ctx.fillText(row.cat.label.toUpperCase(), 20, y+ROWH/2-4);
+
+      const cy = y + ROWH/2, cx = LABELW + 26;
+      const img = row.pick.clubId ? crestMap[row.pick.clubId] : null;
+      if (img){
+        const s = 46, ar = img.width/img.height;
+        let dw = s, dh = s;
+        if (ar > 1) dh = s/ar; else dw = s*ar;
+        ctx.drawImage(img, cx, cy-dh/2, dw, dh);
+      } else {
+        roundRect(ctx, cx, cy-23, 46, 46, 23);
+        ctx.fillStyle = '#1c1e23'; ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,.1)'; ctx.lineWidth = 1; ctx.stroke();
+      }
+      ctx.fillStyle = '#fff';
+      ctx.font = '600 18px "Space Grotesk", sans-serif';
+      ctx.fillText(row.pick.name, cx+62, cy-2);
+      ctx.fillStyle = '#98999e';
+      ctx.font = '500 12.5px "Space Grotesk", sans-serif';
+      const club = row.pick.clubId ? CLUB_BY_ID[row.pick.clubId] : null;
+      const metaTxt = row.pick.kind === 'player' ? (club ? club.name : '') :
+        row.pick.kind === 'club' ? 'Équipe' : (club ? club.name + ' · Entraîneur' : 'Entraîneur');
+      ctx.fillText(metaTxt, cx+62, cy+18);
+      y += ROWH;
+    }
+
+    ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    ctx.fillStyle = '#5c5d63'; ctx.font = '600 12px "Space Grotesk", sans-serif';
+    ctx.fillText('350 · PREDIS INDIV', W/2, H-16);
+
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    await shareOrDownload(blob, 'predis-indiv-ligue1-2026-27.png', 'Mes pronostics individuels Ligue 1 2026/27');
+  } finally {
+    btn.disabled = false; btn.textContent = original;
+  }
+}
+document.getElementById('btn-share').addEventListener('click', shareImage);
+
+render();
+loadDB();
+</script>
 </body>
 </html>
