@@ -7,7 +7,7 @@
 <meta name="description" content="Place les 18 clubs de Ligue 1 sur leur ligne de classement, du sacre à la descente.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=tanker@400&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -46,28 +46,40 @@ body::before{
 @media (max-width:640px){.wrap{padding:0 16px 90px;}}
 
 /* ---------------- masthead ---------------- */
-.masthead{border-bottom:1px solid var(--line-strong);padding:26px 0 16px;text-align:center;}
-.masthead .brand{font-family:var(--disp);font-size:clamp(30px,5vw,44px);letter-spacing:.01em;
+.masthead{padding:24px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.masthead .brand{font-family:var(--disp);font-size:22px;letter-spacing:.01em;
   text-transform:uppercase;line-height:1;color:#fff;}
-.masthead .season{margin-top:8px;font-family:var(--body);font-weight:500;font-size:12.5px;color:var(--sub);
-  text-transform:uppercase;letter-spacing:.08em;}
+.masthead .season{font-family:var(--body);font-weight:600;font-size:11.5px;color:var(--sub);
+  text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line-strong);
+  border-radius:999px;padding:7px 14px;white-space:nowrap;}
+
+/* ---------------- hero ---------------- */
+.hero{border-top:1px solid var(--line);padding:44px 0 8px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:600;
+  font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--champion);
+  border:1px solid rgba(226,165,63,.35);background:var(--champion-dim);border-radius:999px;padding:7px 14px 7px 12px;}
+.hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--champion);}
+.hero h1{margin-top:20px;font-family:var(--disp);font-weight:400;font-size:clamp(34px,5.4vw,58px);
+  line-height:.98;letter-spacing:-.005em;color:#fff;text-transform:uppercase;text-wrap:balance;max-width:16ch;}
+.hero h1 em{font-style:italic;font-family:var(--body);font-weight:600;text-transform:none;color:var(--champion);}
+.hero .sub{margin-top:16px;font-family:var(--body);font-size:16px;color:var(--sub);max-width:46ch;line-height:1.55;}
+.hero .sub b{color:var(--ink);font-weight:600;}
 
 /* ---------------- controls ---------------- */
-.controls{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;}
-.actionbtn{font-family:var(--disp);font-size:14px;letter-spacing:.01em;text-transform:uppercase;
-  background:transparent;border:1.5px solid var(--line-strong);color:var(--ink);padding:12px 22px 10px;
-  cursor:pointer;transition:transform .18s var(--ease),background .18s var(--ease),border-color .18s var(--ease);
-  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,12px 100%);}
-.actionbtn:hover{background:var(--panel2);border-color:var(--sub);}
+.controls{margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:20px;}
+.actionbtn{font-family:var(--body);font-size:14px;font-weight:600;letter-spacing:.01em;
+  background:transparent;border:none;color:var(--ink);padding:0;
+  cursor:pointer;transition:opacity .18s var(--ease),transform .18s var(--ease);}
+.actionbtn:hover{opacity:.7;}
 .actionbtn:active{transform:scale(.97);}
-.actionbtn.primary{background:var(--champion);border-color:var(--champion);color:#241605;}
-.actionbtn.primary:hover{background:#eeb457;}
+.actionbtn.primary{background:var(--champion);color:#241605;border-radius:999px;padding:14px 26px;}
+.actionbtn.primary:hover{opacity:1;background:#eeb457;}
 .actionbtn:disabled{opacity:.4;cursor:default;}
 
 /* ---------------- bench ---------------- */
 .bench{margin-top:32px;position:relative;}
 .bench-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px;}
-.bench-hint{font-family:var(--body);font-size:12.5px;color:var(--sub);}
+.bench-hint{font-family:var(--body);font-weight:600;font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:.06em;}
 .bench-count{font-family:var(--body);font-size:11px;color:var(--muted);white-space:nowrap;}
 .bench-slots{min-height:78px;display:flex;flex-wrap:wrap;gap:12px;padding:18px;background:var(--panel);
   border:1px solid var(--line);}
@@ -93,15 +105,20 @@ body::before{
 #tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
   border:5px solid transparent;border-top-color:var(--panel3);}
 
-/* ---------------- board (tier list, bandes colorées, cases fixes) ---------------- */
-.board{margin-top:38px;border:1px solid var(--line);}
-.tier{display:flex;background:var(--panel);}
+/* ---------------- board (chronologie façon process-steps, esprit tierlist
+   gardé par la couleur du badge + le pastille de rang) ---------------- */
+.board{margin-top:44px;}
+.tier{display:flex;background:transparent;}
 .tier + .tier{border-top:1px solid var(--line);}
-.tier-label{width:180px;flex-shrink:0;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;
-  border-left:4px solid var(--tc,var(--mid));background:var(--td,var(--mid-dim));}
-.tier-label .tn{font-family:var(--disp);font-size:26px;color:#fff;line-height:1;}
-.tier-label .tl{margin-top:6px;font-family:var(--body);font-weight:600;font-size:13.5px;color:#fff;line-height:1.25;}
-.tier-drop{flex:1;padding:14px 16px;display:flex;flex-wrap:wrap;align-content:center;gap:10px;min-height:64px;}
+.tier-label{width:230px;flex-shrink:0;padding:22px 20px;display:flex;align-items:center;gap:16px;position:relative;}
+.tier-label::before{content:'';position:absolute;left:39px;top:0;bottom:0;width:1px;background:var(--line-strong);}
+.tier:first-child .tier-label::before{top:50%;}
+.tier:last-child .tier-label::before{bottom:50%;}
+.tier-badge{position:relative;z-index:1;flex-shrink:0;width:40px;height:40px;border-radius:50%;
+  background:var(--panel2);border:1.5px solid var(--tc,var(--mid));display:flex;align-items:center;justify-content:center;
+  font-family:var(--body);font-weight:700;font-size:11.5px;color:var(--tc,var(--mid));font-variant-numeric:tabular-nums;}
+.tier-name{font-family:var(--disp);font-weight:400;font-size:21px;color:#fff;text-transform:uppercase;line-height:1.1;}
+.tier-drop{flex:1;padding:18px 16px;display:flex;flex-wrap:wrap;align-content:center;gap:10px;min-height:64px;}
 
 /* case vide : bouton "+" ; case pleine : écusson + croix pour retirer */
 .slot{width:62px;height:62px;flex-shrink:0;position:relative;}
@@ -123,10 +140,10 @@ body::before{
 
 @media (max-width:640px){
   .tier{flex-direction:column;}
-  .tier-label{width:100%;border-left:none;border-bottom:3px solid var(--tc,var(--mid));flex-direction:row;
-    align-items:baseline;gap:10px;padding:10px 14px;}
-  .tier-label .tn{font-size:19px;}
-  .tier-drop{padding:12px 14px;}
+  .tier-label{width:100%;padding:14px 4px 10px;}
+  .tier-label::before{display:none;}
+  .tier-name{font-size:18px;}
+  .tier-drop{padding:10px 4px 16px;}
 }
 
 .legend{margin-top:26px;font-family:var(--body);font-size:13px;color:var(--sub);line-height:1.7;max-width:66ch;}
@@ -171,7 +188,13 @@ body::before{
 
   <div class="masthead">
     <div class="brand">Predis</div>
-    <div class="season">Ligue 1 · 2026/27</div>
+    <div class="season">Saison 2026/27</div>
+  </div>
+
+  <div class="hero">
+    <span class="hero-eyebrow"><span class="dot"></span>Ligue 1 · Pronostics</span>
+    <h1>Dix-huit clubs.<br>Un seul <em>classement</em>.</h1>
+    <p class="sub" id="hero-sub">Place chaque écusson sur sa ligne, du sacre à la descente. Touche le + d'une case pour choisir un club.</p>
   </div>
 
   <div class="controls">
@@ -182,7 +205,7 @@ body::before{
 
   <div class="bench">
     <div class="bench-top">
-      <div class="bench-hint" id="bench-hint">Touche le + d'une case pour choisir un club.</div>
+      <div class="bench-hint" id="bench-hint">Le banc</div>
       <div class="bench-count" id="pool-count">0 / 18 placés</div>
     </div>
     <div class="bench-slots" id="pool"></div>
@@ -252,7 +275,7 @@ const pickerList = document.getElementById('picker-list');
    sur tactile où le drag natif est peu fiable. Sur mobile, seuls le tap
    et le "+" restent disponibles. */
 const DRAG_OK = window.matchMedia('(pointer: fine)').matches;
-if (DRAG_OK) document.getElementById('bench-hint').textContent = "Glisse un club ou touche le + d'une case.";
+if (DRAG_OK) document.getElementById('hero-sub').textContent = "Place chaque écusson sur sa ligne, du sacre à la descente. Glisse un club, ou touche le + d'une case.";
 let dragData = null; // {clubId, from:{tierId,idx}|null}
 
 /* état : chaque tier a un tableau de longueur max, rempli de club.id ou null */
@@ -275,9 +298,9 @@ TIERS.forEach(t => {
   const tier = document.createElement('div');
   tier.className = 'tier';
   tier.innerHTML = `
-    <div class="tier-label" style="--tc:${t.c};--td:${t.dim}">
-      <div class="tn">${t.rl}</div>
-      <div class="tl">${t.label}</div>
+    <div class="tier-label" style="--tc:${t.c}">
+      <span class="tier-badge">${t.rl}</span>
+      <span class="tier-name">${t.label}</span>
     </div>
     <div class="tier-drop" data-tier="${t.id}" style="--tc:${t.c};--td:${t.dim}"></div>`;
   rowsWrap.appendChild(tier);
