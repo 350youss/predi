@@ -82,6 +82,9 @@ body::before{
   transition:box-shadow .2s var(--ease),transform .2s var(--ease);}
 .crest img{width:40px;height:40px;object-fit:contain;pointer-events:none;}
 .crest:hover{box-shadow:0 0 0 2px var(--line-strong);}
+.crest[draggable="true"]{cursor:grab;}
+.crest[draggable="true"]:active{cursor:grabbing;}
+.bench-slots.drag-over{outline:2px dashed var(--champion);outline-offset:6px;}
 
 #tooltip{position:fixed;pointer-events:none;z-index:80;background:var(--panel3);border:1px solid var(--line-strong);
   color:var(--ink);font-family:var(--body);font-weight:500;font-size:12px;padding:6px 11px;
@@ -110,9 +113,13 @@ body::before{
   display:flex;align-items:center;justify-content:center;
   clip-path:polygon(0 6px,6px 0,calc(100% - 6px) 0,100% 6px,100% calc(100% - 6px),calc(100% - 6px) 100%,6px 100%,0 calc(100% - 6px));}
 .slot-filled img{width:40px;height:40px;object-fit:contain;pointer-events:none;}
+.slot-filled[draggable="true"]{cursor:grab;}
+.slot-filled[draggable="true"]:active{cursor:grabbing;}
 .slot-remove{position:absolute;top:-7px;right:-7px;width:20px;height:20px;border-radius:50%;
   background:var(--danger);border:2px solid var(--bg);color:#fff;font-size:12px;line-height:1;
   display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;}
+.slot.drag-over .slot-empty{border-color:var(--champion);color:var(--champion);background:var(--champion-dim);}
+.slot.drag-over .slot-filled{box-shadow:0 0 0 2px var(--champion);}
 
 @media (max-width:640px){
   .tier{flex-direction:column;}
@@ -175,7 +182,7 @@ body::before{
 
   <div class="bench">
     <div class="bench-top">
-      <div class="bench-hint">Touche le + d'une case pour choisir un club.</div>
+      <div class="bench-hint" id="bench-hint">Touche le + d'une case pour choisir un club.</div>
       <div class="bench-count" id="pool-count">0 / 18 placés</div>
     </div>
     <div class="bench-slots" id="pool"></div>
@@ -240,6 +247,13 @@ const tooltip = document.getElementById('tooltip');
 const pickerOverlay = document.getElementById('picker-overlay');
 const pickerTitle = document.getElementById('picker-title');
 const pickerList = document.getElementById('picker-list');
+
+/* Glisser-déposer : uniquement sur pointeur fin (souris/trackpad), pas
+   sur tactile où le drag natif est peu fiable. Sur mobile, seuls le tap
+   et le "+" restent disponibles. */
+const DRAG_OK = window.matchMedia('(pointer: fine)').matches;
+if (DRAG_OK) document.getElementById('bench-hint').textContent = "Glisse un club ou touche le + d'une case.";
+let dragData = null; // {clubId, from:{tierId,idx}|null}
 
 /* état : chaque tier a un tableau de longueur max, rempli de club.id ou null */
 let placements = {};
@@ -310,12 +324,37 @@ function render(){
           placements[t.id][idx] = null;
           render();
         });
+        if (DRAG_OK){
+          filled.draggable = true;
+          filled.addEventListener('dragstart', e => {
+            dragData = {clubId, from:{tierId:t.id, idx}};
+            e.dataTransfer.effectAllowed = 'move';
+            hideTooltip();
+          });
+        }
       } else {
         slot.innerHTML = `<div class="slot-empty" role="button" aria-label="Choisir un club pour ${t.label}">+</div>`;
         slot.querySelector('.slot-empty').addEventListener('click', () => openClubPicker(t, idx));
       }
+      if (DRAG_OK) attachSlotDropTarget(slot, t.id, idx);
       zone.appendChild(slot);
     });
+  });
+}
+
+function attachSlotDropTarget(slot, tierId, idx){
+  slot.addEventListener('dragover', e => { e.preventDefault(); slot.classList.add('drag-over'); });
+  slot.addEventListener('dragleave', () => slot.classList.remove('drag-over'));
+  slot.addEventListener('drop', e => {
+    e.preventDefault();
+    slot.classList.remove('drag-over');
+    if (!dragData) return;
+    if (dragData.from && dragData.from.tierId === tierId && dragData.from.idx === idx){ dragData = null; return; }
+    const destClub = placements[tierId][idx];
+    if (dragData.from) placements[dragData.from.tierId][dragData.from.idx] = destClub;
+    placements[tierId][idx] = dragData.clubId;
+    dragData = null;
+    render();
   });
 }
 
@@ -326,6 +365,14 @@ function makeBenchCrest(club){
   el.addEventListener('mouseenter', () => showTooltip(el, club.name));
   el.addEventListener('mouseleave', hideTooltip);
   el.addEventListener('click', () => openTierPicker(club));
+  if (DRAG_OK){
+    el.draggable = true;
+    el.addEventListener('dragstart', e => {
+      dragData = {clubId: club.id, from: null};
+      e.dataTransfer.effectAllowed = 'move';
+      hideTooltip();
+    });
+  }
   return el;
 }
 
@@ -414,6 +461,19 @@ document.getElementById('btn-random').addEventListener('click', () => {
 });
 
 render();
+
+if (DRAG_OK){
+  pool.addEventListener('dragover', e => { e.preventDefault(); pool.classList.add('drag-over'); });
+  pool.addEventListener('dragleave', () => pool.classList.remove('drag-over'));
+  pool.addEventListener('drop', e => {
+    e.preventDefault();
+    pool.classList.remove('drag-over');
+    if (!dragData || !dragData.from){ dragData = null; return; }
+    placements[dragData.from.tierId][dragData.from.idx] = null;
+    dragData = null;
+    render();
+  });
+}
 
 /* ---------- partage : image canvas + Web Share API ---------- */
 function loadImage(src){
