@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Predis Ligue 1 2026/27</title>
+<title>Predictions Ligue 1 2026/27</title>
 <meta name="description" content="Place les 18 clubs de Ligue 1 sur leur ligne de classement, du sacre à la descente.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,34 +47,37 @@ body::before{
 
 /* ---------------- masthead ---------------- */
 .masthead{padding:24px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.masthead .brand{font-family:var(--disp);font-size:22px;letter-spacing:.01em;
+.masthead .brand{font-family:var(--disp);font-size:20px;letter-spacing:.01em;
   text-transform:uppercase;line-height:1;color:#fff;}
 .masthead .season{font-family:var(--body);font-weight:600;font-size:11.5px;color:var(--sub);
   text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line-strong);
   border-radius:999px;padding:7px 14px;white-space:nowrap;}
 
 /* ---------------- hero ---------------- */
-.hero{border-top:1px solid var(--line);padding:44px 0 8px;}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:600;
-  font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--champion);
-  border:1px solid rgba(226,165,63,.35);background:var(--champion-dim);border-radius:999px;padding:7px 14px 7px 12px;}
-.hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--champion);}
-.hero h1{margin-top:20px;font-family:var(--disp);font-weight:400;font-size:clamp(34px,5.4vw,58px);
-  line-height:.98;letter-spacing:-.005em;color:#fff;text-transform:uppercase;text-wrap:balance;max-width:16ch;}
+.hero{border-top:1px solid var(--line);padding:36px 0 8px;}
+.hero h1{font-family:var(--disp);font-weight:400;font-size:clamp(34px,5.4vw,58px);
+  line-height:.98;letter-spacing:-.005em;color:#fff;text-transform:uppercase;text-wrap:balance;max-width:14ch;}
 .hero h1 em{font-style:italic;font-family:var(--body);font-weight:600;text-transform:none;color:var(--champion);}
 .hero .sub{margin-top:16px;font-family:var(--body);font-size:16px;color:var(--sub);max-width:46ch;line-height:1.55;}
 .hero .sub b{color:var(--ink);font-weight:600;}
 
-/* ---------------- controls ---------------- */
-.controls{margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:20px;}
-.actionbtn{font-family:var(--body);font-size:14px;font-weight:600;letter-spacing:.01em;
-  background:transparent;border:none;color:var(--ink);padding:0;
-  cursor:pointer;transition:opacity .18s var(--ease),transform .18s var(--ease);}
-.actionbtn:hover{opacity:.7;}
-.actionbtn:active{transform:scale(.97);}
-.actionbtn.primary{background:var(--champion);color:#241605;border-radius:999px;padding:14px 26px;}
-.actionbtn.primary:hover{opacity:1;background:#eeb457;}
-.actionbtn:disabled{opacity:.4;cursor:default;}
+/* ---------------- toolbar : tabs + actions rapides ---------------- */
+.toolbar{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:space-between;}
+.tabs{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px;gap:2px;}
+.tab{font-family:var(--body);font-weight:700;font-size:12.5px;letter-spacing:.01em;color:var(--sub);
+  text-decoration:none;padding:9px 18px;border-radius:999px;transition:background .18s var(--ease),color .18s var(--ease);}
+.tab.active{background:var(--champion);color:#241605;}
+.tab:not(.active):hover{color:#fff;}
+.quick-actions{display:flex;flex-wrap:wrap;gap:8px;}
+.qbtn{font-family:var(--body);font-weight:600;font-size:12.5px;color:var(--sub);background:var(--panel);
+  border:1px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:7px;transition:border-color .18s var(--ease),color .18s var(--ease),background .18s var(--ease),opacity .18s var(--ease);}
+.qbtn svg{width:13px;height:13px;flex-shrink:0;}
+.qbtn:hover{border-color:var(--line-strong);color:#fff;}
+.qbtn:active{transform:scale(.97);}
+.qbtn.primary{background:var(--champion);border-color:var(--champion);color:#241605;}
+.qbtn.primary:hover{background:#eeb457;color:#241605;}
+.qbtn:disabled{opacity:.4;cursor:default;}
 
 /* ---------------- bench ---------------- */
 .bench{margin-top:32px;position:relative;}
@@ -105,20 +108,23 @@ body::before{
 #tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
   border:5px solid transparent;border-top-color:var(--panel3);}
 
-/* ---------------- board (chronologie façon process-steps, esprit tierlist
-   gardé par la couleur du badge + le pastille de rang) ---------------- */
-.board{margin-top:44px;}
-.tier{display:flex;background:transparent;}
+/* ---------------- board (tier list, bandes colorées) : 2-4 et 16-18 sont
+   fusionnées en une ligne avec un pointillé entre les sous-groupes, comme
+   sur le visuel de partage (même source de données : BOARD_GROUPS). Le
+   fond de la case peut recevoir une image en faible opacité liée au sujet
+   (--bgimg), posée plus tard. ---------------- */
+.board{margin-top:38px;border:1px solid var(--line);}
+.tier{display:flex;background:var(--panel);}
 .tier + .tier{border-top:1px solid var(--line);}
-.tier-label{width:230px;flex-shrink:0;padding:22px 20px;display:flex;align-items:center;gap:16px;position:relative;}
-.tier-label::before{content:'';position:absolute;left:39px;top:0;bottom:0;width:1px;background:var(--line-strong);}
-.tier:first-child .tier-label::before{top:50%;}
-.tier:last-child .tier-label::before{bottom:50%;}
-.tier-badge{position:relative;z-index:1;flex-shrink:0;width:40px;height:40px;border-radius:50%;
-  background:var(--panel2);border:1.5px solid var(--tc,var(--mid));display:flex;align-items:center;justify-content:center;
-  font-family:var(--body);font-weight:700;font-size:11.5px;color:var(--tc,var(--mid));font-variant-numeric:tabular-nums;}
-.tier-name{font-family:var(--disp);font-weight:400;font-size:21px;color:#fff;text-transform:uppercase;line-height:1.1;}
-.tier-drop{flex:1;padding:18px 16px;display:flex;flex-wrap:wrap;align-content:center;gap:10px;min-height:64px;}
+.tier-label{width:190px;flex-shrink:0;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;
+  border-left:4px solid var(--tc,var(--mid));background:var(--td,var(--mid-dim));position:relative;overflow:hidden;}
+.tier-label .bgimg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.16;pointer-events:none;}
+.tier-label .tl{position:relative;font-family:var(--disp);font-size:22px;color:#fff;line-height:1.05;text-transform:uppercase;}
+.tier-label .tn{position:relative;margin-top:6px;font-family:var(--body);font-weight:700;font-size:11.5px;
+  color:rgba(255,255,255,.7);letter-spacing:.03em;font-variant-numeric:tabular-nums;}
+.tier-body{flex:1;padding:14px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:14px;min-height:64px;}
+.tier-drop{display:flex;flex-wrap:wrap;gap:10px;}
+.tier-sep{align-self:stretch;width:0;border-left:2px dashed var(--line-strong);margin:6px 0;}
 
 /* case vide : bouton "+" ; case pleine : écusson + croix pour retirer */
 .slot{width:62px;height:62px;flex-shrink:0;position:relative;}
@@ -140,10 +146,10 @@ body::before{
 
 @media (max-width:640px){
   .tier{flex-direction:column;}
-  .tier-label{width:100%;padding:14px 4px 10px;}
-  .tier-label::before{display:none;}
-  .tier-name{font-size:18px;}
-  .tier-drop{padding:10px 4px 16px;}
+  .tier-label{width:100%;border-left:none;border-bottom:3px solid var(--tc,var(--mid));flex-direction:row;
+    align-items:baseline;gap:10px;padding:10px 14px;}
+  .tier-label .tl{font-size:17px;}
+  .tier-body{padding:12px 14px;}
 }
 
 .legend{margin-top:26px;font-family:var(--body);font-size:13px;color:var(--sub);line-height:1.7;max-width:66ch;}
@@ -187,20 +193,25 @@ body::before{
 <div class="wrap">
 
   <div class="masthead">
-    <div class="brand">Predis</div>
+    <div class="brand">Predictions Ligue 1</div>
     <div class="season">Saison 2026/27</div>
   </div>
 
   <div class="hero">
-    <span class="hero-eyebrow"><span class="dot"></span>Ligue 1 · Pronostics</span>
-    <h1>Dix-huit clubs.<br>Un seul <em>classement</em>.</h1>
-    <p class="sub" id="hero-sub">Place chaque écusson sur sa ligne, du sacre à la descente. Touche le + d'une case pour choisir un club.</p>
+    <h1>C'est le moment<br>de les<br><em>porter.</em></h1>
+    <p class="sub" id="hero-sub">Fais ta tier-list du classement de L1 en mettant les clubs à leur place.</p>
   </div>
 
-  <div class="controls">
-    <button class="actionbtn primary" id="btn-share">Partager mon classement</button>
-    <button class="actionbtn" id="btn-random">Tirage au sort</button>
-    <button class="actionbtn" id="btn-reset">Réinitialiser</button>
+  <div class="toolbar">
+    <div class="tabs">
+      <a href="pronostics-l1.html" class="tab active">Tier list</a>
+      <a href="predis-indiv.html" class="tab">Predis Indiv</a>
+    </div>
+    <div class="quick-actions">
+      <button class="qbtn primary" id="btn-share">Partager</button>
+      <button class="qbtn" id="btn-random"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="8" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="8" cy="16" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1.2" fill="currentColor" stroke="none"/></svg>Hasard</button>
+      <button class="qbtn" id="btn-reset">Reset</button>
+    </div>
   </div>
 
   <div class="bench">
@@ -213,7 +224,7 @@ body::before{
 
   <div class="board" id="rows"></div>
 
-  <p class="legend"><b>Barrages</b> (4e et 16e place) : ticket conditionné au résultat du barrage. <b>« Le con ou pas »</b> (7e) : cette place ne part en Coupe d'Europe que si le vainqueur de la Coupe de France est déjà qualifié par le championnat, sinon elle reste en Ligue 1 normale.</p>
+  <p class="legend"><b>Barrages</b> (4e et 16e place) : ticket conditionné au résultat du barrage. <b>« Le con… ou pas »</b> (7e) : cette place ne part en Coupe d'Europe que si le vainqueur de la Coupe de France est déjà qualifié par le championnat, sinon elle reste en Ligue 1 normale.</p>
 
   <div class="credit">Fait avec 350 · Predis<span class="sub">Aucune donnée ne quitte ton navigateur.</span></div>
 </div>
@@ -249,6 +260,12 @@ const CLUBS = [
   {id:'lm', name:'Le Mans FC', logo:'logos/LM.svg'},
 ];
 
+/* Chaque tier reste une case indépendante (placements, picker, drag),
+   c.f. TIERS. BOARD_GROUPS ne sert qu'à décider comment on les affiche :
+   1 groupe peut réunir 2 tiers dans la même ligne visuelle (2-4, 16-18),
+   séparés par un pointillé. Utilisé à la fois par le tableau interactif
+   et par le visuel de partage : une seule source, plus de désaccord
+   possible entre les deux. */
 const TIERS = [
   {id:'t1',  rl:'1',     label:'Champion',            max:1, c:'var(--champion)', dim:'var(--champion-dim)'},
   {id:'t2',  rl:'2-3',   label:'Ligue des Champions',  max:2, c:'var(--ucl)', dim:'var(--ucl-dim)'},
@@ -260,6 +277,20 @@ const TIERS = [
   {id:'t8',  rl:'12-15', label:'Ventre mou bas',      max:4, c:'var(--mid)', dim:'var(--mid-dim)'},
   {id:'t9',  rl:'16',    label:'Barrages maintien',   max:1, c:'var(--warn)', dim:'var(--warn-dim)'},
   {id:'t10', rl:'17-18', label:'Relégation',          max:2, c:'var(--danger)', dim:'var(--danger-dim)'},
+];
+const TIERS_BY_ID = Object.fromEntries(TIERS.map(t => [t.id, t]));
+
+/* img : URL d'une image de fond en faible opacité pour la case, liée au
+   sujet (à fournir plus tard). null pour l'instant, sans effet visuel. */
+const BOARD_GROUPS = [
+  {rank:'1',     label:'Champion',            img:null, parts:[{tierId:'t1'}]},
+  {rank:'2-4',   label:'Ligue des Champions', img:null, parts:[{tierId:'t2'}, {tierId:'t3', tag:'Barrage', dashed:true}]},
+  {rank:'5',     label:'Europa League',       img:null, parts:[{tierId:'t4'}]},
+  {rank:'6',     label:'Conference League',   img:null, parts:[{tierId:'t5'}]},
+  {rank:'7',     label:'Le con… ou pas',       img:null, parts:[{tierId:'t6'}]},
+  {rank:'8-11',  label:'Ventre mou haut',     img:null, parts:[{tierId:'t7'}]},
+  {rank:'12-15', label:'Ventre mou bas',      img:null, parts:[{tierId:'t8'}]},
+  {rank:'16-18', label:'Descente',            img:null, parts:[{tierId:'t9'}, {tierId:'t10', tag:'Descente', dashed:true}]},
 ];
 
 const pool = document.getElementById('pool');
@@ -275,7 +306,7 @@ const pickerList = document.getElementById('picker-list');
    sur tactile où le drag natif est peu fiable. Sur mobile, seuls le tap
    et le "+" restent disponibles. */
 const DRAG_OK = window.matchMedia('(pointer: fine)').matches;
-if (DRAG_OK) document.getElementById('hero-sub').textContent = "Place chaque écusson sur sa ligne, du sacre à la descente. Glisse un club, ou touche le + d'une case.";
+if (DRAG_OK) document.getElementById('hero-sub').textContent = "Fais ta tier-list du classement de L1 en mettant les clubs à leur place. Glisse un club, ou touche le + d'une case.";
 let dragData = null; // {clubId, from:{tierId,idx}|null}
 
 /* état : chaque tier a un tableau de longueur max, rempli de club.id ou null */
@@ -293,16 +324,23 @@ function tierRemaining(tierId){
   return placements[tierId].filter(v => v === null).length;
 }
 
-/* ---- build board skeleton (une fois) ---- */
-TIERS.forEach(t => {
+/* ---- build board skeleton (une fois), groupé selon BOARD_GROUPS ---- */
+BOARD_GROUPS.forEach(g => {
+  const firstTier = TIERS_BY_ID[g.parts[0].tierId];
   const tier = document.createElement('div');
   tier.className = 'tier';
+  const bodyParts = g.parts.map((p, i) => {
+    const sep = i > 0 ? '<div class="tier-sep"></div>' : '';
+    const pt = TIERS_BY_ID[p.tierId];
+    return sep + `<div class="tier-drop" data-tier="${pt.id}" style="--tc:${pt.c};--td:${pt.dim}"></div>`;
+  }).join('');
   tier.innerHTML = `
-    <div class="tier-label" style="--tc:${t.c}">
-      <span class="tier-badge">${t.rl}</span>
-      <span class="tier-name">${t.label}</span>
+    <div class="tier-label" style="--tc:${firstTier.c};--td:${firstTier.dim}">
+      ${g.img ? `<div class="bgimg" style="background-image:url('${g.img}')"></div>` : ''}
+      <div class="tl">${g.label}</div>
+      <div class="tn">${g.rank}</div>
     </div>
-    <div class="tier-drop" data-tier="${t.id}" style="--tc:${t.c};--td:${t.dim}"></div>`;
+    <div class="tier-body">${bodyParts}</div>`;
   rowsWrap.appendChild(tier);
 });
 
@@ -536,28 +574,12 @@ async function shareOrDownload(blob, filename, text){
   setTimeout(() => URL.revokeObjectURL(url), 4000);
 }
 
-/* Groupes du visuel de partage uniquement : on fusionne barrage LDC avec
-   la Ligue des Champions, et barrage maintien avec la relégation, pour
-   gagner 2 lignes. Un pointillé sépare les deux sous-groupes dans la
-   ligne fusionnée. Le tableau interactif du site garde ses 10 cases
-   séparées, ce regroupement ne concerne que l'image générée. */
-const SHARE_GROUPS = [
-  {rank:'1',     label:'Champion',            parts:[{tiers:['t1']}]},
-  {rank:'2-4',   label:'Ligue des Champions', parts:[{tiers:['t2']}, {tiers:['t3'], tag:'Barrage', dashed:true}]},
-  {rank:'5',     label:'Europa League',       parts:[{tiers:['t4']}]},
-  {rank:'6',     label:'Conference League',   parts:[{tiers:['t5']}]},
-  {rank:'7',     label:'Le con… ou pas',       parts:[{tiers:['t6']}]},
-  {rank:'8-11',  label:'Ventre mou haut',     parts:[{tiers:['t7']}]},
-  {rank:'12-15', label:'Ventre mou bas',      parts:[{tiers:['t8']}]},
-  {rank:'16-18', label:'Descente',            parts:[{tiers:['t9']}, {tiers:['t10'], tag:'Descente', dashed:true}]},
-];
-
 async function shareImage(){
   const btn = document.getElementById('btn-share');
   const original = btn.textContent;
-  const rows = SHARE_GROUPS.map(g => ({
+  const rows = BOARD_GROUPS.map(g => ({
     group: g,
-    parts: g.parts.map(p => ({...p, clubs: p.tiers.flatMap(tid => placements[tid].filter(Boolean))})),
+    parts: g.parts.map(p => ({...p, clubs: placements[p.tierId].filter(Boolean)})),
   })).filter(r => r.parts.some(p => p.clubs.length));
   if (!rows.length){ showToast('Place au moins un club avant de partager.'); return; }
   btn.disabled = true; btn.textContent = 'Génération...';
@@ -565,11 +587,11 @@ async function shareImage(){
     if (document.fonts.status !== 'loaded'){
       await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r,150))]);
     }
-    /* Format plus carré (proche 4:5) qu'un visuel 9:16, bandeau à rayures
-       diagonales, tuiles carrées arrondies. Le couloir des écussons a une
-       largeur fixe : si une case a plus de clubs qu'il n'y tient sur une
-       ligne, ça revient à la ligne dans la même case (la hauteur de la
-       case s'ajuste) plutôt que d'agrandir le visuel à l'infini. */
+    /* Format plus carré (proche 4:5) qu'un visuel 9:16, bandeau plat sobre,
+       tuiles carrées arrondies. Le couloir des écussons a une largeur
+       fixe : si une case a plus de clubs qu'il n'y tient sur une ligne, ça
+       revient à la ligne dans la même case plutôt que d'agrandir le
+       visuel à l'infini. */
     const LABELW = 210, TILE = 80, GAP = 16, SEPW = 34, LANE = 620, PADR = 20;
     const HEADH = 84, FOOTH = 40, ROWPAD = 10, LINEH = TILE+16;
     const W = LABELW + LANE + PADR;
@@ -683,7 +705,7 @@ async function shareImage(){
 
     let y = HEADH;
     for (const row of laid){
-      const firstTier = row.parts[0].tiers[0];
+      const firstTier = row.parts[0].tierId;
       const c = colorFor(firstTier), tOn = textOnFor(firstTier);
       const rowCenterY = y + row.rowH/2;
 

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predictions Ligue 1 2026/27</title>
+<meta name="description" content="Pronostics individuels Ligue 1 : Ballon d'or, meilleur buteur, révélation de la saison.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=tanker@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0b0d; --panel:#131417; --panel2:#191a1e; --panel3:#1f2025;
+  --ink:#f2f2f0; --sub:#98999e; --muted:#5c5d63; --faint:#38393e;
+  --line:rgba(255,255,255,.09); --line-strong:rgba(255,255,255,.2);
+  --champion:#e2a53f; --champion-dim:rgba(226,165,63,.14);
+  --body:'Space Grotesk',sans-serif;
+  --disp:'Tanker',sans-serif;
+  --ease:cubic-bezier(.19,1,.22,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+.wrap{position:relative;max-width:1180px;margin:0 auto;padding:0 32px 110px;}
+@media (max-width:640px){.wrap{padding:0 16px 90px;}}
+
+.masthead{padding:24px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.masthead .brand{font-family:var(--disp);font-size:20px;letter-spacing:.01em;text-transform:uppercase;line-height:1;color:#fff;}
+.masthead .season{font-family:var(--body);font-weight:600;font-size:11.5px;color:var(--sub);
+  text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line-strong);
+  border-radius:999px;padding:7px 14px;white-space:nowrap;}
+
+.toolbar{border-top:1px solid var(--line);margin-top:8px;padding-top:28px;}
+.tabs{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px;gap:2px;}
+.tab{font-family:var(--body);font-weight:700;font-size:12.5px;letter-spacing:.01em;color:var(--sub);
+  text-decoration:none;padding:9px 18px;border-radius:999px;transition:background .18s var(--ease),color .18s var(--ease);}
+.tab.active{background:var(--champion);color:#241605;}
+.tab:not(.active):hover{color:#fff;}
+
+.stub{margin-top:60px;padding:60px 24px;text-align:center;border:1px dashed var(--line-strong);}
+.stub .kicker{font-family:var(--body);font-weight:700;font-size:11px;color:var(--champion);
+  text-transform:uppercase;letter-spacing:.08em;}
+.stub h1{margin-top:14px;font-family:var(--disp);font-weight:400;font-size:clamp(28px,4.4vw,42px);
+  color:#fff;text-transform:uppercase;line-height:1;}
+.stub p{margin-top:14px;font-family:var(--body);font-size:15px;color:var(--sub);max-width:46ch;margin-left:auto;margin-right:auto;line-height:1.55;}
+.stub a{display:inline-block;margin-top:24px;font-family:var(--body);font-weight:700;font-size:13px;
+  color:#241605;background:var(--champion);border-radius:999px;padding:12px 24px;text-decoration:none;}
+.stub a:hover{background:#eeb457;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="masthead">
+    <div class="brand">Predictions Ligue 1</div>
+    <div class="season">Saison 2026/27</div>
+  </div>
+
+  <div class="toolbar">
+    <div class="tabs">
+      <a href="pronostics-l1.html" class="tab">Tier list</a>
+      <a href="predis-indiv.html" class="tab active">Predis Indiv</a>
+    </div>
+  </div>
+
+  <div class="stub">
+    <div class="kicker">Bientôt disponible</div>
+    <h1>Pronostics individuels</h1>
+    <p>Ballon d'or L1, meilleur buteur, révélation de la saison : la page arrive bientôt.</p>
+    <a href="pronostics-l1.html">Retour à la tier list</a>
+  </div>
+</div>
+</body>
+</html>
