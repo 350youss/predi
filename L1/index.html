@@ -62,7 +62,7 @@ body::before{
 .hero .sub b{color:var(--ink);font-weight:600;}
 
 /* ---------------- toolbar : tabs + actions rapides ---------------- */
-.toolbar{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:space-between;}
+.toolbar{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;row-gap:20px;column-gap:14px;justify-content:space-between;}
 .tabs{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px;gap:2px;}
 .tab{font-family:var(--body);font-weight:700;font-size:12.5px;letter-spacing:.01em;color:var(--sub);
   text-decoration:none;padding:9px 18px;border-radius:999px;transition:background .18s var(--ease),color .18s var(--ease);}
@@ -73,11 +73,11 @@ body::before{
    espacées, contre la pilule sentence-case des onglets. Différent sans
    jurer avec le reste (pas de coin coupé qui tranchait trop). */
 .quick-actions{display:flex;flex-wrap:wrap;gap:8px;}
-.qbtn{font-family:var(--body);font-weight:700;font-size:11px;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--sub);background:var(--panel);border:1px solid var(--line);border-radius:7px;
-  padding:10px 15px;cursor:pointer;
-  display:inline-flex;align-items:center;gap:6px;transition:border-color .18s var(--ease),color .18s var(--ease),background .18s var(--ease),opacity .18s var(--ease);}
-.qbtn svg{width:12px;height:12px;flex-shrink:0;}
+.qbtn{font-family:var(--body);font-weight:700;font-size:10px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--sub);background:var(--panel);border:1px solid var(--line);border-radius:6px;
+  padding:7px 11px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:5px;transition:border-color .18s var(--ease),color .18s var(--ease),background .18s var(--ease),opacity .18s var(--ease);}
+.qbtn svg{width:10px;height:10px;flex-shrink:0;}
 .qbtn:hover{border-color:var(--line-strong);color:#fff;}
 .qbtn:active{transform:scale(.97);}
 .qbtn.primary{background:var(--champion);border-color:var(--champion);color:#241605;}
