@@ -159,6 +159,7 @@ body::before{
 .picker-row .prs{font-size:11px;color:var(--muted);}
 .picker-empty{padding:24px 16px;text-align:center;color:var(--muted);font-size:13px;}
 
+.free-list{display:flex;flex-direction:column;gap:8px;width:100%;align-self:stretch;}
 .pick-free{display:flex;gap:8px;width:100%;max-width:420px;}
 .free-input{flex:1;background:var(--panel);border:1.5px dashed var(--line-strong);border-radius:8px;
   padding:10px 14px;font-family:var(--body);font-size:13px;color:#fff;min-width:0;}
@@ -243,7 +244,7 @@ const CATEGORIES = [
   {id:'deception',  label:'Déception',          hint:'Pareil, de base il y a une ATTENTE',            kind:'player', scope:'pro', c:'var(--wild)',  dim:'var(--wild-dim)'},
   {id:'top',        label:'Top de la saison',   hint:'Équipe, joueur ou entraîneur',                  kind:'mixed', c:'var(--warn)',  dim:'var(--warn-dim)'},
   {id:'flop',       label:'Flop de la saison',  hint:'Équipe, joueur ou entraîneur',                  kind:'mixed', c:'var(--danger)', dim:'var(--danger-dim)'},
-  {id:'libre',      label:'Prédiction libre',   hint:'Le pronostic qui ne rentre dans aucune case ci-dessus', kind:'free', c:'var(--mid)', dim:'var(--mid-dim)'},
+  {id:'libre',      label:'Prédictions libres', hint:'Mets pas tout dans la même case, fais-en plusieurs', kind:'free', c:'var(--mid)', dim:'var(--mid-dim)'},
 ];
 
 const board = document.getElementById('board');
@@ -345,33 +346,40 @@ function renderSlot(slotEl, cat, pick){
   slotEl.querySelector('.pick-filled').addEventListener('click', () => openPicker(cat));
 }
 
-function renderFreeSlot(slotEl, cat, pick){
-  if (!pick){
-    slotEl.innerHTML = `<div class="pick-free" style="--tc:${cat.c}">
-        <input type="text" class="free-input" placeholder="Prédiction libre…" maxlength="80">
+function renderFreeSlot(slotEl, cat, entries){
+  entries = entries || [];
+  const items = entries.map((text, i) => `
+      <div class="pick-filled" data-i="${i}">
+        <div class="free-ic">✎</div>
+        <span class="pf-info"><span class="pf-name">${escapeHtml(text)}</span><span class="pf-meta">Prédiction libre</span></span>
+        <button class="pick-remove" aria-label="Retirer" data-i="${i}">×</button>
+      </div>`).join('');
+  slotEl.innerHTML = `<div class="free-list">${items}
+      <div class="pick-free" style="--tc:${cat.c}">
+        <input type="text" class="free-input" placeholder="${entries.length ? 'Ajouter une autre prédiction…' : 'Prédiction libre…'}" maxlength="80">
         <button class="free-save">Valider</button>
-      </div>`;
-    const input = slotEl.querySelector('.free-input');
-    const save = () => {
-      const v = input.value.trim();
-      if (!v) return;
-      picks[cat.id] = {kind:'free', name:v};
-      render();
-    };
-    slotEl.querySelector('.free-save').addEventListener('click', save);
-    input.addEventListener('keydown', e => { if (e.key === 'Enter') save(); });
-    return;
-  }
-  slotEl.innerHTML = `<div class="pick-filled">
-      <div class="free-ic">✎</div>
-      <span class="pf-info"><span class="pf-name">${escapeHtml(pick.name)}</span><span class="pf-meta">Prédiction libre</span></span>
-      <button class="pick-remove" aria-label="Retirer">×</button>
+      </div>
     </div>`;
-  slotEl.querySelector('.pick-remove').addEventListener('click', e => {
-    e.stopPropagation();
-    delete picks[cat.id];
-    render();
+  slotEl.querySelectorAll('.pick-remove').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const i = Number(btn.dataset.i);
+      const arr = picks[cat.id] || [];
+      arr.splice(i, 1);
+      if (arr.length) picks[cat.id] = arr; else delete picks[cat.id];
+      render();
+    });
   });
+  const input = slotEl.querySelector('.free-input');
+  const save = () => {
+    const v = input.value.trim();
+    if (!v) return;
+    if (!picks[cat.id]) picks[cat.id] = [];
+    picks[cat.id].push(v);
+    render();
+  };
+  slotEl.querySelector('.free-save').addEventListener('click', save);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') save(); });
 }
 
 /* ---- sélecteur ---- */
@@ -552,7 +560,15 @@ function roundRect(ctx,x,y,w,h,r){
 async function shareImage(){
   const btn = document.getElementById('btn-share');
   const original = btn.textContent;
-  const rows = CATEGORIES.map(cat => ({cat, pick: picks[cat.id]})).filter(r => r.pick);
+  const rows = [];
+  CATEGORIES.forEach(cat => {
+    const p = picks[cat.id];
+    if (cat.kind === 'free'){
+      (p || []).forEach(text => rows.push({cat, pick:{kind:'free', name:text}}));
+    } else if (p){
+      rows.push({cat, pick:p});
+    }
+  });
   if (!rows.length){ showToast('Choisis au moins un pronostic avant de partager.'); return; }
   btn.disabled = true; btn.textContent = 'Génération...';
   try{
