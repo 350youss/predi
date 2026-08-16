@@ -99,8 +99,9 @@ body::before{
 .pick-filled .crest{width:34px;height:34px;object-fit:contain;flex-shrink:0;}
 .pick-filled .coach-ic,.pick-filled .club-ic{width:34px;height:34px;border-radius:50%;background:var(--panel3);
   display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--disp);font-size:14px;color:var(--sub);}
+.pick-filled .pf-info{display:flex;flex-direction:column;gap:2px;min-width:0;}
 .pick-filled .pf-name{font-family:var(--body);font-weight:700;font-size:13.5px;color:#fff;}
-.pick-filled .pf-meta{font-family:var(--body);font-size:11px;color:var(--muted);margin-top:1px;}
+.pick-filled .pf-meta{font-family:var(--body);font-size:11px;color:var(--muted);}
 .pick-remove{margin-left:6px;width:22px;height:22px;border-radius:50%;background:var(--danger);border:none;color:#fff;
   font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
 
@@ -153,9 +154,20 @@ body::before{
 .picker-row img{width:30px;height:30px;object-fit:contain;flex-shrink:0;}
 .picker-row .pic{width:30px;height:30px;border-radius:50%;background:var(--panel3);flex-shrink:0;
   display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:13px;color:var(--sub);}
+.picker-row .pr-info{display:flex;flex-direction:column;gap:2px;min-width:0;}
 .picker-row .prn{font-weight:600;font-size:14px;color:#fff;}
-.picker-row .prs{font-size:11px;color:var(--muted);margin-top:1px;}
+.picker-row .prs{font-size:11px;color:var(--muted);}
 .picker-empty{padding:24px 16px;text-align:center;color:var(--muted);font-size:13px;}
+
+.pick-free{display:flex;gap:8px;width:100%;max-width:420px;}
+.free-input{flex:1;background:var(--panel);border:1.5px dashed var(--line-strong);border-radius:8px;
+  padding:10px 14px;font-family:var(--body);font-size:13px;color:#fff;min-width:0;}
+.free-input::placeholder{color:var(--muted);}
+.free-input:focus{outline:none;border-style:solid;border-color:var(--tc,var(--champion));}
+.free-save{font-family:var(--body);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.03em;
+  background:var(--tc,var(--champion));color:#181205;border:none;border-radius:8px;padding:0 16px;cursor:pointer;flex-shrink:0;}
+.free-ic{width:34px;height:34px;border-radius:50%;background:var(--panel3);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--sub);}
 </style>
 </head>
 <body>
@@ -167,7 +179,7 @@ body::before{
   </div>
 
   <div class="hero">
-    <h1>À toi de<br>désigner<br><em>les acteurs.</em></h1>
+    <h1>C'est le moment<br>de les<br><em>porter.</em></h1>
     <p class="sub" id="hero-sub">Buteur, passeur, MVP, révélation, déception, top et flop : pronostique parmi les vrais joueurs (et coachs) des 18 clubs de L1.</p>
   </div>
 
@@ -224,13 +236,14 @@ const CLUB_META = [
 const CLUB_BY_ID = Object.fromEntries(CLUB_META.map(c => [c.id, c]));
 
 const CATEGORIES = [
-  {id:'buteur',     label:'Meilleur buteur',    hint:'Le plus prolifique de la saison', kind:'player', scope:'pro', c:'var(--ucl)',   dim:'var(--ucl-dim)'},
-  {id:'passeur',    label:'Meilleur passeur',   hint:'Le plus grand serviteur',         kind:'player', scope:'pro', c:'var(--uel)',   dim:'var(--uel-dim)'},
-  {id:'mvp',        label:'MVP de la saison',   hint:'Le facteur X de son équipe',      kind:'player', scope:'pro', c:'var(--champion)', dim:'var(--champion-dim)'},
-  {id:'revelation', label:'Révélation',         hint:'Pro, réserve ou jeunes : peu importe d’où il sort', kind:'player', scope:'all', c:'var(--uecl)',  dim:'var(--uecl-dim)'},
-  {id:'deception',  label:'Déception',          hint:'Celui qu’on n’attendait pas là',  kind:'player', scope:'pro', c:'var(--wild)',  dim:'var(--wild-dim)'},
-  {id:'top',        label:'Top de la saison',   hint:'Équipe, joueur ou entraîneur',    kind:'mixed', c:'var(--warn)',  dim:'var(--warn-dim)'},
-  {id:'flop',       label:'Flop de la saison',  hint:'Équipe, joueur ou entraîneur',    kind:'mixed', c:'var(--danger)', dim:'var(--danger-dim)'},
+  {id:'buteur',     label:'Meilleur buteur',    hint:'Meilleur crevard en vrai ?',                    kind:'player', scope:'pro', c:'var(--ucl)',   dim:'var(--ucl-dim)'},
+  {id:'passeur',    label:'Meilleur passeur',   hint:'Le plus gros leh ?',                            kind:'player', scope:'pro', c:'var(--uel)',   dim:'var(--uel-dim)'},
+  {id:'mvp',        label:'MVP de la saison',   hint:'Le facteur X, et on parle pas de courrier',     kind:'player', scope:'pro', c:'var(--champion)', dim:'var(--champion-dim)'},
+  {id:'revelation', label:'Révélation',         hint:'Arrêtez avec les noms qu’on CONNAÎT',           kind:'player', scope:'all', c:'var(--uecl)',  dim:'var(--uecl-dim)'},
+  {id:'deception',  label:'Déception',          hint:'Pareil, de base il y a une ATTENTE',            kind:'player', scope:'pro', c:'var(--wild)',  dim:'var(--wild-dim)'},
+  {id:'top',        label:'Top de la saison',   hint:'Équipe, joueur ou entraîneur',                  kind:'mixed', c:'var(--warn)',  dim:'var(--warn-dim)'},
+  {id:'flop',       label:'Flop de la saison',  hint:'Équipe, joueur ou entraîneur',                  kind:'mixed', c:'var(--danger)', dim:'var(--danger-dim)'},
+  {id:'libre',      label:'Prédiction libre',   hint:'Le pronostic qui ne rentre dans aucune case ci-dessus', kind:'free', c:'var(--mid)', dim:'var(--mid-dim)'},
 ];
 
 const board = document.getElementById('board');
@@ -291,7 +304,15 @@ function render(){
   });
 }
 
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+
 function renderSlot(slotEl, cat, pick){
+  if (cat.kind === 'free'){
+    renderFreeSlot(slotEl, cat, pick);
+    return;
+  }
   if (!pick){
     slotEl.innerHTML = `<button class="pick-empty"><span class="plus">+</span>Choisir</button>`;
     slotEl.querySelector('.pick-empty').addEventListener('click', () => openPicker(cat));
@@ -313,7 +334,7 @@ function renderSlot(slotEl, cat, pick){
     meta = (club ? club.name + ' · ' : '') + 'Entraîneur';
   }
   slotEl.innerHTML = `<div class="pick-filled">${media}
-      <span><span class="pf-name">${pick.name}</span><span class="pf-meta">${meta}</span></span>
+      <span class="pf-info"><span class="pf-name">${escapeHtml(pick.name)}</span><span class="pf-meta">${escapeHtml(meta)}</span></span>
       <button class="pick-remove" aria-label="Retirer">×</button>
     </div>`;
   slotEl.querySelector('.pick-remove').addEventListener('click', e => {
@@ -322,6 +343,35 @@ function renderSlot(slotEl, cat, pick){
     render();
   });
   slotEl.querySelector('.pick-filled').addEventListener('click', () => openPicker(cat));
+}
+
+function renderFreeSlot(slotEl, cat, pick){
+  if (!pick){
+    slotEl.innerHTML = `<div class="pick-free" style="--tc:${cat.c}">
+        <input type="text" class="free-input" placeholder="Prédiction libre…" maxlength="80">
+        <button class="free-save">Valider</button>
+      </div>`;
+    const input = slotEl.querySelector('.free-input');
+    const save = () => {
+      const v = input.value.trim();
+      if (!v) return;
+      picks[cat.id] = {kind:'free', name:v};
+      render();
+    };
+    slotEl.querySelector('.free-save').addEventListener('click', save);
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') save(); });
+    return;
+  }
+  slotEl.innerHTML = `<div class="pick-filled">
+      <div class="free-ic">✎</div>
+      <span class="pf-info"><span class="pf-name">${escapeHtml(pick.name)}</span><span class="pf-meta">Prédiction libre</span></span>
+      <button class="pick-remove" aria-label="Retirer">×</button>
+    </div>`;
+  slotEl.querySelector('.pick-remove').addEventListener('click', e => {
+    e.stopPropagation();
+    delete picks[cat.id];
+    render();
+  });
 }
 
 /* ---- sélecteur ---- */
@@ -354,8 +404,12 @@ function renderKindChips(){
     });
   });
 }
+function normalizeSearch(s){
+  return String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+}
+
 function renderPickerList(query){
-  const q = query.trim().toLowerCase();
+  const q = normalizeSearch(query.trim());
   let items = [];
   if (activeKind === 'club'){
     items = CLUB_META.map(c => ({kind:'club', name:c.name, clubId:c.id}));
@@ -366,8 +420,8 @@ function renderPickerList(query){
     items = pool.map(p => ({kind:'player', name:p.name, clubId:p.clubId, pos:p.pos, squad:p.squad}));
   }
   if (q){
-    items = items.filter(it => it.name.toLowerCase().includes(q) ||
-      (CLUB_BY_ID[it.clubId] && CLUB_BY_ID[it.clubId].name.toLowerCase().includes(q)));
+    items = items.filter(it => normalizeSearch(it.name).includes(q) ||
+      (CLUB_BY_ID[it.clubId] && normalizeSearch(CLUB_BY_ID[it.clubId].name).includes(q)));
   }
   items = items.slice(0, 120);
 
@@ -391,7 +445,7 @@ function renderPickerList(query){
       media = club ? `<img src="${club.logo}" alt="">` : `<div class="pic">C</div>`;
       sub = (club ? club.name : 'Entraîneur');
     }
-    row.innerHTML = `${media}<span><span class="prn">${it.name}</span><span class="prs">${sub}</span></span>`;
+    row.innerHTML = `${media}<span class="pr-info"><span class="prn">${escapeHtml(it.name)}</span><span class="prs">${escapeHtml(sub)}</span></span>`;
     row.addEventListener('click', () => {
       picks[activeCat.id] = it;
       closePicker();
@@ -424,6 +478,7 @@ document.getElementById('btn-random').addEventListener('click', () => {
   if (!DB){ showToast('La base de joueurs charge encore, réessaie dans un instant.'); return; }
   picks = {};
   CATEGORIES.forEach(cat => {
+    if (cat.kind === 'free') return;
     if (cat.kind === 'mixed'){
       const roll = Math.random();
       if (roll < .15){
@@ -577,7 +632,9 @@ async function shareImage(){
       ctx.font = '500 12.5px "Space Grotesk", sans-serif';
       const club = row.pick.clubId ? CLUB_BY_ID[row.pick.clubId] : null;
       const metaTxt = row.pick.kind === 'player' ? (club ? club.name : '') :
-        row.pick.kind === 'club' ? 'Équipe' : (club ? club.name + ' · Entraîneur' : 'Entraîneur');
+        row.pick.kind === 'club' ? 'Équipe' :
+        row.pick.kind === 'free' ? 'Prédiction libre' :
+        (club ? club.name + ' · Entraîneur' : 'Entraîneur');
       ctx.fillText(metaTxt, cx+62, cy+18);
       y += ROWH;
     }
