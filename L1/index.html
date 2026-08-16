@@ -68,15 +68,21 @@ body::before{
   text-decoration:none;padding:9px 18px;border-radius:999px;transition:background .18s var(--ease),color .18s var(--ease);}
 .tab.active{background:var(--champion);color:#241605;}
 .tab:not(.active):hover{color:#fff;}
+/* Volontairement une autre famille que les onglets (pilule, Space
+   Grotesk) : Tanker capitales + coin coupé, pour qu'on ne confonde
+   jamais les deux groupes de boutons, y compris sur mobile où ils
+   sont l'un sous l'autre. */
 .quick-actions{display:flex;flex-wrap:wrap;gap:8px;}
-.qbtn{font-family:var(--body);font-weight:600;font-size:12.5px;color:var(--sub);background:var(--panel);
-  border:1px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer;
-  display:inline-flex;align-items:center;gap:7px;transition:border-color .18s var(--ease),color .18s var(--ease),background .18s var(--ease),opacity .18s var(--ease);}
-.qbtn svg{width:13px;height:13px;flex-shrink:0;}
-.qbtn:hover{border-color:var(--line-strong);color:#fff;}
+.qbtn{font-family:var(--disp);font-weight:400;font-size:13px;letter-spacing:.02em;text-transform:uppercase;
+  color:var(--ink);background:transparent;border:1.5px solid var(--line-strong);border-radius:0;
+  clip-path:polygon(0 0,calc(100% - 9px) 0,100% 100%,9px 100%);
+  padding:9px 16px 7px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px;transition:border-color .18s var(--ease),color .18s var(--ease),background .18s var(--ease),opacity .18s var(--ease);}
+.qbtn svg{width:12px;height:12px;flex-shrink:0;}
+.qbtn:hover{border-color:var(--sub);background:var(--panel2);}
 .qbtn:active{transform:scale(.97);}
 .qbtn.primary{background:var(--champion);border-color:var(--champion);color:#241605;}
-.qbtn.primary:hover{background:#eeb457;color:#241605;}
+.qbtn.primary:hover{background:#eeb457;border-color:#eeb457;color:#241605;}
 .qbtn:disabled{opacity:.4;cursor:default;}
 
 /* ---------------- bench ---------------- */
@@ -283,14 +289,14 @@ const TIERS_BY_ID = Object.fromEntries(TIERS.map(t => [t.id, t]));
 /* img : URL d'une image de fond en faible opacité pour la case, liée au
    sujet (à fournir plus tard). null pour l'instant, sans effet visuel. */
 const BOARD_GROUPS = [
-  {rank:'1',     label:'Champion',            img:null, parts:[{tierId:'t1'}]},
-  {rank:'2-4',   label:'Ligue des Champions', img:null, parts:[{tierId:'t2'}, {tierId:'t3', tag:'Barrage', dashed:true}]},
-  {rank:'5',     label:'Europa League',       img:null, parts:[{tierId:'t4'}]},
-  {rank:'6',     label:'Conference League',   img:null, parts:[{tierId:'t5'}]},
-  {rank:'7',     label:'Le con… ou pas',       img:null, parts:[{tierId:'t6'}]},
-  {rank:'8-11',  label:'Ventre mou haut',     img:null, parts:[{tierId:'t7'}]},
-  {rank:'12-15', label:'Ventre mou bas',      img:null, parts:[{tierId:'t8'}]},
-  {rank:'16-18', label:'Descente',            img:null, parts:[{tierId:'t9'}, {tierId:'t10', tag:'Descente', dashed:true}]},
+  {rank:'1',     label:'Champion',            img:'images/champion.jpg', parts:[{tierId:'t1'}]},
+  {rank:'2-4',   label:'Ligue des Champions', img:'images/ucl.jpg', parts:[{tierId:'t2'}, {tierId:'t3', tag:'Barrage', dashed:true}]},
+  {rank:'5',     label:'Europa League',       img:'images/europa.jpg', parts:[{tierId:'t4'}]},
+  {rank:'6',     label:'Conference League',   img:'images/conference.jpg', parts:[{tierId:'t5'}]},
+  {rank:'7',     label:'Le con… ou pas',       img:'images/lecon.jpg', parts:[{tierId:'t6'}]},
+  {rank:'8-11',  label:'Ventre mou haut',     img:'images/ventremouhaut.jpg', parts:[{tierId:'t7'}]},
+  {rank:'12-15', label:'Ventre mou bas',      img:'images/ventremoubas.jpg', parts:[{tierId:'t8'}]},
+  {rank:'16-18', label:'Descente',            img:'images/descente.jpg', parts:[{tierId:'t9'}, {tierId:'t10', tag:'Descente', dashed:true}]},
 ];
 
 const pool = document.getElementById('pool');
