@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tendances — Predis Indiv</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=tanker@400&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<style>
+:root{
+  --bg:#0a0b0d; --panel:#131417; --panel2:#191a1e; --panel3:#1f2025;
+  --ink:#f2f2f0; --sub:#98999e; --muted:#5c5d63; --faint:#38393e;
+  --line:rgba(255,255,255,.09); --line-strong:rgba(255,255,255,.2);
+  --champion:#e2a53f; --champion-dim:rgba(226,165,63,.14);
+  --ucl:#4d7fe0; --uel:#dd7f3c; --uecl:#3fae7c; --wild:#b083d6; --warn:#c98a2e; --danger:#e2496a; --mid:#7d808a;
+  --body:'Space Grotesk',sans-serif;
+  --disp:'Tanker',sans-serif;
+  --ease:cubic-bezier(.19,1,.22,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;}
+.wrap{max-width:900px;margin:0 auto;padding:32px 24px 90px;}
+@media (max-width:640px){.wrap{padding:24px 16px 70px;}}
+.masthead{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:20px;border-bottom:1px solid var(--line);}
+.brand{font-family:var(--disp);font-size:20px;letter-spacing:.01em;text-transform:uppercase;color:#fff;}
+.brand span{color:var(--champion);}
+.back{font-family:var(--body);font-weight:700;font-size:12px;color:var(--sub);text-decoration:none;
+  border:1px solid var(--line-strong);border-radius:999px;padding:7px 14px;}
+.back:hover{color:#fff;}
+h1{margin-top:28px;font-family:var(--disp);font-size:clamp(28px,4.5vw,42px);text-transform:uppercase;color:#fff;line-height:1;}
+.meta{margin-top:10px;font-size:13.5px;color:var(--sub);}
+
+.cat-block{margin-top:34px;}
+.cat-head{display:flex;align-items:baseline;gap:10px;border-left:4px solid var(--tc,var(--mid));padding-left:12px;}
+.cat-head .ct{font-family:var(--disp);font-size:19px;text-transform:uppercase;color:#fff;}
+.cat-head .cn{font-size:12px;color:var(--muted);}
+.bars{margin-top:14px;display:flex;flex-direction:column;gap:8px;}
+.bar-row{display:flex;align-items:center;gap:12px;}
+.bar-label{width:230px;flex-shrink:0;font-size:13px;color:var(--ink);display:flex;align-items:center;gap:8px;min-width:0;}
+.bar-label img{width:20px;height:20px;object-fit:contain;flex-shrink:0;}
+.bar-label .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.bar-track{flex:1;height:10px;background:var(--panel3);border-radius:5px;overflow:hidden;}
+.bar-fill{height:100%;background:var(--tc,var(--champion));border-radius:5px;}
+.bar-pct{width:80px;flex-shrink:0;text-align:right;font-size:12px;color:var(--sub);font-variant-numeric:tabular-nums;}
+.empty-note{margin-top:14px;font-size:13px;color:var(--muted);}
+
+.free-wall{margin-top:14px;display:flex;flex-direction:column;gap:8px;}
+.free-item{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:13.5px;}
+.free-item b{color:var(--sub);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.03em;margin-right:8px;}
+
+.subs{margin-top:44px;padding-top:24px;border-top:1px solid var(--line);}
+.subs h2{font-family:var(--disp);font-size:20px;text-transform:uppercase;color:#fff;}
+.sub-list{margin-top:16px;display:flex;flex-direction:column;gap:8px;}
+details.sub-item{background:var(--panel2);border:1px solid var(--line);border-radius:8px;}
+details.sub-item summary{cursor:pointer;padding:12px 16px;font-size:13.5px;color:#fff;font-weight:600;
+  display:flex;justify-content:space-between;gap:10px;list-style:none;}
+details.sub-item summary::-webkit-details-marker{display:none;}
+details.sub-item summary .when{color:var(--muted);font-weight:400;font-size:11.5px;}
+.sub-picks{padding:0 16px 14px;font-size:12.5px;color:var(--sub);line-height:1.9;}
+.sub-picks b{color:var(--ink);}
+
+.loading, .no-data{margin-top:24px;color:var(--muted);font-size:13.5px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="masthead">
+    <div class="brand">Predictions Ligue <span>1</span></div>
+    <a class="back" href="predis-indiv.html">← Retour</a>
+  </div>
+  <h1>Tendances</h1>
+  <p class="meta" id="meta">Chargement des pronostics soumis…</p>
+
+  <div id="content"></div>
+
+  <div class="subs">
+    <h2>Toutes les soumissions</h2>
+    <div class="sub-list" id="sub-list"></div>
+  </div>
+</div>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyB8F5baV8T6qq4gWiz0cbAkhAYli4Lyips",
+  authDomain: "predi-l1.firebaseapp.com",
+  projectId: "predi-l1",
+  storageBucket: "predi-l1.firebasestorage.app",
+  messagingSenderId: "15010416982",
+  appId: "1:15010416982:web:1e2b1834ffac4f2607aef7",
+  measurementId: "G-FV2JC1TZ9Y"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const SUBMIT_COLLECTION = 'predis-indiv-2026-27';
+
+const CLUB_META = [
+  {id:'psg', name:'Paris Saint-Germain', logo:'logos/PSG.png'},
+  {id:'rcl', name:'RC Lens', logo:'logos/RCL.png'},
+  {id:'losc', name:'LOSC Lille', logo:'logos/LOSC.svg'},
+  {id:'ol', name:'Olympique Lyonnais', logo:'logos/OL.png'},
+  {id:'om', name:'Olympique de Marseille', logo:'logos/OM.png'},
+  {id:'srfc', name:'Stade Rennais', logo:'logos/SRFC.svg'},
+  {id:'asm', name:'AS Monaco', logo:'logos/ASM.png'},
+  {id:'rcsa', name:'RC Strasbourg', logo:'logos/RCSA.png'},
+  {id:'fcl', name:'FC Lorient', logo:'logos/FCL.svg'},
+  {id:'tfc', name:'Toulouse FC', logo:'logos/TFC.png'},
+  {id:'pfc', name:'Paris FC', logo:'logos/PFC.svg'},
+  {id:'sb29', name:'Stade Brestois 29', logo:'logos/SB29.png'},
+  {id:'sco', name:'Angers SCO', logo:'logos/SCO.png'},
+  {id:'hac', name:'Le Havre AC', logo:'logos/HAC.svg'},
+  {id:'aja', name:'AJ Auxerre', logo:'logos/AJA.svg'},
+  {id:'ogcn', name:'OGC Nice', logo:'logos/OGCN.png'},
+  {id:'estac', name:'ESTAC Troyes', logo:'logos/ESTAC.png'},
+  {id:'lm', name:'Le Mans FC', logo:'logos/LM.svg'},
+];
+const CLUB_BY_ID = Object.fromEntries(CLUB_META.map(c => [c.id, c]));
+
+const CATEGORIES = [
+  {id:'buteur',     label:'Meilleur buteur',    kind:'player', c:'var(--ucl)'},
+  {id:'passeur',    label:'Meilleur passeur',   kind:'player', c:'var(--uel)'},
+  {id:'mvp',        label:'MVP de la saison',   kind:'player', c:'var(--champion)'},
+  {id:'revelation', label:'Révélation',         kind:'player', c:'var(--uecl)'},
+  {id:'deception',  label:'Déception',          kind:'player', c:'var(--wild)'},
+  {id:'top',        label:'Top de la saison',   kind:'mixed', c:'var(--warn)'},
+  {id:'flop',       label:'Flop de la saison',  kind:'mixed', c:'var(--danger)'},
+  {id:'libre',      label:'Prédictions libres', kind:'free', c:'var(--mid)'},
+];
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+function pickLabel(p){
+  const club = p.clubId ? CLUB_BY_ID[p.clubId] : null;
+  const suffix = p.kind === 'coach' ? ' (entraîneur)' : p.kind === 'club' ? ' (équipe)' : '';
+  return `${p.name}${club ? ' · ' + club.name : ''}${suffix}`;
+}
+function pickMedia(p){
+  const club = p.clubId ? CLUB_BY_ID[p.clubId] : null;
+  return club ? `<img src="${club.logo}" alt="">` : '';
+}
+
+async function main(){
+  let docs;
+  try{
+    const snap = await db.collection(SUBMIT_COLLECTION).get();
+    docs = snap.docs.map(d => d.data());
+  }catch(e){
+    document.getElementById('meta').textContent = 'Impossible de charger les données (' + e.message + ').';
+    return;
+  }
+
+  const meta = document.getElementById('meta');
+  if (!docs.length){
+    meta.textContent = 'Aucune soumission pour le moment.';
+    document.getElementById('content').innerHTML = '<p class="no-data">Reviens quand des pronostics auront été soumis.</p>';
+    return;
+  }
+  meta.textContent = `${docs.length} soumission${docs.length > 1 ? 's' : ''} au total.`;
+
+  const content = document.getElementById('content');
+  content.innerHTML = '';
+
+  CATEGORIES.forEach(cat => {
+    const block = document.createElement('div');
+    block.className = 'cat-block';
+
+    if (cat.kind === 'free'){
+      const items = [];
+      docs.forEach(d => {
+        (d.picks && d.picks[cat.id] || []).forEach(text => items.push({text, pseudo: d.pseudo}));
+      });
+      block.innerHTML = `<div class="cat-head" style="--tc:${cat.c}"><span class="ct">${cat.label}</span><span class="cn">${items.length} réponse${items.length>1?'s':''}</span></div>`;
+      if (items.length){
+        const wall = document.createElement('div');
+        wall.className = 'free-wall';
+        wall.innerHTML = items.map(it => `<div class="free-item"><b>${escapeHtml(it.pseudo)}</b>${escapeHtml(it.text)}</div>`).join('');
+        block.appendChild(wall);
+      } else {
+        block.innerHTML += '<p class="empty-note">Personne n\'a encore ajouté de prédiction libre.</p>';
+      }
+      content.appendChild(block);
+      return;
+    }
+
+    const counts = {};
+    let total = 0;
+    docs.forEach(d => {
+      const p = d.picks && d.picks[cat.id];
+      if (!p) return;
+      total++;
+      const key = p.kind + '|' + p.name + '|' + (p.clubId || '');
+      if (!counts[key]) counts[key] = {p, n:0};
+      counts[key].n++;
+    });
+    block.innerHTML = `<div class="cat-head" style="--tc:${cat.c}"><span class="ct">${cat.label}</span><span class="cn">${total} réponse${total>1?'s':''}</span></div>`;
+    const entries = Object.values(counts).sort((a,b) => b.n - a.n).slice(0, 10);
+    if (entries.length){
+      const bars = document.createElement('div');
+      bars.className = 'bars';
+      bars.innerHTML = entries.map(({p,n}) => {
+        const pct = total ? Math.round(n/total*100) : 0;
+        return `<div class="bar-row" style="--tc:${cat.c}">
+            <div class="bar-label">${pickMedia(p)}<span class="nm">${escapeHtml(pickLabel(p))}</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+            <div class="bar-pct">${pct}% (${n})</div>
+          </div>`;
+      }).join('');
+      block.appendChild(bars);
+    } else {
+      block.innerHTML += '<p class="empty-note">Personne n\'a encore répondu sur cette catégorie.</p>';
+    }
+    content.appendChild(block);
+  });
+
+  const subList = document.getElementById('sub-list');
+  const sorted = [...docs].sort((a,b) => (a.pseudo||'').localeCompare(b.pseudo||''));
+  subList.innerHTML = sorted.map(d => {
+    const when = d.updatedAt && d.updatedAt.toDate ? d.updatedAt.toDate().toLocaleString('fr-FR') : '';
+    const lines = CATEGORIES.map(cat => {
+      const p = d.picks && d.picks[cat.id];
+      if (!p) return '';
+      if (cat.kind === 'free'){
+        if (!p.length) return '';
+        return `<div><b>${cat.label}</b> : ${p.map(escapeHtml).join(' · ')}</div>`;
+      }
+      return `<div><b>${cat.label}</b> : ${escapeHtml(pickLabel(p))}</div>`;
+    }).join('');
+    return `<details class="sub-item">
+        <summary>${escapeHtml(d.pseudo || '?')}<span class="when">${when}</span></summary>
+        <div class="sub-picks">${lines || 'Aucun pronostic.'}</div>
+      </details>`;
+  }).join('');
+}
+main();
+</script>
+</body>
+</html>
