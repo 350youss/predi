@@ -1,11 +1,10 @@
 {
   "season": "2026-27",
-  "updated": "2026-08-16T19:18:24",
+  "updated": "2026-08-17T04:52:42",
   "clubs": [
     {
       "id": "psg",
       "name": "Paris Saint-Germain",
-      "coach": "Luis Enrique",
       "players": [
         {
           "name": "Matvey Safonov",
@@ -487,12 +486,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Luis Enrique"
     },
     {
       "id": "rcl",
       "name": "RC Lens",
-      "coach": "Dino Toppmöller",
       "players": [
         {
           "name": "Robin Risser",
@@ -878,12 +877,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Dino Toppmöller"
     },
     {
       "id": "losc",
       "name": "LOSC Lille",
-      "coach": "Davide Ancelotti",
       "players": [
         {
           "name": "Berke Özer",
@@ -1365,12 +1364,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Davide Ancelotti"
     },
     {
       "id": "ol",
       "name": "Olympique Lyonnais",
-      "coach": "Paulo Fonseca",
       "players": [
         {
           "name": "Dominik Greif",
@@ -1888,12 +1887,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Paulo Fonseca"
     },
     {
       "id": "om",
       "name": "Olympique de Marseille",
-      "coach": "Bruno Genesio",
       "players": [
         {
           "name": "Jeffrey de Lange",
@@ -2513,12 +2512,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Bruno Genesio"
     },
     {
       "id": "srfc",
       "name": "Stade Rennais FC",
-      "coach": "Franck Haise",
       "players": [
         {
           "name": "Brice Samba",
@@ -2964,12 +2963,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Franck Haise"
     },
     {
       "id": "asm",
       "name": "AS Monaco",
-      "coach": "Filipe Luís",
       "players": [
         {
           "name": "Philipp Köhn",
@@ -3481,12 +3480,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Filipe Luís"
     },
     {
       "id": "rcsa",
       "name": "RC Strasbourg",
-      "coach": "Hugo Oliveira",
       "players": [
         {
           "name": "Filip Jørgensen",
@@ -4016,12 +4015,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Hugo Oliveira"
     },
     {
       "id": "fcl",
       "name": "FC Lorient",
-      "coach": "Alexandre Dujeux",
       "players": [
         {
           "name": "Yvon Mvogo",
@@ -4467,12 +4466,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Alexandre Dujeux"
     },
     {
       "id": "tfc",
       "name": "Toulouse FC",
-      "coach": "Jens Berthel Askou",
       "players": [
         {
           "name": "Guillaume Restes",
@@ -5014,12 +5013,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Jens Berthel Askou"
     },
     {
       "id": "pfc",
       "name": "Paris FC",
-      "coach": "Liam Rosenior",
       "players": [
         {
           "name": "Obed Nkambadio",
@@ -5573,12 +5572,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Liam Rosenior"
     },
     {
       "id": "sb29",
       "name": "Stade Brestois 29",
-      "coach": "Julien Lachuer",
       "players": [
         {
           "name": "Grégoire Coudert",
@@ -5946,12 +5945,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Julien Lachuer"
     },
     {
       "id": "sco",
       "name": "Angers SCO",
-      "coach": "Stéphane Gilli",
       "players": [
         {
           "name": "Anthony Lopes",
@@ -6301,12 +6300,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Stéphane Gilli"
     },
     {
       "id": "hac",
       "name": "Le Havre AC",
-      "coach": "Didier Digard",
       "players": [
         {
           "name": "Mory Diaw",
@@ -6716,12 +6715,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Didier Digard"
     },
     {
       "id": "aja",
       "name": "AJ Auxerre",
-      "coach": "Will Still",
       "players": [
         {
           "name": "Mamadou Diop",
@@ -7227,12 +7226,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Will Still"
     },
     {
       "id": "ogcn",
       "name": "OGC Nice",
-      "coach": "Olivier Pantaloni",
       "players": [
         {
           "name": "Yehvann Diouf",
@@ -7744,12 +7743,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Olivier Pantaloni"
     },
     {
       "id": "estac",
       "name": "ESTAC Troyes",
-      "coach": "Stéphane Dumont",
       "players": [
         {
           "name": "Patrick Beach",
@@ -8141,12 +8140,12 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Stéphane Dumont"
     },
     {
       "id": "lm",
       "name": "Le Mans FC",
-      "coach": "Patrick Videira",
       "players": [
         {
           "name": "Nicolas Kocik",
@@ -8550,7 +8549,8 @@
           "posGroup": "ATT",
           "squad": "U17"
         }
-      ]
+      ],
+      "coach": "Patrick Videira"
     }
   ]
 }
