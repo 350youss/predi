@@ -169,6 +169,26 @@ body::before{
   background:var(--tc,var(--champion));color:#181205;border:none;border-radius:8px;padding:0 16px;cursor:pointer;flex-shrink:0;}
 .free-ic{width:34px;height:34px;border-radius:50%;background:var(--panel3);flex-shrink:0;
   display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--sub);}
+
+/* ---------------- pseudo ---------------- */
+.pseudo-gate{position:fixed;inset:0;background:var(--bg);z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;}
+.pseudo-card{width:100%;max-width:400px;background:var(--panel2);border:1px solid var(--line-strong);
+  border-top:3px solid var(--champion);padding:28px 26px;}
+.pg-title{font-family:var(--disp);font-size:24px;color:#fff;text-transform:uppercase;line-height:1.05;}
+.pg-sub{margin-top:10px;font-family:var(--body);font-size:13.5px;color:var(--sub);line-height:1.5;}
+.pseudo-input{margin-top:20px;width:100%;background:var(--panel);border:1.5px solid var(--line-strong);border-radius:8px;
+  padding:12px 14px;font-family:var(--body);font-size:15px;color:#fff;}
+.pseudo-input::placeholder{color:var(--muted);}
+.pseudo-input:focus{outline:none;border-color:var(--champion);}
+.pseudo-go{margin-top:12px;width:100%;font-family:var(--body);font-weight:700;font-size:13px;text-transform:uppercase;
+  letter-spacing:.03em;background:var(--champion);color:#241605;border:none;border-radius:8px;padding:13px;cursor:pointer;}
+.pseudo-go:hover{background:#eeb457;}
+.pseudo-err{margin-top:10px;font-family:var(--body);font-size:12px;color:var(--danger);display:none;}
+.pseudo-bar{display:flex;align-items:center;gap:8px;margin-top:14px;font-family:var(--body);font-size:12.5px;color:var(--sub);}
+.pseudo-bar b{color:#fff;font-weight:700;}
+.pseudo-switch{background:transparent;border:none;color:var(--sub);text-decoration:underline;font-family:var(--body);
+  font-size:12.5px;cursor:pointer;padding:0;}
+.pseudo-switch:hover{color:#fff;}
 </style>
 </head>
 <body>
@@ -196,6 +216,10 @@ body::before{
     </div>
   </div>
 
+  <div class="pseudo-bar" id="pseudo-bar" style="display:none">
+    Pronostics de <b id="pseudo-name"></b> · <button class="pseudo-switch" id="pseudo-switch">changer de pseudo</button>
+  </div>
+
   <div class="board" id="board"></div>
 
   <p class="legend" id="db-status"><b>Base de données</b> : chargement de l'effectif des 18 clubs…</p>
@@ -210,6 +234,16 @@ body::before{
     <div class="picker-kinds" id="picker-kinds"></div>
     <div class="picker-search-wrap"><input class="picker-search" id="picker-search" type="text" placeholder="Rechercher…" autocomplete="off"></div>
     <div class="picker-list" id="picker-list"></div>
+  </div>
+</div>
+
+<div class="pseudo-gate" id="pseudo-gate">
+  <div class="pseudo-card">
+    <div class="pg-title">Avant de commencer</div>
+    <p class="pg-sub">Choisis un pseudo pour retrouver tes pronostics à chaque visite sur cet appareil.</p>
+    <input type="text" class="pseudo-input" id="pseudo-input" placeholder="Ton pseudo" maxlength="24" autocomplete="off">
+    <div class="pseudo-err" id="pseudo-err">Entre au moins 2 caractères.</div>
+    <button class="pseudo-go" id="pseudo-go">C'est parti</button>
   </div>
 </div>
 
@@ -262,6 +296,62 @@ let PLAYERS_ALL = [];   // pro + B + U19 + U17, tous clubs
 let COACHES = [];       // {name, clubId}
 let picks = {};         // catId -> {kind:'player'|'club'|'coach', name, clubId, pos, squad}
 
+/* ---- pseudo : identifie la personne pour lui garder ses pronostics en mémoire ---- */
+let PSEUDO = '';
+function pseudoKey(p){
+  return 'predis-indiv:picks:' + p.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+}
+function loadPicksFor(p){
+  try{
+    const raw = localStorage.getItem(pseudoKey(p));
+    picks = raw ? JSON.parse(raw) : {};
+  }catch(e){ picks = {}; }
+}
+function persistPicks(){
+  if (!PSEUDO) return;
+  try{ localStorage.setItem(pseudoKey(PSEUDO), JSON.stringify(picks)); }catch(e){}
+}
+function showPseudoBar(){
+  document.getElementById('pseudo-name').textContent = PSEUDO;
+  document.getElementById('pseudo-bar').style.display = 'flex';
+}
+function enterAsPseudo(p){
+  PSEUDO = p;
+  try{ localStorage.setItem('predis-indiv:pseudo', p); }catch(e){}
+  loadPicksFor(p);
+  document.getElementById('pseudo-gate').style.display = 'none';
+  showPseudoBar();
+  render();
+}
+document.getElementById('pseudo-go').addEventListener('click', () => {
+  const input = document.getElementById('pseudo-input');
+  const v = input.value.trim();
+  const err = document.getElementById('pseudo-err');
+  if (v.length < 2){ err.style.display = 'block'; return; }
+  err.style.display = 'none';
+  enterAsPseudo(v);
+});
+document.getElementById('pseudo-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('pseudo-go').click();
+});
+document.getElementById('pseudo-switch').addEventListener('click', () => {
+  document.getElementById('pseudo-bar').style.display = 'none';
+  document.getElementById('pseudo-input').value = '';
+  document.getElementById('pseudo-err').style.display = 'none';
+  document.getElementById('pseudo-gate').style.display = 'flex';
+  document.getElementById('pseudo-input').focus();
+});
+(function initPseudo(){
+  let saved = '';
+  try{ saved = localStorage.getItem('predis-indiv:pseudo') || ''; }catch(e){}
+  if (saved){
+    enterAsPseudo(saved);
+  } else {
+    document.getElementById('pseudo-gate').style.display = 'flex';
+    setTimeout(() => document.getElementById('pseudo-input').focus(), 50);
+  }
+})();
+
 /* ---- chargement de la base de joueurs ---- */
 async function loadDB(){
   try{
@@ -289,6 +379,7 @@ async function loadDB(){
 
 /* ---- rendu du tableau ---- */
 function render(){
+  persistPicks();
   board.innerHTML = '';
   CATEGORIES.forEach(cat => {
     const row = document.createElement('div');
@@ -667,7 +758,6 @@ async function shareImage(){
 }
 document.getElementById('btn-share').addEventListener('click', shareImage);
 
-render();
 loadDB();
 </script>
 </body>
