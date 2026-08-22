@@ -11,6 +11,7 @@
 <link href="https://api.fontshare.com/v2/css?f[]=tanker@400&display=swap" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
 <style>
 :root{
   --bg:#0a0b0d; --panel:#131417; --panel2:#191a1e; --panel3:#1f2025;
@@ -65,13 +66,40 @@ details.sub-item summary .when{color:var(--muted);font-weight:400;font-size:11.5
 .sub-picks b{color:var(--ink);}
 
 .loading, .no-data{margin-top:24px;color:var(--muted);font-size:13.5px;}
+
+/* ---------------- login ---------------- */
+.login-gate{position:fixed;inset:0;background:var(--bg);z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;}
+.login-card{width:100%;max-width:360px;background:var(--panel2);border:1px solid var(--line-strong);
+  border-top:3px solid var(--champion);padding:28px 26px;}
+.login-title{font-family:var(--disp);font-size:22px;color:#fff;text-transform:uppercase;line-height:1.05;}
+.login-input{margin-top:14px;width:100%;background:var(--panel);border:1.5px solid var(--line-strong);border-radius:8px;
+  padding:11px 14px;font-family:var(--body);font-size:14px;color:#fff;}
+.login-input::placeholder{color:var(--muted);}
+.login-input:focus{outline:none;border-color:var(--champion);}
+.login-go{margin-top:12px;width:100%;font-family:var(--body);font-weight:700;font-size:13px;text-transform:uppercase;
+  letter-spacing:.03em;background:var(--champion);color:#241605;border:none;border-radius:8px;padding:12px;cursor:pointer;}
+.login-go:hover{background:#eeb457;}
+.login-err{margin-top:10px;font-family:var(--body);font-size:12px;color:var(--danger);display:none;}
+.logout{background:transparent;border:none;color:var(--sub);text-decoration:underline;font-family:var(--body);
+  font-size:12px;cursor:pointer;padding:0;margin-left:10px;}
+.logout:hover{color:#fff;}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="login-gate" id="login-gate">
+  <div class="login-card">
+    <div class="login-title">Accès privé</div>
+    <input type="email" class="login-input" id="login-email" placeholder="Email" autocomplete="username">
+    <input type="password" class="login-input" id="login-pass" placeholder="Mot de passe" autocomplete="current-password">
+    <div class="login-err" id="login-err">Identifiants incorrects.</div>
+    <button class="login-go" id="login-go">Se connecter</button>
+  </div>
+</div>
+
+<div class="wrap" id="app-wrap" style="display:none">
   <div class="masthead">
     <div class="brand">Predictions Ligue <span>1</span></div>
-    <a class="back" href="predis-indiv.html">← Retour</a>
+    <div><a class="back" href="predis-indiv.html">← Retour</a><button class="logout" id="logout">déconnexion</button></div>
   </div>
   <h1>Tendances</h1>
   <p class="meta" id="meta">Chargement des pronostics soumis…</p>
@@ -96,7 +124,40 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+const auth = firebase.auth();
 const SUBMIT_COLLECTION = 'predis-indiv-2026-27';
+
+/* ---- accès privé : Firebase Auth (email/mot de passe) ---- */
+const loginGate = document.getElementById('login-gate');
+const appWrap = document.getElementById('app-wrap');
+const loginErr = document.getElementById('login-err');
+
+document.getElementById('login-go').addEventListener('click', async () => {
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-pass').value;
+  loginErr.style.display = 'none';
+  try{
+    await auth.signInWithEmailAndPassword(email, pass);
+  }catch(e){
+    loginErr.textContent = 'Connexion impossible : ' + e.message;
+    loginErr.style.display = 'block';
+  }
+});
+document.getElementById('login-pass').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('login-go').click();
+});
+document.getElementById('logout').addEventListener('click', () => auth.signOut());
+
+auth.onAuthStateChanged(user => {
+  if (user){
+    loginGate.style.display = 'none';
+    appWrap.style.display = '';
+    main();
+  } else {
+    loginGate.style.display = 'flex';
+    appWrap.style.display = 'none';
+  }
+});
 
 const CLUB_META = [
   {id:'psg', name:'Paris Saint-Germain', logo:'logos/PSG.png'},
@@ -236,7 +297,6 @@ async function main(){
       </details>`;
   }).join('');
 }
-main();
 </script>
 </body>
 </html>

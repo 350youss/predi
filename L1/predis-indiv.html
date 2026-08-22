@@ -171,6 +171,7 @@ body::before{
   background:var(--tc,var(--champion));color:#181205;border:none;border-radius:8px;padding:0 16px;cursor:pointer;flex-shrink:0;}
 .free-ic{width:34px;height:34px;border-radius:50%;background:var(--panel3);flex-shrink:0;
   display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--sub);}
+.empty-note{font-family:var(--body);font-size:12.5px;color:var(--muted);}
 
 /* ---------------- pseudo ---------------- */
 .pseudo-gate{position:fixed;inset:0;background:var(--bg);z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;}
@@ -215,7 +216,7 @@ body::before{
       <button class="qbtn primary" id="btn-share">Partager</button>
       <button class="qbtn" id="btn-random"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="8" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="8" cy="16" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1.2" fill="currentColor" stroke="none"/></svg>Hasard</button>
       <button class="qbtn" id="btn-reset">Reset</button>
-      <button class="qbtn primary" id="btn-submit" style="display:none">Soumettre</button>
+      <button class="qbtn primary" id="btn-submit">Soumettre</button>
     </div>
   </div>
 
@@ -443,6 +444,8 @@ function renderSlot(slotEl, cat, pick){
   slotEl.querySelector('.pick-filled').addEventListener('click', () => openPicker(cat));
 }
 
+const FREE_MAX = 3;
+
 function renderFreeSlot(slotEl, cat, entries){
   entries = entries || [];
   const items = entries.map((text, i) => `
@@ -451,12 +454,14 @@ function renderFreeSlot(slotEl, cat, entries){
         <span class="pf-info"><span class="pf-name">${escapeHtml(text)}</span><span class="pf-meta">Prédiction libre</span></span>
         <button class="pick-remove" aria-label="Retirer" data-i="${i}">×</button>
       </div>`).join('');
-  slotEl.innerHTML = `<div class="free-list">${items}
-      <div class="pick-free" style="--tc:${cat.c}">
+  const canAddMore = entries.length < FREE_MAX;
+  const composer = canAddMore
+    ? `<div class="pick-free" style="--tc:${cat.c}">
         <input type="text" class="free-input" placeholder="${entries.length ? 'Ajouter une autre prédiction…' : 'Prédiction libre…'}" maxlength="80">
         <button class="free-save">Valider</button>
-      </div>
-    </div>`;
+      </div>`
+    : `<p class="empty-note">Maximum ${FREE_MAX} prédictions libres atteint.</p>`;
+  slotEl.innerHTML = `<div class="free-list">${items}${composer}</div>`;
   slotEl.querySelectorAll('.pick-remove').forEach(btn => {
     btn.addEventListener('click', e => {
       e.stopPropagation();
@@ -468,10 +473,12 @@ function renderFreeSlot(slotEl, cat, entries){
     });
   });
   const input = slotEl.querySelector('.free-input');
+  if (!input) return;
   const save = () => {
     const v = input.value.trim();
     if (!v) return;
     if (!picks[cat.id]) picks[cat.id] = [];
+    if (picks[cat.id].length >= FREE_MAX) return;
     picks[cat.id].push(v);
     render();
   };
@@ -778,9 +785,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const SUBMIT_COLLECTION = 'predis-indiv-2026-27';
 
-const isDev = new URLSearchParams(location.search).has('dev');
 const btnSubmit = document.getElementById('btn-submit');
-if (isDev) btnSubmit.style.display = '';
 
 btnSubmit.addEventListener('click', async () => {
   if (!PSEUDO){ showToast('Choisis d\'abord un pseudo.'); return; }
