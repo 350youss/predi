@@ -1,6 +1,6 @@
 {
   "season": "2026-27",
-  "updated": "2026-11-19T12:44:12",
+  "updated": "2026-11-20T12:33:41",
   "clubs": [
     {
       "id": "psg",
@@ -73,6 +73,12 @@
           "squad": "PRO"
         },
         {
+          "name": "David Boly",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
           "name": "Vitinha",
           "pos": "MDC",
           "posGroup": "MID",
@@ -115,12 +121,6 @@
           "squad": "PRO"
         },
         {
-          "name": "Bradley Barcola",
-          "pos": "AiG",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
           "name": "Mika Godts",
           "pos": "AiG",
           "posGroup": "ATT",
@@ -145,12 +145,6 @@
           "squad": "PRO"
         },
         {
-          "name": "Ibrahim Mbaye",
-          "pos": "AiD",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
           "name": "Ousmane Dembélé",
           "pos": "AC",
           "posGroup": "ATT",
@@ -163,7 +157,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Johnny Gaza",
+          "name": "Jean-François Thumarin",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "B"
+        },
+        {
+          "name": "Hakim Ahamed",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "B"
@@ -175,13 +175,25 @@
           "squad": "B"
         },
         {
+          "name": "Emeryc Mabandza Batantou",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Moussa Dosso",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
           "name": "Valentin Gogoua",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "B"
         },
         {
-          "name": "Kelhyan Chatelus",
+          "name": "Seif Taha",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "B"
@@ -217,6 +229,18 @@
           "squad": "B"
         },
         {
+          "name": "Kélyan Mendy",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
+          "name": "Salim Kabssouf",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
           "name": "Ayrton Victor",
           "pos": "MO",
           "posGroup": "MID",
@@ -235,8 +259,26 @@
           "squad": "B"
         },
         {
+          "name": "Mohamed Yahiatene",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
           "name": "Gaël N'Lundulu",
           "pos": "AiG",
+          "posGroup": "ATT",
+          "squad": "B"
+        },
+        {
+          "name": "Hugo Mahieu",
+          "pos": "AiG",
+          "posGroup": "ATT",
+          "squad": "B"
+        },
+        {
+          "name": "Igor Jevremovic",
+          "pos": "AC",
           "posGroup": "ATT",
           "squad": "B"
         },
@@ -253,7 +295,7 @@
           "squad": "U19"
         },
         {
-          "name": "Lukas Mounguenou",
+          "name": "Arthur Bar",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U19"
@@ -262,6 +304,18 @@
           "name": "Ilian Saleh",
           "pos": "GdB",
           "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Abdallah Benaired",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Axel Koukaba",
+          "pos": "DC",
+          "posGroup": "DEF",
           "squad": "U19"
         },
         {
@@ -325,6 +379,12 @@
           "squad": "U19"
         },
         {
+          "name": "Seydou Konaté",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
           "name": "Moïse Talanga",
           "pos": "MC",
           "posGroup": "MID",
@@ -340,12 +400,6 @@
           "name": "Edem Ghalleb",
           "pos": "MO",
           "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Adam Ayari",
-          "pos": "AiD",
-          "posGroup": "ATT",
           "squad": "U19"
         },
         {
@@ -403,33 +457,15 @@
           "squad": "U17"
         },
         {
-          "name": "Mathieu Petit Dol",
+          "name": "Hermance Mbongo",
           "pos": "D",
           "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Axel Koukaba",
-          "pos": "DC",
-          "posGroup": "DEF",
           "squad": "U17"
         },
         {
           "name": "Jordan Gervelain",
           "pos": "ArG",
           "posGroup": "DEF",
-          "squad": "U17"
-        },
-        {
-          "name": "Josué Dasilva",
-          "pos": "ArD",
-          "posGroup": "DEF",
-          "squad": "U17"
-        },
-        {
-          "name": "Seydou Konaté",
-          "pos": "MC",
-          "posGroup": "MID",
           "squad": "U17"
         },
         {
@@ -445,6 +481,12 @@
           "squad": "U17"
         },
         {
+          "name": "Claude-Eriel Tsamoukounou",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
           "name": "Ewan Polter",
           "pos": "MO",
           "posGroup": "MID",
@@ -452,6 +494,12 @@
         },
         {
           "name": "Élie Karim",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Jebril Doukkali",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "U17"
@@ -482,6 +530,12 @@
         },
         {
           "name": "Nathan Mboumba",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Kenzo Kana-Biyik",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
@@ -518,19 +572,19 @@
           "squad": "PRO"
         },
         {
-          "name": "Samson Baidoo",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
           "name": "Ismaëlo Ganiou",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
         },
         {
-          "name": "Nidal Celik",
+          "name": "Samson Baidoo",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
+          "name": "Jean-Clair Todibo",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -542,7 +596,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Jonathan Gradit",
+          "name": "Nidal Celik",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
+          "name": "Souleymane Sagnan",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -554,7 +614,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Souleymane Sagnan",
+          "name": "Jonathan Gradit",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -584,19 +644,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Andrija Bulatovic",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
           "name": "Yacine Titraoui",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
         },
         {
-          "name": "Amadou Haidara",
+          "name": "Andrija Bulatovic",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
@@ -608,8 +662,14 @@
           "squad": "PRO"
         },
         {
-          "name": "Mezian Mesloub",
+          "name": "Amadou Haidara",
           "pos": "MC",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
+          "name": "Mezian Mesloub",
+          "pos": "MO",
           "posGroup": "MID",
           "squad": "PRO"
         },
@@ -627,6 +687,12 @@
         },
         {
           "name": "Michal Skoras",
+          "pos": "AiG",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
+          "name": "Junior Kadile",
           "pos": "AiG",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -650,22 +716,10 @@
           "squad": "PRO"
         },
         {
-          "name": "Rayan Fofana",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
           "name": "Florian Sotoca",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
-        },
-        {
-          "name": "Alpha Diallo",
-          "pos": "MO",
-          "posGroup": "MID",
-          "squad": "B"
         },
         {
           "name": "Arthur Mogo Njimfo",
@@ -704,7 +758,7 @@
           "squad": "U19"
         },
         {
-          "name": "Christ Andy N'Zi",
+          "name": "Andy N'Zi",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
@@ -776,13 +830,37 @@
           "squad": "U19"
         },
         {
+          "name": "Noé Domgjoni",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Nawfel El Ouaroudi",
+          "pos": "AiD",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
           "name": "Seybou Konaté",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
         },
         {
+          "name": "Ilyes Grini",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
           "name": "Nael Manoir",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Isaac Domingo",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
@@ -800,6 +878,18 @@
           "squad": "U17"
         },
         {
+          "name": "Nolan Care",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Kylane Longuela",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
           "name": "Baptiste Brissez",
           "pos": "D",
           "posGroup": "MID",
@@ -812,7 +902,37 @@
           "squad": "U17"
         },
         {
-          "name": "Naël Sonko",
+          "name": "Nahel Achemaoui",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Malik Kanté",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Noham Himmich",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Batistu Cahuzac",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Valentino Jean Louis",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Andrea Mollet-Débève",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
@@ -824,13 +944,31 @@
           "squad": "U17"
         },
         {
-          "name": "Souleymane Bah",
-          "pos": "MC",
-          "posGroup": "MID",
+          "name": "Naël Sonko",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Sofiane Ojat",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Alek Farnabe",
+          "pos": "DC",
+          "posGroup": "DEF",
           "squad": "U17"
         },
         {
           "name": "Djibril Chambel",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Souleymane Bah",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
@@ -842,8 +980,32 @@
           "squad": "U17"
         },
         {
-          "name": "Khalil Stambouli",
+          "name": "Djibril Samb",
           "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Nathan Mawassa",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Léo Lagaize",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Yaya Kébé",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Khalil Stambouli",
+          "pos": "MO",
           "posGroup": "MID",
           "squad": "U17"
         },
@@ -854,13 +1016,13 @@
           "squad": "U17"
         },
         {
-          "name": "Noa Fequet",
-          "pos": "AC",
+          "name": "Yanis Niakaté",
+          "pos": "AiD",
           "posGroup": "ATT",
           "squad": "U17"
         },
         {
-          "name": "Ilyes Grini",
+          "name": "Noa Fequet",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
@@ -876,9 +1038,21 @@
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
+        },
+        {
+          "name": "Lisien Pita",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Noham Pailler-Bogat",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
         }
       ],
-      "coach": "Dino Toppmöller"
+      "coach": "Didier Digard"
     },
     {
       "id": "losc",
@@ -891,7 +1065,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Arnaud Bodart",
+          "name": "Orlando Gill",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "PRO"
@@ -921,12 +1095,6 @@
           "squad": "PRO"
         },
         {
-          "name": "Ousmane Touré",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
           "name": "Romain Perraud",
           "pos": "ArG",
           "posGroup": "DEF",
@@ -951,6 +1119,12 @@
           "squad": "PRO"
         },
         {
+          "name": "Maxima Goffi",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
           "name": "Ngal'ayel Mukau",
           "pos": "MDC",
           "posGroup": "MID",
@@ -969,7 +1143,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Ayyoub Bouaddi",
+          "name": "Maurits Kjærgaard",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
@@ -981,19 +1155,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Félix Correia",
+          "name": "Başar Önal",
           "pos": "AiG",
           "posGroup": "ATT",
           "squad": "PRO"
         },
         {
           "name": "Osame Sahraoui",
-          "pos": "AiG",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
-          "name": "Başar Önal",
           "pos": "AiG",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -1011,19 +1179,13 @@
           "squad": "PRO"
         },
         {
+          "name": "Dilane Bakwa",
+          "pos": "AiD",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
           "name": "Ethan Mbappé",
-          "pos": "AiD",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
-          "name": "Marius Broholm",
-          "pos": "AiD",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
-          "name": "Noah Edjouma",
           "pos": "AiD",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -1035,19 +1197,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Matias Fernandez-Pardo",
+          "name": "Ayase Ueda",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
         },
         {
           "name": "Hamza Igamane",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
-          "name": "Mohamed Bayo",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -1077,8 +1233,20 @@
           "squad": "B"
         },
         {
-          "name": "Maxima Goffi",
+          "name": "Hamadi Kebe",
           "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Thato Sibiya",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Brahim Mokhtari",
+          "pos": "ArD",
           "posGroup": "DEF",
           "squad": "B"
         },
@@ -1090,6 +1258,12 @@
         },
         {
           "name": "Kamel Hamidi",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
+          "name": "Elias Hadiri",
           "pos": "MDC",
           "posGroup": "MID",
           "squad": "B"
@@ -1107,16 +1281,16 @@
           "squad": "B"
         },
         {
-          "name": "Angel Yondjo Matah",
-          "pos": "AC",
+          "name": "Ismaël Camara",
+          "pos": "AiG",
           "posGroup": "ATT",
           "squad": "B"
         },
         {
-          "name": "Thomas Sajous",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U19"
+          "name": "Angel Yondjo",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "B"
         },
         {
           "name": "Zadig Lanssade",
@@ -1131,7 +1305,19 @@
           "squad": "U19"
         },
         {
-          "name": "Béni Bokwala",
+          "name": "Justin Lacourtablaise",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Raphaël Mallong",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Hacène Zaanane",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U19"
@@ -1149,7 +1335,13 @@
           "squad": "U19"
         },
         {
-          "name": "Hamadi Kebe",
+          "name": "Owen Konama",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Kassim Nyabenda",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
@@ -1161,8 +1353,8 @@
           "squad": "U19"
         },
         {
-          "name": "Brahim Mokhtari",
-          "pos": "ArD",
+          "name": "Marc-Antoine Kouadio",
+          "pos": "ArG",
           "posGroup": "DEF",
           "squad": "U19"
         },
@@ -1173,8 +1365,14 @@
           "squad": "U19"
         },
         {
-          "name": "Elias Hadiri",
-          "pos": "MDC",
+          "name": "Emrick Bombo",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Redouane El Moussati",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
@@ -1185,20 +1383,44 @@
           "squad": "U19"
         },
         {
-          "name": "Saad Boussadia",
+          "name": "Keziah Moreira",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Yann Ndzana",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Raphaël Coulibaly",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Yllian Es Souissi",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Yéli Traoré",
-          "pos": "AiG",
+          "name": "Parfait Coulibaly",
+          "pos": "AiD",
           "posGroup": "ATT",
           "squad": "U19"
         },
         {
-          "name": "Ismaël Camara",
-          "pos": "AiG",
+          "name": "Amin Dabbabi",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Evrack Nkounkou",
+          "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
         },
@@ -1210,6 +1432,12 @@
         },
         {
           "name": "Aissam Guira",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Lucas Muamba",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
@@ -1227,69 +1455,57 @@
           "squad": "U17"
         },
         {
-          "name": "Gabriel Lafarge",
+          "name": "Téo Rodriguez",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Andy M'Biandji",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Emrick Bombo",
+          "name": "Moussa Diomandé",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
           "name": "Bilal Coulibaly",
-          "pos": "D",
-          "posGroup": "MID",
+          "pos": "DC",
+          "posGroup": "DEF",
           "squad": "U17"
         },
         {
-          "name": "Owen Konama",
-          "pos": "D",
-          "posGroup": "MID",
+          "name": "Béni Bokwala",
+          "pos": "DC",
+          "posGroup": "DEF",
           "squad": "U17"
         },
         {
-          "name": "Marc-Antoine Kouadio",
-          "pos": "D",
-          "posGroup": "MID",
+          "name": "Roméo Tenza",
+          "pos": "DC",
+          "posGroup": "DEF",
           "squad": "U17"
         },
         {
-          "name": "Lougy Lisombo",
-          "pos": "D",
-          "posGroup": "MID",
+          "name": "Jean Dieng",
+          "pos": "DC",
+          "posGroup": "DEF",
           "squad": "U17"
         },
         {
-          "name": "Raphaël Mallong",
-          "pos": "D",
-          "posGroup": "MID",
+          "name": "Ibrahim Doucouré",
+          "pos": "DC",
+          "posGroup": "DEF",
           "squad": "U17"
         },
         {
-          "name": "Yann Ndzana",
-          "pos": "D",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Kassim Nyabenda",
-          "pos": "D",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Hacène Zaanane",
-          "pos": "D",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Redouane El Moussati",
-          "pos": "MC",
-          "posGroup": "MID",
+          "name": "Gabriel Lafarge",
+          "pos": "ArG",
+          "posGroup": "DEF",
           "squad": "U17"
         },
         {
@@ -1299,39 +1515,51 @@
           "squad": "U17"
         },
         {
-          "name": "Yllian Es Souissi",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Keziah Moreira",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
           "name": "Bassekou Fofana",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Noham Ngongolo",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Hoham N'Gongolo",
+          "name": "Issah Bemba",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Amin Dabbabi",
-          "pos": "AC",
-          "posGroup": "ATT",
+          "name": "Daniel Okamba Okamba",
+          "pos": "MC",
+          "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Evrack Nkounkou",
-          "pos": "AC",
-          "posGroup": "ATT",
+          "name": "Djibril Djerroumi",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Mohamed Kebe",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Souheil El Fidahi",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Eden Yoro",
+          "pos": "MO",
+          "posGroup": "MID",
           "squad": "U17"
         },
         {
@@ -1347,19 +1575,37 @@
           "squad": "U17"
         },
         {
-          "name": "Evhan Krause",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U17"
-        },
-        {
-          "name": "Lucas Muamba",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U17"
-        },
-        {
           "name": "Léo Quercia",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Aaron Benteo",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Ethan Ewané",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Isaac Cherraba",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Imrane Mehroug",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Adam Van Rooy",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
@@ -1420,12 +1666,6 @@
           "squad": "PRO"
         },
         {
-          "name": "Duje Caleta-Car",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
           "name": "Clinton Mata",
           "pos": "DC",
           "posGroup": "DEF",
@@ -1456,12 +1696,6 @@
           "squad": "PRO"
         },
         {
-          "name": "Ainsley Maitland-Niles",
-          "pos": "ArD",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
           "name": "Steeve Kango",
           "pos": "ArD",
           "posGroup": "DEF",
@@ -1480,14 +1714,14 @@
           "squad": "PRO"
         },
         {
-          "name": "Mathys de Carvalho",
+          "name": "Paul Akouokou",
           "pos": "MDC",
           "posGroup": "MID",
           "squad": "PRO"
         },
         {
-          "name": "Paul Akouokou",
-          "pos": "MDC",
+          "name": "Mads Bidstrup",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
         },
@@ -1498,7 +1732,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Mads Bidstrup",
+          "name": "Noah Nartey",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
@@ -1510,25 +1744,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Mahamadou Diawara",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
           "name": "Pavel Sulc",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "PRO"
         },
         {
-          "name": "Noah Nartey",
-          "pos": "MO",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
-          "name": "Malick Fofana",
+          "name": "Keito Nakamura",
           "pos": "AiG",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -1588,8 +1810,26 @@
           "squad": "B"
         },
         {
-          "name": "Yacine Chaib",
-          "pos": "ArG",
+          "name": "Ismaël Jabateh",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Bénit Mukwabango",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Melvyn Otobo",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Amayo Seyo",
+          "pos": "DC",
           "posGroup": "DEF",
           "squad": "B"
         },
@@ -1601,6 +1841,12 @@
         },
         {
           "name": "Boubakar Diarra",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Angel García",
           "pos": "ArG",
           "posGroup": "DEF",
           "squad": "B"
@@ -1619,12 +1865,6 @@
         },
         {
           "name": "Pierre Dorival",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "B"
-        },
-        {
-          "name": "Fallou Fall",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "B"
@@ -1660,19 +1900,7 @@
           "squad": "B"
         },
         {
-          "name": "Yannis Lagha",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "B"
-        },
-        {
           "name": "Ibrahima Fall",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "B"
-        },
-        {
-          "name": "Nathanaël Beta",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "B"
@@ -1714,12 +1942,6 @@
           "squad": "U19"
         },
         {
-          "name": "Melvyn Otobo",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "U19"
-        },
-        {
           "name": "Nolan Velut",
           "pos": "DC",
           "posGroup": "DEF",
@@ -1732,8 +1954,8 @@
           "squad": "U19"
         },
         {
-          "name": "Angel García",
-          "pos": "ArG",
+          "name": "Félix Onana",
+          "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
         },
@@ -1752,6 +1974,18 @@
         {
           "name": "Edwin Titalom Penka",
           "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Aaron Trincat",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Amine Lazrak",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
@@ -1781,6 +2015,18 @@
         },
         {
           "name": "Djibril Merouani",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Hedi Chekhab",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Ousmane Fofana",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "U19"
@@ -1828,6 +2074,24 @@
           "squad": "U17"
         },
         {
+          "name": "Noam Bora",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Ethan Leveneur",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Gabriel Nil",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
           "name": "Lylian Di Nota",
           "pos": "DC",
           "posGroup": "DEF",
@@ -1840,14 +2104,38 @@
           "squad": "U17"
         },
         {
-          "name": "Rayhan Hajjari",
-          "pos": "MDC",
-          "posGroup": "MID",
+          "name": "Elie-Kenoly Nzau",
+          "pos": "DC",
+          "posGroup": "DEF",
           "squad": "U17"
         },
         {
-          "name": "Mohamed Yacin Meguenni",
-          "pos": "MC",
+          "name": "Théo Petan Ranguin",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Yanis Bah Girondin",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Rubio Berliat",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Nizard Ahmed Moussa",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Rayhan Hajjari",
+          "pos": "MDC",
           "posGroup": "MID",
           "squad": "U17"
         },
@@ -1858,19 +2146,49 @@
           "squad": "U17"
         },
         {
-          "name": "Aaron Trincat",
+          "name": "Emany Mayulu",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Hedi Chekhab",
-          "pos": "MO",
+          "name": "Naïm Adjimi",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Hedi Chekhab",
+          "name": "Yakup Özkul",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Ali Bounia",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Imrane Fiadh",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Farès Tracol",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Eden Cherki",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Mohamed Yacin Meguenni",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "U17"
@@ -1886,9 +2204,45 @@
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
+        },
+        {
+          "name": "Yaden N'Guessan",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Ilan Khadraoui",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Khalil Mahichi",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Eden Salaï",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Souleymane Diallo",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Idriss Rout",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
         }
       ],
-      "coach": "Paulo Fonseca"
+      "coach": "Carlos Vicens"
     },
     {
       "id": "om",
@@ -1901,21 +2255,15 @@
           "squad": "PRO"
         },
         {
-          "name": "Jelle Van Neck",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "PRO"
-        },
-        {
           "name": "Théo Vermot",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "PRO"
         },
         {
-          "name": "Leonardo Balerdi",
-          "pos": "DC",
-          "posGroup": "DEF",
+          "name": "Jelle Van Neck",
+          "pos": "GdB",
+          "posGroup": "GK",
           "squad": "PRO"
         },
         {
@@ -1955,6 +2303,24 @@
           "squad": "PRO"
         },
         {
+          "name": "Alexi Koum",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
+          "name": "Timothy Weah",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
+          "name": "Kelyann Bezahaf",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
           "name": "Pierre-Emile Højbjerg",
           "pos": "MDC",
           "posGroup": "MID",
@@ -1973,14 +2339,8 @@
           "squad": "PRO"
         },
         {
-          "name": "Quinten Timber",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
-          "name": "Timothy Weah",
-          "pos": "MD",
+          "name": "Nouhoum Kamissoko",
+          "pos": "MDC",
           "posGroup": "MID",
           "squad": "PRO"
         },
@@ -2003,12 +2363,6 @@
           "squad": "PRO"
         },
         {
-          "name": "Amine Harit",
-          "pos": "AiG",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
           "name": "Tadjidine Mmadi",
           "pos": "AiG",
           "posGroup": "ATT",
@@ -2016,6 +2370,12 @@
         },
         {
           "name": "Keyliane Abdallah",
+          "pos": "AiD",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
+          "name": "Amine Harit",
           "pos": "AiD",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -2040,24 +2400,6 @@
         },
         {
           "name": "Ibrahim Gomis",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "B"
-        },
-        {
-          "name": "Théo Vermot",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "B"
-        },
-        {
-          "name": "Jelle Van Neck",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "B"
-        },
-        {
-          "name": "Yassine Badaoui",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "B"
@@ -2129,25 +2471,25 @@
           "squad": "B"
         },
         {
-          "name": "Mathis Clément",
-          "pos": "ArD",
-          "posGroup": "DEF",
-          "squad": "B"
-        },
-        {
           "name": "Kelyann Bezahaf",
           "pos": "ArD",
           "posGroup": "DEF",
           "squad": "B"
         },
         {
-          "name": "Soumaïla Traoré",
-          "pos": "MDC",
-          "posGroup": "MID",
+          "name": "Mathis Clément",
+          "pos": "ArD",
+          "posGroup": "DEF",
           "squad": "B"
         },
         {
-          "name": "Nouhoum Kamissoko",
+          "name": "Lucas Daubenfeld",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Soumaïla Traoré",
           "pos": "MDC",
           "posGroup": "MID",
           "squad": "B"
@@ -2171,6 +2513,12 @@
           "squad": "B"
         },
         {
+          "name": "Adam El Boughlamy",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
           "name": "Victor Joseph",
           "pos": "MO",
           "posGroup": "MID",
@@ -2189,15 +2537,9 @@
           "squad": "B"
         },
         {
-          "name": "Jephthe Malanda",
+          "name": "Jephthé Malanda",
           "pos": "MO",
           "posGroup": "MID",
-          "squad": "B"
-        },
-        {
-          "name": "Ange Lago",
-          "pos": "AC",
-          "posGroup": "ATT",
           "squad": "B"
         },
         {
@@ -2226,18 +2568,6 @@
         },
         {
           "name": "Ivan Guemdani",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U19"
-        },
-        {
-          "name": "Pablo Rigal",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U19"
-        },
-        {
-          "name": "Ayman Ibrahim",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U19"
@@ -2279,13 +2609,19 @@
           "squad": "U19"
         },
         {
-          "name": "Raïs Ali",
+          "name": "Kenzo Brignone",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
         },
         {
-          "name": "Kahéne Gomis",
+          "name": "Gaëtan Cesarini",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Kahène Gomis",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
@@ -2315,12 +2651,6 @@
           "squad": "U19"
         },
         {
-          "name": "Adama Camara",
-          "pos": "ArD",
-          "posGroup": "DEF",
-          "squad": "U19"
-        },
-        {
           "name": "Kaïs Ali",
           "pos": "MDC",
           "posGroup": "MID",
@@ -2345,12 +2675,6 @@
           "squad": "U19"
         },
         {
-          "name": "Adam El Boughlamy",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
           "name": "Bradley Levy",
           "pos": "MC",
           "posGroup": "MID",
@@ -2363,19 +2687,19 @@
           "squad": "U19"
         },
         {
-          "name": "Kilian Ghaud",
-          "pos": "MO",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Marlon Pineau",
+          "name": "Samy Bedja",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
           "name": "Kalvin André",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Waël Basri",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "U19"
@@ -2393,6 +2717,12 @@
           "squad": "U19"
         },
         {
+          "name": "Joshua Kavoka",
+          "pos": "AiG",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
           "name": "Azhar Ali",
           "pos": "AiD",
           "posGroup": "ATT",
@@ -2405,7 +2735,7 @@
           "squad": "U19"
         },
         {
-          "name": "Joshua Kavoka",
+          "name": "Wesley Boli",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
@@ -2417,9 +2747,27 @@
           "squad": "U17"
         },
         {
-          "name": "Gaëtan Cesarini",
-          "pos": "DC",
-          "posGroup": "DEF",
+          "name": "Samuel Allaoui",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Nolan Audibert-Sungu",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Rémi Sery",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Isaac Mohamed Iman",
+          "pos": "D",
+          "posGroup": "MID",
           "squad": "U17"
         },
         {
@@ -2430,6 +2778,24 @@
         },
         {
           "name": "Lorenzo Reimão",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Kodjo Félicie-Dellan",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Kiyan Martin",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Eyden Cardillo",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U17"
@@ -2447,13 +2813,13 @@
           "squad": "U17"
         },
         {
-          "name": "Enzo Makumba",
-          "pos": "ArD",
+          "name": "Ziryab Benkoukouh",
+          "pos": "ArG",
           "posGroup": "DEF",
           "squad": "U17"
         },
         {
-          "name": "Saïfi Assoumani",
+          "name": "Enzo Makumba",
           "pos": "ArD",
           "posGroup": "DEF",
           "squad": "U17"
@@ -2465,7 +2831,19 @@
           "squad": "U17"
         },
         {
-          "name": "Ishac Ouarghi",
+          "name": "Saïfi Assoumani",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Kelian Magangu",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Tony Avella",
           "pos": "MDC",
           "posGroup": "MID",
           "squad": "U17"
@@ -2477,14 +2855,8 @@
           "squad": "U17"
         },
         {
-          "name": "Janvier Donayre",
-          "pos": "MD",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Samy Bedja",
-          "pos": "MO",
+          "name": "Issa Sidibé",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
@@ -2495,19 +2867,43 @@
           "squad": "U17"
         },
         {
+          "name": "Leny Hassouni",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
           "name": "Esteban Thomoux",
-          "pos": "AiD",
+          "pos": "AiG",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Lhéandre Durand",
+          "pos": "AiG",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Kays El Mouttaqui",
+          "pos": "AiG",
           "posGroup": "ATT",
           "squad": "U17"
         },
         {
           "name": "Eliès Diallo",
-          "pos": "AC",
+          "pos": "AiD",
           "posGroup": "ATT",
           "squad": "U17"
         },
         {
           "name": "Edson Mbengi",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Karim Djabbour",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
@@ -2544,7 +2940,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Lilian Brassier",
+          "name": "Abdelhamid Ait Boudlal",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -2556,25 +2952,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Abdelhamid Ait Boudlal",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
-          "name": "Alidu Seidu",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
           "name": "Gonçalo Oliveira",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
-          "name": "Jonathan Do Marcolino",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -2604,8 +2982,8 @@
           "squad": "PRO"
         },
         {
-          "name": "Jordan James",
-          "pos": "MC",
+          "name": "Valentin Rongier",
+          "pos": "MDC",
           "posGroup": "MID",
           "squad": "PRO"
         },
@@ -2617,18 +2995,6 @@
         },
         {
           "name": "Djaoui Cissé",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
-          "name": "Seko Fofana",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
-          "name": "Valentin Rongier",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
@@ -2646,13 +3012,19 @@
           "squad": "PRO"
         },
         {
-          "name": "Sebastian Szymanski",
+          "name": "Sebastian Szymański",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "PRO"
         },
         {
           "name": "Ayanda Sishuba",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
+          "name": "Henrick Do Marcolino",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "PRO"
@@ -2694,13 +3066,19 @@
           "squad": "PRO"
         },
         {
-          "name": "Breel Embolo",
+          "name": "Boulaye Dia",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
         },
         {
-          "name": "Ayoub Akabou",
+          "name": "Yohann Bopaka",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "B"
+        },
+        {
+          "name": "Thâo Mouapa Mwa Meuraillo",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "B"
@@ -2760,12 +3138,6 @@
           "squad": "B"
         },
         {
-          "name": "Diego Coutadeur",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "B"
-        },
-        {
           "name": "Steeve Mvodo Mvodo",
           "pos": "MO",
           "posGroup": "MID",
@@ -2778,13 +3150,19 @@
           "squad": "B"
         },
         {
-          "name": "Henrick Do Marcolino",
-          "pos": "MO",
-          "posGroup": "MID",
+          "name": "Melvin Jambry",
+          "pos": "AiG",
+          "posGroup": "ATT",
           "squad": "B"
         },
         {
-          "name": "Melvin Jambry",
+          "name": "Kelvin Dongopandji",
+          "pos": "AiG",
+          "posGroup": "ATT",
+          "squad": "B"
+        },
+        {
+          "name": "Mouhammad Valmy",
           "pos": "AiG",
           "posGroup": "ATT",
           "squad": "B"
@@ -2808,21 +3186,39 @@
           "squad": "B"
         },
         {
-          "name": "Kelvin Dongopandji",
+          "name": "Boukary Coulibaly",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "B"
         },
         {
-          "name": "Thâo Mouapa Mwa Meuraillo",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U19"
+          "name": "Alassane Niang",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "B"
         },
         {
           "name": "Jules Simon",
           "pos": "GdB",
           "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Noé Degouey",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Abdoulaye Bamba",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Nathan Guillemain",
+          "pos": "D",
+          "posGroup": "MID",
           "squad": "U19"
         },
         {
@@ -2880,6 +3276,18 @@
           "squad": "U19"
         },
         {
+          "name": "Curtis Nouvi",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Ilyes Zamoum",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
           "name": "Noah Loufoundou",
           "pos": "MC",
           "posGroup": "MID",
@@ -2904,12 +3312,6 @@
           "squad": "U19"
         },
         {
-          "name": "Mouhammad Valmy",
-          "pos": "AiG",
-          "posGroup": "ATT",
-          "squad": "U19"
-        },
-        {
           "name": "Noa Koumanou",
           "pos": "AiD",
           "posGroup": "ATT",
@@ -2922,7 +3324,7 @@
           "squad": "U19"
         },
         {
-          "name": "Boukary Coulibaly",
+          "name": "Joakim Akalé",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
@@ -2934,15 +3336,69 @@
           "squad": "U19"
         },
         {
+          "name": "Antoine Ménard",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Charles Noël Gnamian",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
           "name": "Melric De Chavigny",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U17"
         },
         {
-          "name": "Ismaël Zagare",
+          "name": "Baptiste Nicolle Laurenti",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Sacha Larmet",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Sandro Guindeuil",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Kun'Taye Amoussou",
           "pos": "D",
           "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Pierrick Forkwen Eugène",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Antonin Bugeon",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Naïm Atiapo",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Ismaël Zagare",
+          "pos": "DC",
+          "posGroup": "DEF",
           "squad": "U17"
         },
         {
@@ -2952,13 +3408,85 @@
           "squad": "U17"
         },
         {
-          "name": "Joakim Akalé",
+          "name": "Joshua Jean",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Lohan Vibert",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Timéo Pereira",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Mohamed Lamine Camara",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Ugo Jira",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Enzo Largen",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Adame Gnonto",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Thyméo Hanyurwimana Ferreira Cruz",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Maé Guilleux",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Romain Annin",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
         },
         {
-          "name": "Antoine Ménard",
+          "name": "Kévin Mukelenge",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Daha Niang",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Aboubacar Sakho",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Ben Yacouba Bakayoko",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
@@ -2983,7 +3511,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Yann Lienard",
+          "name": "Jules Stawiecki",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "PRO"
@@ -2995,7 +3523,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Thilo Kehrer",
+          "name": "Sadibou Sané",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -3007,13 +3535,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Sadibou Sané",
+          "name": "Eric Dier",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
         },
         {
-          "name": "Eric Dier",
+          "name": "Samuel Nibombe",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -3055,19 +3583,19 @@
           "squad": "PRO"
         },
         {
+          "name": "Pape Cabral",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
           "name": "Edan Diop",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
         },
         {
-          "name": "Paul Pogba",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
-          "name": "Pape Cabral",
+          "name": "Anis Soubeir",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
@@ -3229,19 +3757,55 @@
           "squad": "B"
         },
         {
-          "name": "Axel Decrenisse",
+          "name": "Théo Hervier-Gisquet",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U19"
         },
         {
-          "name": "Massiremba Dramé",
+          "name": "Yoann Pujol",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Imrane Robert",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Grégory Campanelli",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Mylan Houtekie-Pellegrino",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Salioubarro Badji",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Waren Jean-Louis",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Mathys Plessis",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
         },
         {
-          "name": "Melvin Gomes",
+          "name": "Ken Kitsoukou",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
@@ -3253,27 +3817,57 @@
           "squad": "U19"
         },
         {
-          "name": "Checkina Dzabatou Ecko",
+          "name": "Viany Munzengo Letellier",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Tomas Meira Rolo",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Mohamed Diaby",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Christian Eba",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Yasir Mouh",
-          "pos": "MD",
+          "name": "Diapson Gomis",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Najd Ajroud",
-          "pos": "MO",
+          "name": "Usuman Kebbeh",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Safouane Benzahra",
-          "pos": "AiG",
-          "posGroup": "ATT",
+          "name": "Kaïs Petit",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Dany-Karl Vimond",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Yasir Aktas",
+          "pos": "MC",
+          "posGroup": "MID",
           "squad": "U19"
         },
         {
@@ -3283,22 +3877,34 @@
           "squad": "U19"
         },
         {
-          "name": "Nahël Haddani",
+          "name": "Luka Dragasevic",
           "pos": "AiG",
           "posGroup": "ATT",
           "squad": "U19"
         },
         {
-          "name": "Jassim Djelloul",
+          "name": "Olavio Joel Afonso Mendes",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
         },
         {
-          "name": "Théo Hervier-Gisquet",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U17"
+          "name": "Winsley Bolmin",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Dwayne Maurice-Belay",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Enzo Mbangue Mbom",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
         },
         {
           "name": "Timéo Lacroix",
@@ -3307,21 +3913,21 @@
           "squad": "U17"
         },
         {
-          "name": "Yoann Pujol",
+          "name": "Léonard Recors",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U17"
         },
         {
-          "name": "Imrane Robert",
+          "name": "Théo Bègue",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U17"
         },
         {
-          "name": "Mathys Plessis",
-          "pos": "D",
-          "posGroup": "MID",
+          "name": "Jacopo Mesiano",
+          "pos": "GdB",
+          "posGroup": "GK",
           "squad": "U17"
         },
         {
@@ -3331,31 +3937,7 @@
           "squad": "U17"
         },
         {
-          "name": "Aymeric Totokolo",
-          "pos": "D",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Salioubarro Badji",
-          "pos": "D",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Mohamed Diaby",
-          "pos": "D",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Waren Jean-Louis",
-          "pos": "D",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Viany Munzengo Letellier",
+          "name": "Emerick Totokolo",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
@@ -3368,6 +3950,18 @@
         },
         {
           "name": "Warren Parriaux",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Damien Bernié",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Maxime-Olivier Heuyot Tobit",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
@@ -3391,43 +3985,55 @@
           "squad": "U17"
         },
         {
-          "name": "Christian Eba",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Diapson Gomis",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Usuman Kebbeh",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Ken Kitsoukou",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
           "name": "Jean-Daniel Mowelle",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Kaïs Petit",
+          "name": "Mathias Principato",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Dany Karl Vimond",
+          "name": "Gabriel Bah",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Lenny Dikaba",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Birima Fall",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Zyed Fathi",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Théo Maldiney",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Lénys Mateus Francisco",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Pierre-Eliot Seka",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
@@ -3439,20 +4045,20 @@
           "squad": "U17"
         },
         {
-          "name": "Olavio Joel Afonso Mendes",
-          "pos": "AC",
-          "posGroup": "ATT",
+          "name": "Cyril Picot",
+          "pos": "MO",
+          "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Winsley Bolmin",
-          "pos": "AC",
-          "posGroup": "ATT",
+          "name": "Prince Tiki Nkongue",
+          "pos": "MO",
+          "posGroup": "MID",
           "squad": "U17"
         },
         {
           "name": "Andreas Dambo",
-          "pos": "AC",
+          "pos": "AiD",
           "posGroup": "ATT",
           "squad": "U17"
         },
@@ -3463,19 +4069,25 @@
           "squad": "U17"
         },
         {
-          "name": "Dwayne Maurice-Belay",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U17"
-        },
-        {
-          "name": "Enzo Mbangue Mbom",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U17"
-        },
-        {
           "name": "Noé Rat Mayo",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Evann Camara",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Mohammed Sylla",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Shiloh Wattelle",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
@@ -3494,9 +4106,15 @@
           "squad": "PRO"
         },
         {
-          "name": "Miłosz Piekutowski",
+          "name": "Milosz Piekutowski",
           "pos": "GdB",
           "posGroup": "GK",
+          "squad": "PRO"
+        },
+        {
+          "name": "Karim Coulibaly",
+          "pos": "DC",
+          "posGroup": "DEF",
           "squad": "PRO"
         },
         {
@@ -3512,19 +4130,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Andrew Omobamidele",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
-          "name": "Soumaïla Coulibaly",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
-          "name": "Abakar Sylla",
+          "name": "Jeyland Mitchell",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -3536,7 +4142,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Ben Chilwell",
+          "name": "Oso",
           "pos": "ArG",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -3548,21 +4154,15 @@
           "squad": "PRO"
         },
         {
-          "name": "Guéla Doué",
-          "pos": "ArD",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
-          "name": "Abdoul Ouattara",
-          "pos": "ArD",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
           "name": "Genesis Antwi",
           "pos": "ArD",
           "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
+          "name": "Dário Essugo",
+          "pos": "MDC",
+          "posGroup": "MID",
           "squad": "PRO"
         },
         {
@@ -3578,19 +4178,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Pape Diong",
-          "pos": "MDC",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
           "name": "Samir El Mourabet",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
-          "name": "Mathis Amougou",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
@@ -3602,19 +4190,19 @@
           "squad": "PRO"
         },
         {
-          "name": "Diego Moreira",
-          "pos": "MG",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
-          "name": "Julio Enciso",
-          "pos": "MO",
+          "name": "Tyrese Noubissie",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
         },
         {
           "name": "Giovanni Reyna",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
+          "name": "Omari Kellyman",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "PRO"
@@ -3668,19 +4256,37 @@
           "squad": "PRO"
         },
         {
+          "name": "Conrad Harder",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
+          "name": "Jacobo Ortega",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
+          "name": "Deivid Washington",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
           "name": "Sékou Mara",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
         },
         {
-          "name": "Milos Lukovic",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "PRO"
+          "name": "Artur Smiechowski",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "B"
         },
         {
-          "name": "Artur Smiechowski",
+          "name": "Timéo Raffourt",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "B"
@@ -3704,13 +4310,13 @@
           "squad": "B"
         },
         {
-          "name": "François Mendy",
+          "name": "Yoann Becker",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "B"
         },
         {
-          "name": "Yvan Mbianga",
+          "name": "Trésor Kouablé",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "B"
@@ -3722,25 +4328,25 @@
           "squad": "B"
         },
         {
+          "name": "Erwan Antonin",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
           "name": "Timéo Delecolle",
           "pos": "ArD",
           "posGroup": "DEF",
           "squad": "B"
         },
         {
-          "name": "Idrissa Sabaly",
-          "pos": "MDC",
-          "posGroup": "MID",
-          "squad": "B"
-        },
-        {
-          "name": "Latufe Assoumani",
-          "pos": "MDC",
-          "posGroup": "MID",
-          "squad": "B"
-        },
-        {
           "name": "Max Maréchal",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
+          "name": "Yvan Mbianga",
           "pos": "MDC",
           "posGroup": "MID",
           "squad": "B"
@@ -3752,19 +4358,7 @@
           "squad": "B"
         },
         {
-          "name": "Yassine Aïche",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "B"
-        },
-        {
           "name": "Tyrese Noubissie",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "B"
-        },
-        {
-          "name": "Mohamed Soumah",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "B"
@@ -3782,12 +4376,6 @@
           "squad": "B"
         },
         {
-          "name": "Adrien Gandolphe",
-          "pos": "MO",
-          "posGroup": "MID",
-          "squad": "B"
-        },
-        {
           "name": "Yaya Diémé",
           "pos": "AiD",
           "posGroup": "ATT",
@@ -3795,6 +4383,12 @@
         },
         {
           "name": "Stanley Ogbonna",
+          "pos": "AiD",
+          "posGroup": "ATT",
+          "squad": "B"
+        },
+        {
+          "name": "Yassine Aïche",
           "pos": "AiD",
           "posGroup": "ATT",
           "squad": "B"
@@ -3818,7 +4412,7 @@
           "squad": "B"
         },
         {
-          "name": "Kingsley Olufadé",
+          "name": "Mohamed Chennah",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "B"
@@ -3842,10 +4436,10 @@
           "squad": "B"
         },
         {
-          "name": "Timéo Raffourt",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U19"
+          "name": "Kingsley Olufadé",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "B"
         },
         {
           "name": "Maxime Ritter",
@@ -3854,21 +4448,15 @@
           "squad": "U19"
         },
         {
-          "name": "Dan-Marcel Kakadje",
-          "pos": "D",
-          "posGroup": "MID",
+          "name": "Yazid Tifrani",
+          "pos": "GdB",
+          "posGroup": "GK",
           "squad": "U19"
         },
         {
           "name": "Hugo Mack",
           "pos": "D",
           "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Yoann Becker",
-          "pos": "DC",
-          "posGroup": "DEF",
           "squad": "U19"
         },
         {
@@ -3884,7 +4472,19 @@
           "squad": "U19"
         },
         {
+          "name": "Théo Steinbrunn",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
           "name": "Djibril Beleoua",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Maryus Lefèvre",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
@@ -3893,12 +4493,6 @@
           "name": "Robin Druelle",
           "pos": "ArG",
           "posGroup": "DEF",
-          "squad": "U19"
-        },
-        {
-          "name": "Fouad Halil",
-          "pos": "MDC",
-          "posGroup": "MID",
           "squad": "U19"
         },
         {
@@ -3914,13 +4508,13 @@
           "squad": "U19"
         },
         {
-          "name": "Louis Scherer",
-          "pos": "MDC",
+          "name": "Noam Ennassouh",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Tyrese Noubissie",
+          "name": "Paul Froissart",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
@@ -3944,14 +4538,14 @@
           "squad": "U19"
         },
         {
-          "name": "Nessim Rahmani",
-          "pos": "MG",
+          "name": "Enzo Gambor",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Ahmet Yayla",
-          "pos": "MO",
+          "name": "Nessim Rahmani",
+          "pos": "MG",
           "posGroup": "MID",
           "squad": "U19"
         },
@@ -3962,13 +4556,25 @@
           "squad": "U19"
         },
         {
-          "name": "David Aguy",
+          "name": "Wissem Jaber",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
         },
         {
-          "name": "Erwan Antonin",
+          "name": "Dramane Diaby",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Muhammad Mikidadi",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "El Hadji Moriba Keita",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
@@ -3980,20 +4586,104 @@
           "squad": "U17"
         },
         {
-          "name": "Yazid Tifrani",
+          "name": "Tom Bertrand",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U17"
         },
         {
-          "name": "Théo Steinbrunn",
+          "name": "Anis Alouahabi",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Adriel Kaya Ziada",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Noa Mouhous",
           "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Aboubakar Ouattara",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Shaun Landu Mondo",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Ayoub Jaf",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Alassane Cissé",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Nehemies Okitepongo",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Ygor Lopes Delgado",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Yanis Zaier",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Imran Gribi",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
           "name": "Rayan Kharmoud",
           "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Ambroise Lanis",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Hamidou Tandia",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Anis Talia",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Yanis Bouataoun",
+          "pos": "MO",
           "posGroup": "MID",
           "squad": "U17"
         },
@@ -4010,13 +4700,37 @@
           "squad": "U17"
         },
         {
-          "name": "Wissem Jaber",
+          "name": "Lucas Ibouanga",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Jésus Polo",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Lenny Floricourt",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Sounah Touré",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Younes Himer",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
         }
       ],
-      "coach": "Hugo Oliveira"
+      "coach": "Vítor Matos"
     },
     {
       "id": "fcl",
@@ -4059,13 +4773,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Isaak Touré",
+          "name": "Nosa Edward Obaretin",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
         },
         {
-          "name": "Enzo Genton",
+          "name": "Isaak Touré",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -4077,13 +4791,19 @@
           "squad": "PRO"
         },
         {
-          "name": "Dembo Sylla",
-          "pos": "ArD",
+          "name": "Srdjan Kuzmic",
+          "pos": "ArG",
           "posGroup": "DEF",
           "squad": "PRO"
         },
         {
           "name": "Alec Georgen",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
+          "name": "Dembo Sylla",
           "pos": "ArD",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -4119,12 +4839,6 @@
           "squad": "PRO"
         },
         {
-          "name": "Joel Mvuka",
-          "pos": "MD",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
           "name": "Jean-Victor Makengo",
           "pos": "MO",
           "posGroup": "MID",
@@ -4143,7 +4857,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Jérémy Hatchi",
+          "name": "Isak Jensen",
           "pos": "AiG",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -4155,7 +4869,19 @@
           "squad": "PRO"
         },
         {
+          "name": "Ibrahima Baldé",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
           "name": "Mohamed Bamba",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
+          "name": "Mamadou Koné",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -4179,6 +4905,12 @@
           "squad": "B"
         },
         {
+          "name": "Medinel Zamor",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
           "name": "Lucas Leaudais",
           "pos": "DC",
           "posGroup": "DEF",
@@ -4186,6 +4918,12 @@
         },
         {
           "name": "Izak Akakpo",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Shaï Nkeng Etamé",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "B"
@@ -4227,7 +4965,19 @@
           "squad": "B"
         },
         {
+          "name": "Raphaël Michel",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
           "name": "Daniel Semedo",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
+          "name": "Tom Neveu",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "B"
@@ -4239,14 +4989,14 @@
           "squad": "B"
         },
         {
-          "name": "Sohaib Belarbi",
+          "name": "Antton Mouledous",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "B"
         },
         {
-          "name": "Antton Mouledous",
-          "pos": "MD",
+          "name": "Sohaib Belarbi",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "B"
         },
@@ -4257,9 +5007,9 @@
           "squad": "B"
         },
         {
-          "name": "Mohamed-Anouar Hmamouch",
-          "pos": "MO",
-          "posGroup": "MID",
+          "name": "Mohamed Ba",
+          "pos": "AiG",
+          "posGroup": "ATT",
           "squad": "B"
         },
         {
@@ -4281,27 +5031,33 @@
           "squad": "B"
         },
         {
-          "name": "Mamadou Koné",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "B"
-        },
-        {
-          "name": "Anthony Cario",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U19"
-        },
-        {
           "name": "Mathys Agbadouma",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U19"
         },
         {
-          "name": "Malo Le Bolay",
+          "name": "Eythann Sterckx",
           "pos": "GdB",
           "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Mansour Dia",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Lenny Tabarin",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Isaac Daniélou",
+          "pos": "D",
+          "posGroup": "MID",
           "squad": "U19"
         },
         {
@@ -4311,20 +5067,14 @@
           "squad": "U19"
         },
         {
-          "name": "Imran Pengam",
+          "name": "Seni Ruben Sohoré",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
         },
         {
-          "name": "Matéo Prigent",
-          "pos": "ArG",
-          "posGroup": "DEF",
-          "squad": "U19"
-        },
-        {
-          "name": "Dorian Guizouarn",
-          "pos": "ArG",
+          "name": "Ezekiel Yapo",
+          "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
         },
@@ -4341,51 +5091,33 @@
           "squad": "U19"
         },
         {
-          "name": "Raphaël Michel",
+          "name": "Pavel Valenzuela Simoneton",
           "pos": "ArD",
           "posGroup": "DEF",
           "squad": "U19"
         },
         {
-          "name": "Samirdine Boinaidi",
-          "pos": "ArD",
-          "posGroup": "DEF",
+          "name": "Tapsirou Sidy Lam",
+          "pos": "MDC",
+          "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Milan Le Gall",
+          "name": "Imrane Camara",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Lucas Nayel",
+          "name": "Nathan Kebe",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Tom Neveu",
-          "pos": "MC",
+          "name": "Arcial Nzamu Ena",
+          "pos": "MO",
           "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Seny Dang Tiep",
-          "pos": "AiG",
-          "posGroup": "ATT",
-          "squad": "U19"
-        },
-        {
-          "name": "Jules Aboudh",
-          "pos": "AiG",
-          "posGroup": "ATT",
-          "squad": "U19"
-        },
-        {
-          "name": "Mactar Ly",
-          "pos": "AiG",
-          "posGroup": "ATT",
           "squad": "U19"
         },
         {
@@ -4401,13 +5133,43 @@
           "squad": "U19"
         },
         {
-          "name": "Gianni Favale-Corneilde",
+          "name": "Olan Lamaille-Dacalor",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
         },
         {
-          "name": "Eythann Sterckx",
+          "name": "Fred Gassia",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Jalil Traoré",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Kévin Williams",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Rushard Sutty",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Dilane Mandombe Made",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Victor Mynier",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U17"
@@ -4419,49 +5181,151 @@
           "squad": "U17"
         },
         {
-          "name": "Lenny Tabarin",
+          "name": "Lilian Lefort",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Seni Sohoré",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "U17"
-        },
-        {
-          "name": "Ezekiel Yapo",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "U17"
-        },
-        {
-          "name": "Shaï Nkeng Etamé",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "U17"
-        },
-        {
-          "name": "Tapsirou Sidy Lam",
-          "pos": "MDC",
+          "name": "Georges Ndjambe Moubandjo",
+          "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Arcial Nzamu Ena",
+          "name": "Alitri Dodo",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Noé Gombaud",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Kingsley Junior Nzeribe",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Loïc Dupuy",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Maehiti Vahirua",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Marwan Saka",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Nolan Zire",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Diego Uzel Brunetti",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Nolann Ferder",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Marius Seveno",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Taïg Heraud",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Martin Millotte",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Nassim Damani",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Wilder Adon",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Maxime Tanguy",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Noa Nicot Oria",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Loeiz Petra",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Victor Nouma Oum",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Djedjom Paniah",
-          "pos": "AiD",
+          "name": "Klein Godon",
+          "pos": "AiG",
           "posGroup": "ATT",
           "squad": "U17"
         },
         {
-          "name": "Olan Lamaille-Dacalor",
+          "name": "Emmanuel Eyi Assoumou",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Karl Desmars",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Paul Robert",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Sopra Pavec Nam",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
@@ -4504,19 +5368,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Dayann Méthalie",
-          "pos": "ArG",
+          "name": "David Odogu",
+          "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
         },
         {
           "name": "Christ Tapé",
-          "pos": "ArG",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
-          "name": "Ylies Aradj",
           "pos": "ArG",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -4534,6 +5392,12 @@
           "squad": "PRO"
         },
         {
+          "name": "Niko Sigur",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
           "name": "Alexis Vossah",
           "pos": "MC",
           "posGroup": "MID",
@@ -4541,6 +5405,18 @@
         },
         {
           "name": "Cristian Cásseres Jr.",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
+          "name": "Mathis Amougou",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
+          "name": "Thomas Jørgensen",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
@@ -4558,7 +5434,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Mario Sauer",
+          "name": "Aymen Amaaouch",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
@@ -4570,25 +5446,25 @@
           "squad": "PRO"
         },
         {
-          "name": "Mathis Saka",
-          "pos": "MO",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
-          "name": "Yann Gboho",
-          "pos": "AiG",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
           "name": "Sion Oppong",
           "pos": "AiG",
           "posGroup": "ATT",
           "squad": "PRO"
         },
         {
+          "name": "Ilyas Azizi",
+          "pos": "AiG",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
           "name": "Santiago Hidalgo",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
+          "name": "Casper Tengstedt",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -4606,12 +5482,6 @@
           "squad": "PRO"
         },
         {
-          "name": "Enzo Faty",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
           "name": "Naime Said Mchindra",
           "pos": "GdB",
           "posGroup": "GK",
@@ -4619,6 +5489,18 @@
         },
         {
           "name": "Théo Collin",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "B"
+        },
+        {
+          "name": "Diego Burgos",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "B"
+        },
+        {
+          "name": "Nathan Zoko",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "B"
@@ -4642,6 +5524,36 @@
           "squad": "B"
         },
         {
+          "name": "Jules Ouaknine",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Darren Bique",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Adam Soudi",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Wayan Loes",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Michaël Akinjogunla",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
           "name": "Thibaud Garondo",
           "pos": "ArD",
           "posGroup": "DEF",
@@ -4654,19 +5566,43 @@
           "squad": "B"
         },
         {
+          "name": "Nazihary Siaka",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
           "name": "Luca Mailhol",
           "pos": "MDC",
           "posGroup": "MID",
           "squad": "B"
         },
         {
-          "name": "Hamza Boujida",
+          "name": "Lenny Pujos",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
+          "name": "Tom Cabarrou",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "B"
         },
         {
-          "name": "Wassim Dardake",
+          "name": "Mattéo Mach",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
+          "name": "Malamini Dansoko",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
+          "name": "Hamza Boujida",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "B"
@@ -4684,190 +5620,64 @@
           "squad": "B"
         },
         {
+          "name": "Zakari El Khalfioui",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
           "name": "Anis Fiche",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "B"
         },
         {
-          "name": "Ismael Sylla Touré",
-          "pos": "AiD",
+          "name": "Luca Favier",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
+          "name": "Wassim Dardake",
+          "pos": "AiG",
+          "posGroup": "ATT",
+          "squad": "B"
+        },
+        {
+          "name": "Aël Belangote",
+          "pos": "AiG",
           "posGroup": "ATT",
           "squad": "B"
         },
         {
           "name": "Khadim Rassoul Goudiaby",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "B"
-        },
-        {
-          "name": "Diego Burgos",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U19"
-        },
-        {
-          "name": "Nathan Zoko",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U19"
-        },
-        {
-          "name": "Jean-Pierre Chrétien",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U19"
-        },
-        {
-          "name": "Jules Ouaknine",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "U19"
-        },
-        {
-          "name": "Darren Bique",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "U19"
-        },
-        {
-          "name": "Adam Soudi",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "U19"
-        },
-        {
-          "name": "Yoan Njowa",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "U19"
-        },
-        {
-          "name": "Wayan Loes",
-          "pos": "ArG",
-          "posGroup": "DEF",
-          "squad": "U19"
-        },
-        {
-          "name": "Michaël Akinjogunla",
-          "pos": "ArG",
-          "posGroup": "DEF",
-          "squad": "U19"
-        },
-        {
-          "name": "Dan Kouyo",
-          "pos": "ArG",
-          "posGroup": "DEF",
-          "squad": "U19"
-        },
-        {
-          "name": "Nazihary Siaka",
-          "pos": "ArD",
-          "posGroup": "DEF",
-          "squad": "U19"
-        },
-        {
-          "name": "Jethro Orizaza Nzau",
-          "pos": "ArD",
-          "posGroup": "DEF",
-          "squad": "U19"
-        },
-        {
-          "name": "Lenny Pujos",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Tom Cabarrou",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Mattéo Mach",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Steeve Delarue",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Malamini Dansoko",
-          "pos": "MDC",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Zakari El Khalfioui",
-          "pos": "MO",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Luca Favier",
-          "pos": "MO",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Kylian Viemont",
-          "pos": "MO",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Ilyas Azizi",
           "pos": "AiG",
           "posGroup": "ATT",
-          "squad": "U19"
+          "squad": "B"
         },
         {
           "name": "Thibo Nègre",
           "pos": "AiD",
           "posGroup": "ATT",
-          "squad": "U19"
+          "squad": "B"
         },
         {
-          "name": "Noé Akpakoun",
+          "name": "Leny Garguilo",
           "pos": "AiD",
           "posGroup": "ATT",
-          "squad": "U19"
+          "squad": "B"
         },
         {
           "name": "Léo Frechingues",
           "pos": "AC",
           "posGroup": "ATT",
-          "squad": "U19"
+          "squad": "B"
         },
         {
           "name": "Isaack Ahamadi",
           "pos": "AC",
           "posGroup": "ATT",
-          "squad": "U19"
-        },
-        {
-          "name": "Aël Belangote",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U19"
-        },
-        {
-          "name": "Leny Garguilo",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U19"
-        },
-        {
-          "name": "Victor Lanlo",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U17"
+          "squad": "B"
         },
         {
           "name": "Mathéo Watelet",
@@ -4876,33 +5686,39 @@
           "squad": "U17"
         },
         {
-          "name": "Mahé Angély",
+          "name": "Eldeure Tembo",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Rafaël Jolly",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Eldeure Lukiladio",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Zakaria Soufyane",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Dawoud Bellagra",
+          "name": "Lior Moriel Oga",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Ange Kouassi",
+          "name": "Ryan Traoré",
           "pos": "D",
           "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Lucas Poloni",
-          "pos": "D",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Merwan Lamchalhab",
-          "pos": "DC",
-          "posGroup": "DEF",
           "squad": "U17"
         },
         {
@@ -4912,25 +5728,13 @@
           "squad": "U17"
         },
         {
-          "name": "Anas Belkanichi",
-          "pos": "ArG",
-          "posGroup": "DEF",
-          "squad": "U17"
-        },
-        {
-          "name": "Rafaël Laouille",
+          "name": "Lucas Poloni",
           "pos": "ArD",
           "posGroup": "DEF",
           "squad": "U17"
         },
         {
-          "name": "Lorenzo Calendra",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Paul Ferracani",
+          "name": "Lorenzo Calandra",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
@@ -4942,14 +5746,14 @@
           "squad": "U17"
         },
         {
-          "name": "Mehdi Lemdjedani",
+          "name": "Benjamin Mabota",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Benjamin Mabota",
-          "pos": "MC",
+          "name": "Mahé Angély",
+          "pos": "MDC",
           "posGroup": "MID",
           "squad": "U17"
         },
@@ -4960,20 +5764,26 @@
           "squad": "U17"
         },
         {
-          "name": "Marlon Amankwah",
+          "name": "Maël Victor",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Noam Bokhtache",
-          "pos": "MC",
+          "name": "Dawoud Bellagra",
+          "pos": "MO",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Aymen Amaaouch",
-          "pos": "AC",
+          "name": "Abdul Guirasse",
+          "pos": "AiG",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Malik Bah",
+          "pos": "AiD",
           "posGroup": "ATT",
           "squad": "U17"
         },
@@ -4990,25 +5800,25 @@
           "squad": "U17"
         },
         {
-          "name": "Nathan Botuli",
+          "name": "Mohamed-James Sacko",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
         },
         {
-          "name": "Amaury Delas",
+          "name": "Fares Breyton",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
         },
         {
-          "name": "Abdul Guirasse",
+          "name": "Ewen Ilolo Sadi",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
         },
         {
-          "name": "Ewen Lamothe",
+          "name": "Soren Donné",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
@@ -5039,13 +5849,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Otávio",
+          "name": "Moustapha Mbow",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
         },
         {
-          "name": "Moustapha Mbow",
+          "name": "Otávio",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -5069,20 +5879,20 @@
           "squad": "PRO"
         },
         {
+          "name": "Emmanuel Mbemba",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
           "name": "Thibault De Smet",
           "pos": "ArG",
           "posGroup": "DEF",
           "squad": "PRO"
         },
         {
-          "name": "Tuomas Ollila",
-          "pos": "ArG",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
-          "name": "Emmanuel Mbemba",
-          "pos": "ArG",
+          "name": "Adama Camara",
+          "pos": "ArD",
           "posGroup": "DEF",
           "squad": "PRO"
         },
@@ -5100,12 +5910,6 @@
         },
         {
           "name": "Pierre Lees-Melou",
-          "pos": "MDC",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
-          "name": "Adama Camara",
           "pos": "MDC",
           "posGroup": "MID",
           "squad": "PRO"
@@ -5130,6 +5934,12 @@
         },
         {
           "name": "Pablo Pagis",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
+          "name": "Luca Koleosho",
           "pos": "AiG",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -5142,12 +5952,6 @@
         },
         {
           "name": "Ilan Kebbal",
-          "pos": "AiD",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
-          "name": "Luca Koleosho",
           "pos": "AiD",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -5201,13 +6005,19 @@
           "squad": "B"
         },
         {
-          "name": "Ange Chiesa",
+          "name": "Tilouan Boleda",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "B"
         },
         {
-          "name": "Tilouan Boleda",
+          "name": "Mohamed Sylla",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Seydou Macalou",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "B"
@@ -5219,13 +6029,7 @@
           "squad": "B"
         },
         {
-          "name": "Aboubakar Diaby",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "B"
-        },
-        {
-          "name": "Matéo Beaslas",
+          "name": "Mohamed Sesay",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "B"
@@ -5249,15 +6053,27 @@
           "squad": "B"
         },
         {
-          "name": "Andria Kvirikadze",
+          "name": "Clarence Kokoro",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
+          "name": "Dimitri Manyim",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
+          "name": "Chahine Naffah",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "B"
         },
         {
-          "name": "Ylan El Hadary",
-          "pos": "AiG",
-          "posGroup": "ATT",
+          "name": "Andria Kvirikadze",
+          "pos": "MO",
+          "posGroup": "MID",
           "squad": "B"
         },
         {
@@ -5268,6 +6084,12 @@
         },
         {
           "name": "Djibril Diagouraga",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "B"
+        },
+        {
+          "name": "Isaac Lufuiku",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "B"
@@ -5285,10 +6107,10 @@
           "squad": "B"
         },
         {
-          "name": "Leny Daliah",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U19"
+          "name": "Siny Guèye",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "B"
         },
         {
           "name": "El Hadj Camara",
@@ -5297,7 +6119,25 @@
           "squad": "U19"
         },
         {
-          "name": "Noah Hamed",
+          "name": "Rafael Elice",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Djibril Keita",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Yoan Nziang Tafo",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Josselain N'Sakala",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U19"
@@ -5321,19 +6161,19 @@
           "squad": "U19"
         },
         {
-          "name": "Seydou Macalou",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "U19"
-        },
-        {
           "name": "Aleksa Peković",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
         },
         {
-          "name": "Kyliann Lybohy",
+          "name": "Ismaël Foucher Allanos",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Adam Damois",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
@@ -5357,49 +6197,43 @@
           "squad": "U19"
         },
         {
-          "name": "Mohamed Sesay",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Samy Id Taleb",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
           "name": "Ibrahim Diallo",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Ethan Naulin",
+          "name": "Mohamed Dramé",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Clarence Kokoro",
+          "name": "Illian Refsi",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Mathieu Oulouma",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Chahine Naffah",
-          "pos": "MO",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Envel Amardeilh",
-          "pos": "MO",
+          "name": "Ibrahim Diakité",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
           "name": "Jean-Louis Oliveira",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Joshua Yougye",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "U19"
@@ -5411,7 +6245,25 @@
           "squad": "U19"
         },
         {
-          "name": "Siny Guèye",
+          "name": "Kaïs Fofana",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Kaïs Henot",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Romann Sevagamy",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Sidy Ndongo",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
@@ -5423,21 +6275,45 @@
           "squad": "U19"
         },
         {
-          "name": "Rafael Elice",
+          "name": "Rudy Borok",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Noam Briand",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Idrissa Diedhiou",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Ibrahima Diedhiou",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Zack Mulatu",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Lancine Diakité",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U17"
         },
         {
-          "name": "Djibril Keita",
+          "name": "Oscar Beauvillain De Montreuil",
           "pos": "GdB",
           "posGroup": "GK",
-          "squad": "U17"
-        },
-        {
-          "name": "Mohamed Sylla",
-          "pos": "D",
-          "posGroup": "MID",
           "squad": "U17"
         },
         {
@@ -5447,7 +6323,7 @@
           "squad": "U17"
         },
         {
-          "name": "Matis Cordesse",
+          "name": "Ismael Amraoui",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
@@ -5459,9 +6335,21 @@
           "squad": "U17"
         },
         {
-          "name": "Ismaël Foucher Allanos",
-          "pos": "DC",
-          "posGroup": "DEF",
+          "name": "Tino Mondoloni",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Kaïs Touré",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Serigne Diadhiou Topenot",
+          "pos": "D",
+          "posGroup": "MID",
           "squad": "U17"
         },
         {
@@ -5477,14 +6365,8 @@
           "squad": "U17"
         },
         {
-          "name": "Mohamed Dramé",
+          "name": "Yanis Habdeche Clary",
           "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Ilian Refsi",
-          "pos": "MDC",
           "posGroup": "MID",
           "squad": "U17"
         },
@@ -5495,7 +6377,13 @@
           "squad": "U17"
         },
         {
-          "name": "Shahine Lomzaouek",
+          "name": "Shahine Lamzaouek",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Nathanaël Magloire",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
@@ -5507,13 +6395,31 @@
           "squad": "U17"
         },
         {
-          "name": "Illian Refsi",
+          "name": "Ibrahim Mekkid",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Tayron Nguiya Kiafouana",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Joshua Yougye",
+          "name": "Quincy Kinzomba",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Milhan Moretto",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Meschac Ndombasi",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "U17"
@@ -5529,48 +6435,6 @@
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
-        },
-        {
-          "name": "Kaïs Fofana",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U17"
-        },
-        {
-          "name": "Kaïs Henot",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U17"
-        },
-        {
-          "name": "Romann Sevagamy",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U17"
-        },
-        {
-          "name": "Sidy Ndongo",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U17"
-        },
-        {
-          "name": "Rudy Borok",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U17"
-        },
-        {
-          "name": "Noam Briand",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U17"
-        },
-        {
-          "name": "Lony Pereira Mendes Vaz",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U17"
         }
       ],
       "coach": "Liam Rosenior"
@@ -5580,13 +6444,19 @@
       "name": "Stade Brestois 29",
       "players": [
         {
-          "name": "Grégoire Coudert",
+          "name": "Egil Selvik",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "PRO"
         },
         {
-          "name": "Egil Selvik",
+          "name": "Mathieu Patouillet",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "PRO"
+        },
+        {
+          "name": "Romain Cagnon",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "PRO"
@@ -5598,6 +6468,12 @@
           "squad": "PRO"
         },
         {
+          "name": "Raphaël Le Guen",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
           "name": "Brendan Chardonnet",
           "pos": "DC",
           "posGroup": "DEF",
@@ -5605,12 +6481,6 @@
         },
         {
           "name": "Gautier Lloris",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
-          "name": "Raphaël Le Guen",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -5652,12 +6522,6 @@
           "squad": "PRO"
         },
         {
-          "name": "Hamidou Makalou",
-          "pos": "MDC",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
           "name": "Hugo Magnetti",
           "pos": "MC",
           "posGroup": "MID",
@@ -5688,14 +6552,20 @@
           "squad": "PRO"
         },
         {
-          "name": "Romain Del Castillo",
+          "name": "Giovani Versini",
           "pos": "AiD",
           "posGroup": "ATT",
           "squad": "PRO"
         },
         {
-          "name": "Axel Camblan",
+          "name": "Noah Edjouma",
           "pos": "AiD",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
+          "name": "Djylian N'Guessan",
+          "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
         },
@@ -5712,15 +6582,15 @@
           "squad": "PRO"
         },
         {
+          "name": "Mathis Lainé",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
           "name": "Nando Martinez",
           "pos": "GdB",
           "posGroup": "GK",
-          "squad": "B"
-        },
-        {
-          "name": "Yanis Ettori",
-          "pos": "D",
-          "posGroup": "MID",
           "squad": "B"
         },
         {
@@ -5748,8 +6618,20 @@
           "squad": "B"
         },
         {
+          "name": "Noa Lango",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
           "name": "Evan Mailly",
           "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Yanis Ettori",
+          "pos": "ArD",
           "posGroup": "DEF",
           "squad": "B"
         },
@@ -5838,13 +6720,19 @@
           "squad": "B"
         },
         {
-          "name": "Joan Caroff",
+          "name": "Aurélien Quéré",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U19"
         },
         {
-          "name": "Aurélien Quéré",
+          "name": "Louis Maynard",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Amos Savi de Tove Zobo",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U19"
@@ -5856,7 +6744,7 @@
           "squad": "U19"
         },
         {
-          "name": "Noa Lango",
+          "name": "Sekou Sylla",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
@@ -5868,8 +6756,32 @@
           "squad": "U19"
         },
         {
+          "name": "Sehyan Saint-Jean",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Pierre Delacour",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
           "name": "Enzo Ngoma",
           "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Souleymane Camara",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Aldrig Colin",
+          "pos": "ArD",
           "posGroup": "DEF",
           "squad": "U19"
         },
@@ -5881,12 +6793,30 @@
         },
         {
           "name": "Gianni Bellot",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Nolhann Dehaine",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Nohann Riou",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
           "name": "Yazid Moussa",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Ilhan Mammeri",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "U19"
@@ -5922,9 +6852,57 @@
           "squad": "U19"
         },
         {
-          "name": "Louis Maynard",
+          "name": "Jaden Choisy",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Mylan Le Gall",
           "pos": "GdB",
           "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Jérémy Prunier",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Marc-Antoine Mamina",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Karamba Jakitay",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Mewen Gueganton",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Exocé Nzola",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Jopierre Tsiomo M'Pika",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Noham Varela",
+          "pos": "DC",
+          "posGroup": "DEF",
           "squad": "U17"
         },
         {
@@ -5934,13 +6912,49 @@
           "squad": "U17"
         },
         {
-          "name": "Nohann Riou",
+          "name": "Kalipha Diallo",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Charles Noël Gnamian",
+          "name": "Daniel Varela De Barros",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Nolan Salaün",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Hugo Lassus",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Nacer Ibrahim Ahmed",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Chahid Soilihi",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Rhony George",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Abderaouf Batli",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
@@ -5989,7 +7003,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Jacques Ekomié",
+          "name": "Maël Gernigon",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
+          "name": "Joseph Kalulu",
           "pos": "ArG",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -6037,6 +7057,12 @@
           "squad": "PRO"
         },
         {
+          "name": "Bané Diatta",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
           "name": "Amine Sbaï",
           "pos": "AiG",
           "posGroup": "ATT",
@@ -6079,43 +7105,31 @@
           "squad": "PRO"
         },
         {
-          "name": "Salifou Sylla",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "B"
-        },
-        {
-          "name": "Maël Gernigon",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "B"
-        },
-        {
-          "name": "Nattio Sonnerat",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "B"
-        },
-        {
-          "name": "Jibril El Baraka",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "B"
-        },
-        {
-          "name": "Guédé Nadje",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "B"
-        },
-        {
           "name": "Maël Camut",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U19"
         },
         {
-          "name": "Salifou Sylla",
+          "name": "Ianis Sacko",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Sacha Ollivro Chevalier",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Eliot Davoine-Coupry",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Maël Gernigon",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
@@ -6127,13 +7141,19 @@
           "squad": "U19"
         },
         {
-          "name": "Maël Gernigon",
+          "name": "Nattio Sonnerat",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
         },
         {
-          "name": "Nattio Sonnerat",
+          "name": "Madi Tandia",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Noa Gnaly",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
@@ -6145,31 +7165,49 @@
           "squad": "U19"
         },
         {
+          "name": "Leyti Tessier Pongui",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
           "name": "Alix Bablée",
           "pos": "MDC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Bané Diatta",
-          "pos": "MDC",
+          "name": "Corto Douguet",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Jules Bouffandeau",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Wahib El Antary",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
           "name": "Bibi Grumiaux",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Jibril El Baraka",
-          "pos": "MC",
+          "pos": "MO",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
           "name": "Kylian Aissi",
+          "pos": "AiG",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Yahya Jlidi",
           "pos": "AiG",
           "posGroup": "ATT",
           "squad": "U19"
@@ -6181,25 +7219,31 @@
           "squad": "U19"
         },
         {
+          "name": "Mamadou Diallo",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Vasco Hervouet",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
           "name": "Kévine Froissard",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
         },
         {
-          "name": "Ianis Sacko",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U17"
-        },
-        {
-          "name": "Sacha Ollivro Chevalier",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U17"
-        },
-        {
           "name": "Yves-Thomas Nestout",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Sasha Mathieu",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U17"
@@ -6211,49 +7255,55 @@
           "squad": "U17"
         },
         {
-          "name": "Nathan Eleka",
+          "name": "Raphaël Pavageau",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Eliot Davoine-Coupry",
+          "name": "Titouan Girard",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Madi Tandia",
+          "name": "Kenzo Davy Blain",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Jalil Douazi",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Mohamed Koné",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U17"
         },
         {
-          "name": "Noa Gnaly",
+          "name": "Wacil Chella",
           "pos": "DC",
           "posGroup": "DEF",
-          "squad": "U17"
-        },
-        {
-          "name": "Leyti Tessier Pongui",
-          "pos": "ArD",
-          "posGroup": "DEF",
-          "squad": "U17"
-        },
-        {
-          "name": "Jules Bouffandeau",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Joshua Esnault",
-          "pos": "MC",
-          "posGroup": "MID",
           "squad": "U17"
         },
         {
           "name": "Luis Duarte",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Isaac Sadila",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Younès Tahar",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
@@ -6265,13 +7315,13 @@
           "squad": "U17"
         },
         {
-          "name": "Vasco Hervouet",
+          "name": "Imran Mercha",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Imran Mercha",
+          "name": "Axel Martin-Pardigon",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "U17"
@@ -6283,19 +7333,37 @@
           "squad": "U17"
         },
         {
-          "name": "Yahia Jlidi",
-          "pos": "AiG",
-          "posGroup": "ATT",
-          "squad": "U17"
-        },
-        {
-          "name": "Mamadou Diallo",
+          "name": "Loan Armand",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
         },
         {
-          "name": "Ziyad Daïf",
+          "name": "M'Bemba Kebe",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Naïm Yahia",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Rito Ben Sylla",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Moiseson Dolini",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Jaleel M’Hadji",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
@@ -6308,7 +7376,7 @@
       "name": "Le Havre AC",
       "players": [
         {
-          "name": "Mory Diaw",
+          "name": "Arnaud Bodart",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "PRO"
@@ -6320,7 +7388,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Paul Argney",
+          "name": "Gauthier Gallon",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "PRO"
@@ -6338,14 +7406,20 @@
           "squad": "PRO"
         },
         {
-          "name": "Vincent Sasso",
+          "name": "Ahmed Touba",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
         },
         {
-          "name": "Yanis Zouaoui",
-          "pos": "ArG",
+          "name": "Lamine N'Diaye",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
+          "name": "Vincent Sasso",
+          "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
         },
@@ -6356,7 +7430,7 @@
           "squad": "PRO"
         },
         {
-          "name": "Fodé Doucouré",
+          "name": "Elias Jelert",
           "pos": "ArD",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -6368,7 +7442,19 @@
           "squad": "PRO"
         },
         {
+          "name": "Djibril Ouziad",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
           "name": "Junior Mwanga",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
+          "name": "Mathéo Bodmer",
           "pos": "MDC",
           "posGroup": "MID",
           "squad": "PRO"
@@ -6404,13 +7490,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Kaito Mizuta",
+          "name": "Sota Nakamura",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "PRO"
         },
         {
-          "name": "Mokrane Bentoumi",
+          "name": "Kaito Mizuta",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "PRO"
@@ -6428,19 +7514,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Godson Kyeremeh",
-          "pos": "AiD",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
-          "name": "Josh Maja",
+          "name": "Rayan Fofana",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
         },
         {
-          "name": "Sota Nakamura",
+          "name": "Josh Maja",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -6470,6 +7550,12 @@
           "squad": "B"
         },
         {
+          "name": "Bocar Wade",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
           "name": "Karamokho Camara",
           "pos": "DC",
           "posGroup": "DEF",
@@ -6488,12 +7574,6 @@
           "squad": "B"
         },
         {
-          "name": "Mathéo Bodmer",
-          "pos": "MDC",
-          "posGroup": "MID",
-          "squad": "B"
-        },
-        {
           "name": "Adams Diabaté",
           "pos": "MDC",
           "posGroup": "MID",
@@ -6506,19 +7586,25 @@
           "squad": "B"
         },
         {
-          "name": "Rayan El Djebali",
-          "pos": "MO",
-          "posGroup": "MID",
-          "squad": "B"
-        },
-        {
           "name": "Hakim Dongopandji",
           "pos": "AiD",
           "posGroup": "ATT",
           "squad": "B"
         },
         {
+          "name": "Louis Moussier",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "B"
+        },
+        {
           "name": "Yanis Beau Djellel",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "B"
+        },
+        {
+          "name": "Ebroni Gnoan",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "B"
@@ -6536,19 +7622,7 @@
           "squad": "U19"
         },
         {
-          "name": "Jules Barido",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U19"
-        },
-        {
-          "name": "Djibril Achoui",
-          "pos": "D",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Djibril Ouziad",
+          "name": "Cheick Soumahoro",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U19"
@@ -6566,6 +7640,12 @@
           "squad": "U19"
         },
         {
+          "name": "Aaron Betéhé",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
           "name": "Yanis Monkolot",
           "pos": "DC",
           "posGroup": "DEF",
@@ -6578,13 +7658,13 @@
           "squad": "U19"
         },
         {
-          "name": "Tidjani Thiam",
+          "name": "Nathan Kawonda",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
         },
         {
-          "name": "Nathan Kawonda",
+          "name": "Yanys Tieoule",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
@@ -6608,13 +7688,25 @@
           "squad": "U19"
         },
         {
-          "name": "Bocar Wade",
-          "pos": "MC",
+          "name": "Adama Camara",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Rylès Trouba",
+          "pos": "MDC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
           "name": "Alexandre Bouzamita",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Mario Balan-Bitca",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
@@ -6638,13 +7730,31 @@
           "squad": "U19"
         },
         {
+          "name": "Zayn Al-Ghazawi",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
           "name": "Adam Benali",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
+          "name": "Sabaly Ndiaye",
+          "pos": "AiD",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
           "name": "Yohann Malu Kelo",
+          "pos": "AiD",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Gouanou Doua",
           "pos": "AiD",
           "posGroup": "ATT",
           "squad": "U19"
@@ -6656,7 +7766,19 @@
           "squad": "U19"
         },
         {
+          "name": "Djibril Achoui",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
           "name": "Dahiss Mendy",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Lamine Legout Guèye",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
@@ -6674,21 +7796,69 @@
           "squad": "U19"
         },
         {
+          "name": "Timéo Dubuc",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Aymen Bachet",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Saël Mistoihi",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Timéo Touroul",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
           "name": "Alexandre Montagnac",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Rylès Trouba",
-          "pos": "MDC",
+          "name": "Brian Essama",
+          "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Mario Balan-Bitca",
-          "pos": "MC",
+          "name": "Daouda Deme",
+          "pos": "D",
           "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Quentin Bonard",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Stanley Decimus",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Papa Samba Cissé",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Thaïs Muller",
+          "pos": "ArD",
+          "posGroup": "DEF",
           "squad": "U17"
         },
         {
@@ -6698,25 +7868,85 @@
           "squad": "U17"
         },
         {
-          "name": "Zayn Al-Ghazawi",
+          "name": "Enzo Cherica",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Nolan Aubin",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Timothé Le Beuze",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Jamil Abubakar",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Hicham Salim",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Lamine Legout Guèye",
+          "name": "Diego Seara da Costa",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Hamza Hmama",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Papa Ibrahima Ndione",
+          "pos": "AiD",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Abdoul Razack Diaby",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
         },
         {
-          "name": "Hicham Salim",
+          "name": "Bilal Dulac",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Hugo Seri",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Salifou Bangoura",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Isaya Ferjule",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
         }
       ],
-      "coach": "Didier Digard"
+      "coach": "Valérien Ismaël"
     },
     {
       "id": "aja",
@@ -6753,19 +7983,13 @@
           "squad": "PRO"
         },
         {
+          "name": "Axel Tuanzebe",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
           "name": "Bryan Okoh",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
-          "name": "Francisco Sierralta",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
-          "name": "Telli Siwe",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -6783,7 +8007,19 @@
           "squad": "PRO"
         },
         {
+          "name": "Telli Siwe",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
           "name": "Alvin Petit Dol",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
+          "name": "Mohamed Coulibaly",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -6819,19 +8055,31 @@
           "squad": "PRO"
         },
         {
-          "name": "Elisha Owusu",
-          "pos": "MDC",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
           "name": "Arthur Piedfort",
           "pos": "MDC",
           "posGroup": "MID",
           "squad": "PRO"
         },
         {
+          "name": "Pierre Ekwah",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
           "name": "Assane Dioussé",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
+          "name": "Lamfia Dioubaté",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
+          "name": "Yvan Zaddy",
           "pos": "MDC",
           "posGroup": "MID",
           "squad": "PRO"
@@ -6879,31 +8127,19 @@
           "squad": "PRO"
         },
         {
-          "name": "Josué Casimir",
+          "name": "Mamoudou Cissokho",
           "pos": "AiD",
           "posGroup": "ATT",
           "squad": "PRO"
         },
         {
-          "name": "Lasso Coulibaly",
-          "pos": "AiD",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
-          "name": "Eros Maddy",
-          "pos": "AiD",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
-          "name": "Rémy Labeau Lascary",
+          "name": "Cameron Archer",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
         },
         {
-          "name": "Theo Bair",
+          "name": "Rémy Labeau Lascary",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -6945,12 +8181,6 @@
           "squad": "B"
         },
         {
-          "name": "Elikya Legros",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "B"
-        },
-        {
           "name": "Ismaël Sidibé",
           "pos": "DC",
           "posGroup": "DEF",
@@ -6969,7 +8199,13 @@
           "squad": "B"
         },
         {
-          "name": "Lamfia Dioubaté",
+          "name": "Salimou Danfakha",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Kenzo Cotten",
           "pos": "MDC",
           "posGroup": "MID",
           "squad": "B"
@@ -6987,18 +8223,6 @@
           "squad": "B"
         },
         {
-          "name": "Théo Mary",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "B"
-        },
-        {
-          "name": "Redwan Eid Hamzawiy",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "B"
-        },
-        {
           "name": "Elyes Saïdi",
           "pos": "MC",
           "posGroup": "MID",
@@ -7011,19 +8235,25 @@
           "squad": "B"
         },
         {
+          "name": "Kylian Madi",
+          "pos": "MD",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
           "name": "Rúben Da Costa",
           "pos": "MO",
           "posGroup": "MID",
           "squad": "B"
         },
         {
-          "name": "Jamal Gonzaga",
-          "pos": "AiG",
-          "posGroup": "ATT",
+          "name": "Rafael Alberto",
+          "pos": "MO",
+          "posGroup": "MID",
           "squad": "B"
         },
         {
-          "name": "Clément Betoubam",
+          "name": "Jamal Gonzaga",
           "pos": "AiG",
           "posGroup": "ATT",
           "squad": "B"
@@ -7065,19 +8295,13 @@
           "squad": "B"
         },
         {
-          "name": "Tony Mendy",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "B"
-        },
-        {
-          "name": "Elijah Owona",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "B"
-        },
-        {
           "name": "Youssef Khoudda",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "B"
+        },
+        {
+          "name": "Tony Mendy",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "B"
@@ -7107,7 +8331,19 @@
           "squad": "U19"
         },
         {
+          "name": "Sullyvan Salomon Hierso",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
           "name": "Maxence Chambon",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Chris Bouba",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U19"
@@ -7131,8 +8367,8 @@
           "squad": "U19"
         },
         {
-          "name": "Salimou Danfakha",
-          "pos": "ArG",
+          "name": "Thimothée Le Duigou",
+          "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
         },
@@ -7149,32 +8385,38 @@
           "squad": "U19"
         },
         {
-          "name": "Kenzo Cotten",
-          "pos": "MDC",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
           "name": "Abdel-Malik Fellice",
           "pos": "MDC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Tiahiti Colombani",
+          "name": "Housny Talla",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Kylian Madi",
-          "pos": "MD",
+          "name": "Benjamin Ronvel",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Omer Taygun",
-          "pos": "MO",
+          "name": "Haoren Gong",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Idriss Soumaré",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Tiahiti Colombani",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
@@ -7191,19 +8433,13 @@
           "squad": "U19"
         },
         {
-          "name": "Aaron Issumo",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U19"
-        },
-        {
-          "name": "Nimetigna Sacko",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U19"
-        },
-        {
           "name": "Andy Mboyo",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Théo Dragin",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
@@ -7215,13 +8451,121 @@
           "squad": "U17"
         },
         {
-          "name": "Housny Talla",
+          "name": "Hugo Regnault",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Hugo Lassalle",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Dan Christ Gnagra",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Evan Doisy Dessaint",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Kurtys Armède",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Ismaël Traoré",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Nathan Da Costa Coimbra",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Yannis Turpin",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
+          "name": "Imhmed Isheil",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Nathan Mpukuta",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Yassin Hamidou",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Tiago Neves",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "El Boudallaye",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Léandre Njiki II",
+          "pos": "AiG",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
           "name": "Rithler Luneas",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Anaël Lunda",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Isaiah Sitti",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Ahmed Meité",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Axel Pichard de la Tour",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Walid Rahmani",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
@@ -7246,13 +8590,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Antoine Mendy",
-          "pos": "DC",
-          "posGroup": "DEF",
+          "name": "Martin Ponsot",
+          "pos": "GdB",
+          "posGroup": "GK",
           "squad": "PRO"
         },
         {
-          "name": "Kojo Peprah Oppong",
+          "name": "Antoine Mendy",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -7270,13 +8614,19 @@
           "squad": "PRO"
         },
         {
+          "name": "Alidu Seidu",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
           "name": "Mohamed Abdelmonem",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "PRO"
         },
         {
-          "name": "Melvin Bard",
+          "name": "Niels Nkounkou",
           "pos": "ArG",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -7300,6 +8650,12 @@
           "squad": "PRO"
         },
         {
+          "name": "Xavier Mandza",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
           "name": "Salis Abdul Samed",
           "pos": "MDC",
           "posGroup": "MID",
@@ -7318,13 +8674,19 @@
           "squad": "PRO"
         },
         {
-          "name": "Hicham Boudaoui",
+          "name": "Axel Witsel",
+          "pos": "MDC",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
+          "name": "Nassim Laarej",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
         },
         {
-          "name": "Morgan Sanson",
+          "name": "Hicham Boudaoui",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
@@ -7336,9 +8698,21 @@
           "squad": "PRO"
         },
         {
+          "name": "Morgan Sanson",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
           "name": "Issiaga Camara",
           "pos": "MC",
           "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
+          "name": "Mohamed Amoura",
+          "pos": "AiG",
+          "posGroup": "ATT",
           "squad": "PRO"
         },
         {
@@ -7354,25 +8728,25 @@
           "squad": "PRO"
         },
         {
-          "name": "Mohamed-Ali Cho",
-          "pos": "AiD",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
           "name": "Gauthier Hein",
           "pos": "AiD",
           "posGroup": "ATT",
           "squad": "PRO"
         },
         {
-          "name": "Terem Moffi",
+          "name": "Nathan Ngoumou",
+          "pos": "AiD",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
+          "name": "Elye Wahi",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
         },
         {
-          "name": "Victor Orakpo",
+          "name": "Zoumana Diallo",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -7381,6 +8755,18 @@
           "name": "Dorian Pieroni",
           "pos": "GdB",
           "posGroup": "GK",
+          "squad": "B"
+        },
+        {
+          "name": "Larbi Bahri",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "B"
+        },
+        {
+          "name": "Enzo Lutumba",
+          "pos": "MG",
+          "posGroup": "MID",
           "squad": "B"
         },
         {
@@ -7396,19 +8782,19 @@
           "squad": "B"
         },
         {
-          "name": "Ishaq Zantour",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U19"
-        },
-        {
           "name": "Matys Youst",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U19"
         },
         {
-          "name": "Martin Ponsot",
+          "name": "Loucas Guyot",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U19"
+        },
+        {
+          "name": "Sam Camus",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U19"
@@ -7420,7 +8806,7 @@
           "squad": "U19"
         },
         {
-          "name": "Vincenzo Arfuso",
+          "name": "Elias Sahraoui",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U19"
@@ -7432,8 +8818,20 @@
           "squad": "U19"
         },
         {
-          "name": "Mounir Moussa",
-          "pos": "ArD",
+          "name": "Ethan Degny",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Haris M'Dogo",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "U19"
+        },
+        {
+          "name": "Fabio Tavares Varela",
+          "pos": "ArG",
           "posGroup": "DEF",
           "squad": "U19"
         },
@@ -7444,37 +8842,43 @@
           "squad": "U19"
         },
         {
-          "name": "Noah Yalcin",
-          "pos": "MC",
-          "posGroup": "MID",
+          "name": "Niels Dersy",
+          "pos": "ArD",
+          "posGroup": "DEF",
           "squad": "U19"
         },
         {
-          "name": "Lenny Pley",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Wajid Enjolras",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Evan Baranik",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Nassim Laarej",
-          "pos": "MC",
-          "posGroup": "MID",
+          "name": "Marc-Aurel Koffi",
+          "pos": "ArD",
+          "posGroup": "DEF",
           "squad": "U19"
         },
         {
           "name": "Aboulaye Camara",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Ramy Benkhiat",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Tony Miceli",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Lorenzo Domingues",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Houdayfa Ayad",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
@@ -7486,14 +8890,8 @@
           "squad": "U19"
         },
         {
-          "name": "Ismael Mmadi Fatima",
-          "pos": "MD",
-          "posGroup": "MID",
-          "squad": "U19"
-        },
-        {
-          "name": "Millan Brignone",
-          "pos": "MO",
+          "name": "Abdourazak Mahamoud",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
@@ -7504,14 +8902,8 @@
           "squad": "U19"
         },
         {
-          "name": "Enguerrand Bouard",
-          "pos": "AiG",
-          "posGroup": "ATT",
-          "squad": "U19"
-        },
-        {
-          "name": "Otis Caporusso",
-          "pos": "AiG",
+          "name": "Rossé Torres",
+          "pos": "AiD",
           "posGroup": "ATT",
           "squad": "U19"
         },
@@ -7522,13 +8914,25 @@
           "squad": "U19"
         },
         {
-          "name": "Dylan Jams",
+          "name": "Andria Svanidze",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
         },
         {
-          "name": "Thomas Bonnet",
+          "name": "Anthonyo Nevilus",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Daniel Galitchi",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Simon Didier",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U19"
@@ -7546,19 +8950,19 @@
           "squad": "U17"
         },
         {
-          "name": "Loucas Guyot",
+          "name": "Krysley Samba",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Timofey Krasnovskiy",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U17"
         },
         {
           "name": "Johan Dbjay",
-          "pos": "D",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Tiziano Badalassi",
           "pos": "D",
           "posGroup": "MID",
           "squad": "U17"
@@ -7576,26 +8980,50 @@
           "squad": "U17"
         },
         {
-          "name": "Elias Sahraoui",
+          "name": "Joris Jamme",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Moriba Fanny",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Imad Slimani",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Kylian Diakhité Parola",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Nahil M’Sa Boina",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Romain Casanova",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Ethan Bouchereau",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "U17"
         },
         {
-          "name": "Kenzo Brignone",
+          "name": "Leny Orinowski",
           "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "U17"
-        },
-        {
-          "name": "Ethan Degny",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "U17"
-        },
-        {
-          "name": "Haris M'Dogo",
-          "pos": "ArG",
           "posGroup": "DEF",
           "squad": "U17"
         },
@@ -7606,37 +9034,13 @@
           "squad": "U17"
         },
         {
-          "name": "Niels Dersy",
+          "name": "Tiziano Badalassi",
           "pos": "ArD",
           "posGroup": "DEF",
-          "squad": "U17"
-        },
-        {
-          "name": "Marc-Aurel Koffi",
-          "pos": "ArD",
-          "posGroup": "DEF",
-          "squad": "U17"
-        },
-        {
-          "name": "Ramy Benkhiat",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Xavier Mandza",
-          "pos": "MC",
-          "posGroup": "MID",
           "squad": "U17"
         },
         {
           "name": "Youssef Bachnou",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Rossé Torres",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
@@ -7648,19 +9052,7 @@
           "squad": "U17"
         },
         {
-          "name": "Kevin Kalunga Kalema",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
           "name": "Ethan Bobo",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Tony Miceli",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
@@ -7678,38 +9070,50 @@
           "squad": "U17"
         },
         {
-          "name": "Lorenzo Domingues",
+          "name": "Jassem Boughanmi",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Houdayfa Ayad",
+          "name": "Lassana Bathily",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Abdourazak Mahamoud",
+          "name": "Shahine Guemagma",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U17"
         },
         {
-          "name": "Andria Svanidze",
-          "pos": "AC",
-          "posGroup": "ATT",
+          "name": "Cheick Tidiane Lo",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Mohamed Namory",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Kevin Kalunga Kalema",
+          "pos": "MO",
+          "posGroup": "MID",
           "squad": "U17"
         },
         {
           "name": "Tainy Varela Tavares",
-          "pos": "AC",
+          "pos": "AiG",
           "posGroup": "ATT",
           "squad": "U17"
         },
         {
-          "name": "Naimoudine Said",
-          "pos": "AC",
+          "name": "Idrys Kanouté",
+          "pos": "AiD",
           "posGroup": "ATT",
           "squad": "U17"
         },
@@ -7726,19 +9130,19 @@
           "squad": "U17"
         },
         {
-          "name": "Anthonyo Nevilus",
+          "name": "Djibril Mane",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
         },
         {
-          "name": "Daniel Galitchi",
+          "name": "Ruben Zahiri Opeli",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
         },
         {
-          "name": "Simon Didier",
+          "name": "Abou Kourouma",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
@@ -7787,12 +9191,6 @@
           "squad": "PRO"
         },
         {
-          "name": "Tom Akpakoun",
-          "pos": "DC",
-          "posGroup": "DEF",
-          "squad": "PRO"
-        },
-        {
           "name": "Ismaël Boura",
           "pos": "ArG",
           "posGroup": "DEF",
@@ -7812,6 +9210,12 @@
         },
         {
           "name": "Lucas Maronnier",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
+          "name": "Noah Donkor",
           "pos": "ArD",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -7847,19 +9251,25 @@
           "squad": "PRO"
         },
         {
+          "name": "Hugo Picard",
+          "pos": "MG",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
+          "name": "Dermane Karim",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
+          "name": "Idrissa Soukouna",
+          "pos": "MO",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
           "name": "Kandet Diawara",
-          "pos": "AiG",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
-          "name": "Amar Fatah",
-          "pos": "AiG",
-          "posGroup": "ATT",
-          "squad": "PRO"
-        },
-        {
-          "name": "Elijah Odede",
           "pos": "AiG",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -7877,7 +9287,31 @@
           "squad": "PRO"
         },
         {
+          "name": "Jérémy Le Douaron",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
+          "name": "Timothé Nkada",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
+          "name": "Christ Batola",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
           "name": "Renaud Ripart",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
+          "name": "Yacouba Koné",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -7901,13 +9335,19 @@
           "squad": "B"
         },
         {
-          "name": "Enzo Kost",
+          "name": "Preston Zenga",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "B"
         },
         {
-          "name": "Preston Zenga",
+          "name": "Ilian Ounissi",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
+          "name": "Amadou Diallo",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "B"
@@ -7919,20 +9359,14 @@
           "squad": "B"
         },
         {
-          "name": "Tom Chupin",
-          "pos": "ArG",
-          "posGroup": "DEF",
-          "squad": "B"
-        },
-        {
           "name": "Naël Betka",
           "pos": "ArG",
           "posGroup": "DEF",
           "squad": "B"
         },
         {
-          "name": "Noah Donkor",
-          "pos": "ArD",
+          "name": "Ange Ehola",
+          "pos": "ArG",
           "posGroup": "DEF",
           "squad": "B"
         },
@@ -7961,7 +9395,7 @@
           "squad": "B"
         },
         {
-          "name": "Amadou Diallo",
+          "name": "Tom Chupin",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "B"
@@ -7979,31 +9413,25 @@
           "squad": "B"
         },
         {
+          "name": "Preston Nsifua Bazola",
+          "pos": "AiG",
+          "posGroup": "ATT",
+          "squad": "B"
+        },
+        {
+          "name": "Yanis Kharbouch",
+          "pos": "AiG",
+          "posGroup": "ATT",
+          "squad": "B"
+        },
+        {
           "name": "Wylan Pierrilus",
           "pos": "AiD",
           "posGroup": "ATT",
           "squad": "B"
         },
         {
-          "name": "Preston Nsifua Bazola",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "B"
-        },
-        {
-          "name": "Arthylio Nadé",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "B"
-        },
-        {
-          "name": "Christ Batola",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "B"
-        },
-        {
-          "name": "Yacouba Koné",
+          "name": "Florian Mekue",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "B"
@@ -8021,9 +9449,9 @@
           "squad": "U19"
         },
         {
-          "name": "Ilian Ounissi",
-          "pos": "DC",
-          "posGroup": "DEF",
+          "name": "Maylann Falgayrettes",
+          "pos": "D",
+          "posGroup": "MID",
           "squad": "U19"
         },
         {
@@ -8045,7 +9473,7 @@
           "squad": "U19"
         },
         {
-          "name": "Ange Ehola",
+          "name": "Lassana Soumaré",
           "pos": "ArG",
           "posGroup": "DEF",
           "squad": "U19"
@@ -8069,14 +9497,26 @@
           "squad": "U19"
         },
         {
-          "name": "Yves Laffet",
+          "name": "Yasser Khiri",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
         {
-          "name": "Idrissa Soukouna",
-          "pos": "MO",
+          "name": "Jean-Daniel Boum V Ibongo",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Diego Hernandez",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U19"
+        },
+        {
+          "name": "Yves Laffet",
+          "pos": "MC",
           "posGroup": "MID",
           "squad": "U19"
         },
@@ -8111,12 +9551,6 @@
           "squad": "U19"
         },
         {
-          "name": "Florian Mekue",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U19"
-        },
-        {
           "name": "Thémis Louis",
           "pos": "AC",
           "posGroup": "ATT",
@@ -8129,13 +9563,139 @@
           "squad": "U19"
         },
         {
+          "name": "Maël Etoa",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
+          "name": "Kylian Ngola",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U19"
+        },
+        {
           "name": "Ethan Roger",
           "pos": "GdB",
           "posGroup": "GK",
           "squad": "U17"
         },
         {
-          "name": "Yanis Kharbouch",
+          "name": "Sandro Falcoz",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Raphaël Donnart",
+          "pos": "GdB",
+          "posGroup": "GK",
+          "squad": "U17"
+        },
+        {
+          "name": "Kurtis Koné Sylvestre",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Nolan Onana",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Ylann Elie Dadoue",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Emrys Carlier",
+          "pos": "D",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Adam Aiki",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Moussa Sarr",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "U17"
+        },
+        {
+          "name": "Eliot Ahibo",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Erwan Nervil",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Sankoun Gueye",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Nathan Quetty",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Sandro Martins Pereira",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "U17"
+        },
+        {
+          "name": "Jaden Preira",
+          "pos": "AiD",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Joyce Bambi",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Enais Félix",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Ishak Mezriche",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Maxence De March",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Nolan Bruno Duro",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "U17"
+        },
+        {
+          "name": "Tiago Coste",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "U17"
@@ -8172,6 +9732,12 @@
           "squad": "PRO"
         },
         {
+          "name": "Raúl Torrente",
+          "pos": "DC",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
           "name": "Théo Eyoum",
           "pos": "DC",
           "posGroup": "DEF",
@@ -8202,6 +9768,12 @@
           "squad": "PRO"
         },
         {
+          "name": "João Almeida",
+          "pos": "ArG",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
           "name": "Lucas Buades",
           "pos": "ArD",
           "posGroup": "DEF",
@@ -8209,6 +9781,12 @@
         },
         {
           "name": "Rayan Bamba",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "PRO"
+        },
+        {
+          "name": "Djibril Sidibé",
           "pos": "ArD",
           "posGroup": "DEF",
           "squad": "PRO"
@@ -8226,18 +9804,6 @@
           "squad": "PRO"
         },
         {
-          "name": "Milan Robin",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
-          "name": "Edwin Quarshie",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "PRO"
-        },
-        {
           "name": "Adil Bourabaa",
           "pos": "MC",
           "posGroup": "MID",
@@ -8245,6 +9811,12 @@
         },
         {
           "name": "Jean Vercruysse",
+          "pos": "MC",
+          "posGroup": "MID",
+          "squad": "PRO"
+        },
+        {
+          "name": "Edwin Quarshie",
           "pos": "MC",
           "posGroup": "MID",
           "squad": "PRO"
@@ -8274,13 +9846,13 @@
           "squad": "PRO"
         },
         {
-          "name": "Louis Mafouta",
+          "name": "Habib Diallo",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
         },
         {
-          "name": "Antoine Rabillard",
+          "name": "Louis Mafouta",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -8292,7 +9864,19 @@
           "squad": "PRO"
         },
         {
+          "name": "Antoine Rabillard",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
           "name": "William Harhouz",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "PRO"
+        },
+        {
+          "name": "Enzo Vagner",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "PRO"
@@ -8310,13 +9894,13 @@
           "squad": "B"
         },
         {
-          "name": "Leny Cormier",
+          "name": "Enzo Kost",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "B"
         },
         {
-          "name": "Younes Kloufi",
+          "name": "Leny Cormier",
           "pos": "DC",
           "posGroup": "DEF",
           "squad": "B"
@@ -8346,6 +9930,12 @@
           "squad": "B"
         },
         {
+          "name": "Mohamed Ediman",
+          "pos": "ArD",
+          "posGroup": "DEF",
+          "squad": "B"
+        },
+        {
           "name": "Lenny Videira",
           "pos": "MDC",
           "posGroup": "MID",
@@ -8366,12 +9956,6 @@
         {
           "name": "Zohir Oissa",
           "pos": "MD",
-          "posGroup": "MID",
-          "squad": "B"
-        },
-        {
-          "name": "Titouan Caro",
-          "pos": "MO",
           "posGroup": "MID",
           "squad": "B"
         },
@@ -8406,147 +9990,27 @@
           "squad": "B"
         },
         {
-          "name": "Tayson Franquet",
-          "pos": "AiD",
-          "posGroup": "ATT",
-          "squad": "B"
-        },
-        {
           "name": "Benny Eguge",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "B"
         },
         {
-          "name": "Noah Delem",
+          "name": "Tayson Franquet",
           "pos": "AC",
           "posGroup": "ATT",
           "squad": "B"
         },
         {
-          "name": "Bilel Hartsaoui",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U17"
+          "name": "Samuel Tamegni",
+          "pos": "AC",
+          "posGroup": "ATT",
+          "squad": "B"
         },
         {
           "name": "Léo Germain",
           "pos": "GdB",
           "posGroup": "GK",
-          "squad": "U17"
-        },
-        {
-          "name": "Nino Borée",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U17"
-        },
-        {
-          "name": "Adrien Potiron",
-          "pos": "GdB",
-          "posGroup": "GK",
-          "squad": "U17"
-        },
-        {
-          "name": "Steevane Labeau",
-          "pos": "D",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Hénoc Alexandre",
-          "pos": "D",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Davy Vadimon",
-          "pos": "D",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Aaron Mupemba",
-          "pos": "D",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Maxime Paquier",
-          "pos": "ArG",
-          "posGroup": "DEF",
-          "squad": "U17"
-        },
-        {
-          "name": "Yassir Ait Zaou",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Florian Nkunga",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Caryl N'Diaye",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Amine Masmoudi",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Noam Kuziora",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Ibrahima Cissé Ngom",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Baptiste Bouvet",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Eliott Barbey",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Wiyane Ayoko",
-          "pos": "MC",
-          "posGroup": "MID",
-          "squad": "U17"
-        },
-        {
-          "name": "Samuel Tamegni",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U17"
-        },
-        {
-          "name": "Alex Bakhero",
-          "pos": "AC",
-          "posGroup": "ATT",
-          "squad": "U17"
-        },
-        {
-          "name": "Ilan Keita",
-          "pos": "AC",
-          "posGroup": "ATT",
           "squad": "U17"
         }
       ],
